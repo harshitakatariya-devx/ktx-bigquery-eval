@@ -1,0 +1,8 @@
+cache/
+db.sqlite
+db.sqlite-*
+ingest-transcripts/
+logs/
+secrets/
+setup/
+agents/
