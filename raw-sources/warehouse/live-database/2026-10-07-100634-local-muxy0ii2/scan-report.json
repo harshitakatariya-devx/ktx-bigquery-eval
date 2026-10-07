@@ -2,9 +2,9 @@
   "connectionId": "warehouse",
   "driver": "bigquery",
   "syncId": "2026-10-07-100634-local-muxy0ii2",
-  "runId": "local-muxy0ii2",
+  "runId": "local-muxy0pie",
   "trigger": "cli",
-  "mode": "structural",
+  "mode": "enriched",
   "dryRun": false,
   "artifactPaths": {
     "rawSourcesDir": "raw-sources/warehouse/live-database/2026-10-07-100634-local-muxy0ii2",
@@ -12,12 +12,18 @@
     "manifestShards": [
       "semantic-layer/warehouse/_schema/dev_dna_silver.yaml"
     ],
-    "enrichmentArtifacts": []
+    "enrichmentArtifacts": [
+      "raw-sources/warehouse/live-database/2026-10-07-100634-local-muxy0ii2/enrichment/descriptions.json",
+      "raw-sources/warehouse/live-database/2026-10-07-100634-local-muxy0ii2/enrichment/embeddings.json",
+      "raw-sources/warehouse/live-database/2026-10-07-100634-local-muxy0ii2/enrichment/relationships.json",
+      "raw-sources/warehouse/live-database/2026-10-07-100634-local-muxy0ii2/enrichment/relationship-profile.json",
+      "raw-sources/warehouse/live-database/2026-10-07-100634-local-muxy0ii2/enrichment/relationship-diagnostics.json"
+    ]
   },
   "diffSummary": {
     "tablesAdded": 0,
     "tablesModified": 0,
-    "tablesDeleted": 6,
+    "tablesDeleted": 0,
     "tablesUnchanged": 23,
     "columnsAdded": 0,
     "columnsModified": 0,
@@ -33,26 +39,61 @@
     "columnsDeleted": 0
   },
   "enrichment": {
-    "dataDictionary": "skipped",
-    "tableDescriptions": "skipped",
-    "columnDescriptions": "skipped",
-    "embeddings": "skipped",
-    "deterministicRelationships": "skipped",
-    "llmRelationshipValidation": "skipped",
-    "statisticalValidation": "skipped"
+    "dataDictionary": "completed",
+    "tableDescriptions": "completed",
+    "columnDescriptions": "completed",
+    "embeddings": "completed",
+    "deterministicRelationships": "completed",
+    "llmRelationshipValidation": "completed",
+    "statisticalValidation": "completed"
   },
   "capabilityGaps": [],
-  "warnings": [],
+  "warnings": [
+    {
+      "code": "enrichment_timeout",
+      "message": "Timed out after 185494ms generating batched description for table purchase_orders: aborted",
+      "table": "purchase_orders",
+      "recoverable": true,
+      "metadata": {
+        "connectorId": "bigquery:warehouse",
+        "timeoutMs": 120000
+      }
+    },
+    {
+      "code": "enrichment_timeout",
+      "message": "Timed out after 172842ms generating batched description for table qcomm_orders: aborted",
+      "table": "qcomm_orders",
+      "recoverable": true,
+      "metadata": {
+        "connectorId": "bigquery:warehouse",
+        "timeoutMs": 120000
+      }
+    },
+    {
+      "code": "enrichment_timeout",
+      "message": "Timed out after 168845ms generating batched description for table returns: aborted",
+      "table": "returns",
+      "recoverable": true,
+      "metadata": {
+        "connectorId": "bigquery:warehouse",
+        "timeoutMs": 120000
+      }
+    }
+  ],
   "relationships": {
-    "accepted": 0,
+    "accepted": 25,
     "review": 0,
-    "rejected": 0,
+    "rejected": 2,
     "skipped": 0
   },
   "enrichmentState": {
     "resumedStages": [],
-    "completedStages": [],
+    "completedStages": [
+      "descriptions",
+      "embeddings",
+      "relationships"
+    ],
     "failedStages": []
   },
-  "createdAt": "2026-10-07T10:06:41.660Z"
+  "createdAt": "2026-10-07T10:06:47.348Z"
 }
