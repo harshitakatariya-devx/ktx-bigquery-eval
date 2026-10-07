@@ -741,48 +741,60 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Internal deduplication key generated at ingestion; not meaningful for business reporting or analysis.
       - name: product_id
         type: string
         descriptions:
           db: Canonical product/SKU identifier used across every channel after code mapping (see product_codes).
+          ai: Cross-channel canonical SKU identifier used after source code mapping.
       - name: product_name
         type: string
         descriptions:
           db: Product's official display name.
+          ai: Official display name shown to customers and used across channels.
       - name: category
         type: string
         descriptions:
           db: Product category (e.g. Beverages, Apparel, Electronics).
+          ai: Broad grouping of similar products, such as Beverages or Apparel.
       - name: brand
         type: string
         descriptions:
           db: Brand the product is sold under.
+          ai: Commercial brand under which the product is marketed and sold.
       - name: uom
         type: string
         descriptions:
           db: Unit of measure the product is sold/stocked in (e.g. EA, KG, BOX).
+          ai: Selling and stocking unit, such as each, kilogram, or box.
       - name: status
         type: string
         descriptions:
           db: Product's current lifecycle status (e.g. Active, Discontinued).
+          ai: Indicates whether the product is active, discontinued, or another lifecycle stage.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: Pipeline load time when the record first entered the silver layer.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: Pipeline processing time of the most recent update to this record.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Identifies the upstream system or file for lineage and troubleshooting only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Soft-delete flag; TRUE means the source removed this product—exclude from reporting.
     descriptions:
       db: Product/SKU master. One row per canonical product, used to enrich every channel's sales, inventory and purchasing tables.
+      ai: Central product catalog storing SKU-level attributes including name, category, brand, unit of measure, and lifecycle status for all channels.
   offline_orders:
     table: sahil-devx.dev_dna_silver.offline_orders
     columns:
@@ -790,80 +802,100 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Pipeline-generated deduplication key; not a business attribute, exclude from reporting.
       - name: invoice_no
         type: string
         descriptions:
           db: POS invoice/bill number issued at the store till.
+          ai: Unique bill number issued by the POS system at the store till.
       - name: txn_date
         type: time
         descriptions:
           db: Date the sale occurred.
+          ai: Calendar date the in-store sale took place.
       - name: store_code
         type: string
         descriptions:
           db: Code identifying the retail store where the sale occurred.
+          ai: Identifier for the retail store where the transaction occurred.
       - name: city
         type: string
         descriptions:
           db: City the store is located in.
+          ai: City where the selling store is located.
       - name: item_name
         type: string
         descriptions:
           db: Product name as sold at the till (raw text from the POS system).
+          ai: Raw product name as captured by the POS system at the till.
       - name: item_code
         type: string
         descriptions:
           db: Store POS system's own item code for this line, prior to mapping onto the canonical product_id.
+          ai: POS-native item identifier before mapping to the canonical product ID.
       - name: qty
         type: number
         descriptions:
           db: Quantity of this item sold on this bill line.
+          ai: Number of units of this product sold on the invoice line.
       - name: mrp
         type: number
         descriptions:
           db: Maximum Retail Price (list price) of this item at time of sale.
+          ai: Published list price of the item at the time of sale.
       - name: discount_pct
         type: number
         descriptions:
           db: Discount percentage applied to this line, if any.
+          ai: Percentage discount applied to reduce MRP on this line item.
       - name: net_amount
         type: number
         descriptions:
           db: Final amount charged for this line after discount, in INR.
+          ai: Amount charged to the customer after discount, in Indian Rupees.
       - name: payment_type
         type: string
         descriptions:
           db: How the customer paid (e.g. cash, card, UPI).
+          ai: Customer's payment method, such as cash, card, or UPI.
       - name: channel_code
         type: string
         descriptions:
           db: Short code identifying the sales channel this record belongs to (e.g. D2C, OFFLINE, QCOMM, PLATFORM, INTL, CAFE). Joins to dim_channels for the channel's full name, group and settlement currency.
+          ai: Short code for the sales channel; join dim_channels for full details.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: Pipeline load time when the record first entered the silver layer.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: Pipeline processing time when the record was last updated by ingestion.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream source system or file name; used for lineage and troubleshooting only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Soft-delete flag; exclude rows marked TRUE from all business reporting.
       - name: order_date_key
         type: time
         descriptions:
           db: Calendar date (YYYY-MM-DD) the order/transaction occurred, derived from the transaction timestamp. Use this column (not the raw timestamp) to join to dim_date for month/quarter/year reporting.
+          ai: Transaction date for joining to dim_date for time-based reporting.
       - name: product_id
         type: string
         descriptions:
           db: Canonical product/SKU identifier. Joins to item_master for product name, category and brand.
+          ai: Canonical SKU identifier; joins to item_master for product attributes.
     descriptions:
       db: "Line-grain point-of-sale transactions from the company's physical retail stores. One row per line item per bill. Channel: OFFLINE."
+      ai: Line-level sales transactions recorded at physical retail store tills, capturing product, pricing, discount, and payment details per invoice line.
   marketing_spend:
     table: sahil-devx.dev_dna_silver.marketing_spend
     columns:
@@ -871,56 +903,70 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Internal deduplication key; not for reporting or business use.
       - name: spend_id
         type: string
         descriptions:
           db: Unique identifier for this spend record.
+          ai: Unique business identifier for a single marketing spend transaction.
       - name: promo_id
         type: string
         descriptions:
           db: Promotion/campaign this spend was allocated to. Joins to promotions.
+          ai: Links this spend to a specific promotion or campaign.
       - name: channel_code
         type: string
         descriptions:
           db: Sales channel this marketing spend was targeted at.
+          ai: Identifies the sales channel targeted, e.g., PLATFORM, OFFLINE, D2C, CAFE.
       - name: spend_date
         type: time
         descriptions:
           db: Date this spend was incurred.
+          ai: Calendar date on which the marketing expenditure was incurred.
       - name: spend_amount_inr
         type: number
         descriptions:
           db: Amount spent, in INR.
+          ai: Total marketing money spent in Indian Rupees for this record.
       - name: impressions
         type: number
         descriptions:
           db: Number of ad impressions delivered on spend_date for this promo/channel.
+          ai: Total ad views delivered for this promotion and channel on the date.
       - name: clicks
         type: number
         descriptions:
           db: Number of ad clicks recorded on spend_date for this promo/channel.
+          ai: Total user ad clicks for this promotion and channel on the date.
       - name: rn
         type: number
         descriptions:
           db: Row number assigned per natural key by the ingestion pipeline (partitioned by business key, ordered by recency). rn = 1 identifies the current/latest version of a record when historized duplicates exist in this table.
+          ai: Value of 1 marks the current record among historical duplicates.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: UTC time when the record first loaded into the silver layer.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: UTC time of the most recent pipeline update to this record.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream system or file this record originated from; for lineage only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: TRUE when the source record was removed; exclude from business reporting.
     descriptions:
       db: Daily marketing/advertising spend and performance, by promotion and channel.
+      ai: Records daily marketing expenditure, impressions, and clicks per promotion and sales channel, enabling campaign spend performance analysis.
   mrp_master:
     table: sahil-devx.dev_dna_silver.mrp_master
     columns:
@@ -928,44 +974,55 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Internal deduplication key; not a business attribute, exclude from reporting.
       - name: product_id
         type: string
         descriptions:
           db: Canonical product/SKU identifier. Joins to item_master.
+          ai: Links each price record to a specific product or SKU.
       - name: mrp
         type: number
         descriptions:
           db: Maximum Retail Price (list price before any discount) in effect during this row's validity window.
+          ai: Official list price before discounts, valid during the defined date window.
       - name: effective_from
         type: time
         descriptions:
           db: Date this MRP became effective (inclusive).
+          ai: Inclusive start date of this MRP's validity period.
       - name: effective_to
         type: time
         descriptions:
           db: Date this MRP stopped being effective (exclusive/inclusive per pipeline convention); NULL or a far-future date marks the current price.
+          ai: End date of MRP validity; NULL or far-future date indicates the current active price.
       - name: currency
         type: string
         descriptions:
           db: Currency this MRP is denominated in.
+          ai: Currency in which the MRP value is expressed.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: Pipeline load time when the record first entered the silver layer.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: Pipeline processing time of the most recent update to this record.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream system or file origin; used for lineage and troubleshooting only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Marks records removed upstream; exclude TRUE rows from business reporting.
     descriptions:
       db: Time-versioned Maximum Retail Price (list price) per product. One row per price change; effective_from/effective_to define the validity window.
+      ai: Stores time-versioned Maximum Retail Price records per product, enabling point-in-time price lookups across validity windows.
   shipments:
     table: sahil-devx.dev_dna_silver.shipments
     columns:
@@ -973,56 +1030,70 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Internal deduplication key; not a business attribute, exclude from reporting.
       - name: shipment_id
         type: string
         descriptions:
           db: Unique identifier for this shipment.
+          ai: Unique business identifier for each shipment.
       - name: channel_code
         type: string
         descriptions:
           db: Sales channel the shipped order was placed on.
+          ai: Sales channel through which the shipped order was originally placed.
       - name: order_ref
         type: string
         descriptions:
           db: Reference to the order this shipment fulfils (matches the originating channel table's own order reference).
+          ai: Cross-channel reference linking this shipment to its originating order.
       - name: courier_name
         type: string
         descriptions:
           db: Courier/logistics partner that carried this shipment.
+          ai: Logistics partner responsible for physically carrying and delivering the shipment.
       - name: dispatch_date
         type: time
         descriptions:
           db: Date the shipment left the warehouse/store.
+          ai: Date the shipment physically left the warehouse or store.
       - name: delivered_date
         type: time
         descriptions:
           db: Date the shipment was delivered to the customer; NULL if not yet delivered.
+          ai: Date the shipment reached the customer; NULL means not yet delivered.
       - name: delivery_status
         type: string
         descriptions:
           db: Current delivery status (e.g. In Transit, Delivered, Returned to Origin, Lost).
+          ai: Current tracking status such as In Transit, Delivered, or Lost.
       - name: rn
         type: number
         descriptions:
           db: Row number assigned per natural key by the ingestion pipeline (partitioned by business key, ordered by recency). rn = 1 identifies the current/latest version of a record when historized duplicates exist in this table.
+          ai: Row number per shipment; value of 1 indicates the latest active record.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: Pipeline load timestamp when the record entered the silver layer; not a business event.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: Pipeline timestamp of the most recent update; not a business event.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream source system or file; for lineage and troubleshooting only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Soft-delete flag; exclude rows where TRUE from all business reporting.
     descriptions:
       db: Outbound shipment tracking for orders across all sales channels. One row per shipment.
+      ai: Tracks individual shipments from dispatch to delivery, linking orders across sales channels to couriers and current delivery status.
   suppliers:
     table: sahil-devx.dev_dna_silver.suppliers
     columns:
@@ -1030,56 +1101,70 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Internal deduplication key; not meaningful for business analysis or reporting.
       - name: supplier_id
         type: string
         descriptions:
           db: Unique supplier identifier.
+          ai: Unique business identifier for each supplier.
       - name: supplier_name
         type: string
         descriptions:
           db: Supplier's company name.
+          ai: Legal or trading name of the supplier company.
       - name: category
         type: string
         descriptions:
           db: Category of goods this supplier provides (e.g. Packaging, Raw Materials, Finished Goods).
+          ai: Type of goods or services the supplier provides.
       - name: country
         type: string
         descriptions:
           db: Country the supplier is based in.
+          ai: Country where the supplier operates or is headquartered.
       - name: contract_start_date
         type: time
         descriptions:
           db: Date the current supply contract with this supplier began.
+          ai: Date the active supply agreement with this supplier commenced.
       - name: avg_lead_time_days
         type: number
         descriptions:
           db: Supplier's average lead time, in days, from PO placement to delivery.
+          ai: Average number of days from purchase order placement to delivery.
       - name: status
         type: string
         descriptions:
           db: Supplier's current status (e.g. Active, Suspended, Terminated).
+          ai: Indicates whether the supplier is Active, Suspended, or Terminated.
       - name: rn
         type: number
         descriptions:
           db: Row number assigned per natural key by the ingestion pipeline (partitioned by business key, ordered by recency). rn = 1 identifies the current/latest version of a record when historized duplicates exist in this table.
+          ai: Row number; value of 1 identifies the latest active record version.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: Pipeline load time when the record entered the silver layer; not a business event.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: Pipeline processing time of the last record update; not a business event.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream system or file the record originated from; used for lineage only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Flags records removed upstream; TRUE rows should be excluded from reporting.
     descriptions:
       db: Supplier/vendor master used for procurement and purchase orders.
+      ai: Master list of approved suppliers including their category, country, contract start date, average lead time, and current status.
   platform_orders:
     table: sahil-devx.dev_dna_silver.platform_orders
     columns:
@@ -1087,84 +1172,105 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Internal deduplication key generated at ingestion. Exclude from all business reporting.
       - name: marketplace
         type: string
         descriptions:
           db: Name of the third-party marketplace this order was placed on (e.g. Amazon, Flipkart).
+          ai: Third-party platform where the order was placed (e.g., Amazon, Flipkart, Myntra).
       - name: order_id
         type: string
         descriptions:
           db: Marketplace's own order identifier.
+          ai: Unique order identifier assigned by the marketplace.
       - name: order_date
         type: time
         descriptions:
           db: Date the order was placed on the marketplace.
+          ai: Calendar date the customer placed the order on the marketplace.
       - name: product_title
         type: string
         descriptions:
           db: Product title as listed on the marketplace for this order line.
+          ai: Product name as displayed on the marketplace listing for this order line.
       - name: marketplace_sku
         type: string
         descriptions:
           db: Marketplace's own SKU/listing identifier for this product, prior to mapping onto the canonical product_id.
+          ai: Platform-specific listing ID before mapping to the canonical product identifier.
       - name: units
         type: number
         descriptions:
           db: Quantity of this product ordered on this line.
+          ai: Number of product units purchased on this order line.
       - name: unit_price
         type: number
         descriptions:
           db: Unit price charged for this line on the marketplace, in INR, before fees and discounts.
+          ai: Per-unit selling price in INR, before marketplace fees or promotional discounts.
       - name: marketplace_fee
         type: number
         descriptions:
           db: Commission/fee charged by the marketplace on this order line, in INR.
+          ai: Commission charged by the marketplace on this order line, in INR.
       - name: promo_discount
         type: number
         descriptions:
           db: Discount amount applied to this line by a marketplace promotion, in INR.
+          ai: Promotional discount applied to this order line by the marketplace, in INR.
       - name: ship_to_city
         type: string
         descriptions:
           db: City the order was shipped to.
+          ai: City the order was delivered to.
       - name: ship_to_country
         type: string
         descriptions:
           db: Country the order was shipped to.
+          ai: Country the order was delivered to.
       - name: fulfillment_status
         type: string
         descriptions:
           db: Current fulfillment status of this order on the marketplace (e.g. Pending, Shipped, Delivered, Cancelled).
+          ai: Current order lifecycle status (e.g., Pending, Shipped, Delivered, Cancelled, Refunded).
       - name: channel_code
         type: string
         descriptions:
           db: Short code identifying the sales channel this record belongs to (e.g. D2C, OFFLINE, QCOMM, PLATFORM, INTL, CAFE). Joins to dim_channels for the channel's full name, group and settlement currency.
+          ai: Short sales-channel code; joins to dim_channels for full name, group, and settlement currency.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: Pipeline load time when the record first entered the silver layer; not a business event.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: Pipeline processing time of the most recent record update; not a business event.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream source system or file name; used for lineage and troubleshooting only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Soft-delete flag; exclude rows marked TRUE from all business reporting.
       - name: order_date_key
         type: time
         descriptions:
           db: Calendar date (YYYY-MM-DD) the order/transaction occurred, derived from the transaction timestamp. Use this column (not the raw timestamp) to join to dim_date for month/quarter/year reporting.
+          ai: Join key to dim_date for calendar-based month, quarter, and year reporting.
       - name: product_id
         type: string
         descriptions:
           db: Canonical product/SKU identifier. Joins to item_master for product name, category and brand.
+          ai: Canonical SKU identifier; joins to item_master for product name, category, and brand.
     descriptions:
       db: "Line-grain orders sold through third-party e-commerce marketplaces (e.g. Amazon, Flipkart). One row per line item per order. Channel: PLATFORM."
+      ai: Order line-level sales from third-party marketplaces, capturing product, pricing, fees, discounts, shipping destination, and fulfillment status.
   product_bundle:
     table: sahil-devx.dev_dna_silver.product_bundle
     columns:
@@ -1172,40 +1278,50 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Internal deduplication key generated at ingestion; exclude from all business reporting and analysis.
       - name: bundle_id
         type: string
         descriptions:
           db: Unique identifier for this product bundle/combo, as sold to customers.
+          ai: Unique business identifier for a sellable product bundle or combo.
       - name: bundle_name
         type: string
         descriptions:
           db: Display name of the bundle/combo.
+          ai: Customer-facing display name of the bundle as marketed and sold.
       - name: component_product_id
         type: string
         descriptions:
           db: Canonical product/SKU identifier of one component product inside this bundle. Joins to item_master.
+          ai: Identifies a single SKU within the bundle; links to item_master for product details.
       - name: component_qty
         type: number
         descriptions:
           db: Quantity of this component product included per unit of the bundle.
+          ai: Number of units of this component product included in one bundle.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: Pipeline load time when the record first entered the silver layer; not a business event.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: Pipeline processing time of the most recent record update; not a business event time.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream system or file the record originated from; used for lineage only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Marks records removed upstream; exclude rows flagged TRUE from business reporting.
     descriptions:
       db: "Defines multi-product bundles/combos: which component products make up a bundle, and in what quantity."
+      ai: Defines sellable product bundles and their component SKUs, capturing each included product and quantity per bundle unit.
   product_codes:
     table: sahil-devx.dev_dna_silver.product_codes
     columns:
@@ -1213,40 +1329,50 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Pipeline-generated deduplication and change-detection key; not a business attribute.
       - name: product_id
         type: string
         descriptions:
           db: Canonical product/SKU identifier this source code maps to. Joins to item_master.
+          ai: Canonical product/SKU identifier linking this channel code to the master product catalog.
       - name: channel_code
         type: string
         descriptions:
           db: Sales channel this code mapping applies to.
+          ai: Identifies the sales channel (e.g., OFFLINE, CAFE, D2C) to which this code mapping applies.
       - name: source_code
         type: string
         descriptions:
           db: The channel's own native product/item/SKU code (e.g. item_code, marketplace_sku, stock_code) prior to mapping.
+          ai: Native product or SKU code assigned by the upstream channel before canonical mapping.
       - name: source_product_name
         type: string
         descriptions:
           db: The channel's own native product name/title prior to mapping.
+          ai: Native product name used by the upstream channel before canonical mapping.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: UTC pipeline load time when the record was first ingested into the silver layer.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: UTC pipeline time of the most recent record update; not a business event.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream system or file the record was ingested from; used for data lineage.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Soft-delete flag; rows marked TRUE were removed upstream and should be excluded from reporting.
     descriptions:
       db: Cross-reference mapping each channel's own product code/name onto the canonical product_id, so every channel's raw orders can be joined to item_master.
+      ai: Maps each sales channel's native product codes and names to a canonical product identifier for cross-channel reconciliation.
   promotions:
     table: sahil-devx.dev_dna_silver.promotions
     columns:
@@ -1254,56 +1380,70 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Pipeline-internal deduplication key; exclude from all business reporting and analysis.
       - name: promo_id
         type: string
         descriptions:
           db: Unique identifier for this promotion/campaign.
+          ai: Primary business identifier distinguishing each individual promotion or campaign offer.
       - name: promo_code
         type: string
         descriptions:
           db: Customer-facing coupon/promo code for this promotion, if any.
+          ai: Alphanumeric code customers apply at checkout to redeem the discount.
       - name: channel_code
         type: string
         descriptions:
           db: Sales channel this promotion was run on.
+          ai: Sales or distribution channel where the promotion was made available.
       - name: discount_pct
         type: number
         descriptions:
           db: Discount percentage offered by this promotion.
+          ai: Percentage reduction in price granted to customers under this promotion.
       - name: start_date
         type: time
         descriptions:
           db: Date this promotion became active (inclusive).
+          ai: First day customers can redeem this promotion, inclusive.
       - name: end_date
         type: time
         descriptions:
           db: Date this promotion ended (inclusive).
+          ai: Last day customers can redeem this promotion, inclusive.
       - name: campaign_name
         type: string
         descriptions:
           db: Marketing campaign name this promotion belongs to.
+          ai: Broader marketing campaign grouping that this promotion belongs to.
       - name: rn
         type: number
         descriptions:
           db: Row number assigned per natural key by the ingestion pipeline (partitioned by business key, ordered by recency). rn = 1 identifies the current/latest version of a record when historized duplicates exist in this table.
+          ai: Filter to rn = 1 to retrieve only the latest record version.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: Pipeline load time into the silver layer; not a business event.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: Pipeline processing time of the last update; not a business event.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream system or file the record originated from; for lineage only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: TRUE indicates the promotion was removed upstream; exclude from reporting.
     descriptions:
       db: Master list of promotions/discount campaigns run by channel, with their discount and validity window.
+      ai: Stores marketing promotions and discount campaigns across sales channels, including coupon codes, discount rates, and active date ranges.
   purchase_orders:
     table: sahil-devx.dev_dna_silver.purchase_orders
     columns:
