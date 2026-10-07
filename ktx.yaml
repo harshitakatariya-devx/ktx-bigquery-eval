@@ -1,4 +1,40 @@
-connections: {}
+setup:
+  database_connection_ids:
+    - warehouse
+connections:
+  warehouse:
+    driver: bigquery
+    enabled_tables:
+      - sahil-devx.dev_dna_silver.cafe_sales
+      - sahil-devx.dev_dna_silver.customer
+      - sahil-devx.dev_dna_silver.customers_master
+      - sahil-devx.dev_dna_silver.d2c_orders
+      - sahil-devx.dev_dna_silver.dim_customer
+      - sahil-devx.dev_dna_silver.dim_d2c_order
+      - sahil-devx.dev_dna_silver.dim_date
+      - sahil-devx.dev_dna_silver.employees
+      - sahil-devx.dev_dna_silver.international_orders
+      - sahil-devx.dev_dna_silver.inventory_snapshot_expanded
+      - sahil-devx.dev_dna_silver.item_master
+      - sahil-devx.dev_dna_silver.marketing_spend
+      - sahil-devx.dev_dna_silver.mrp_master
+      - sahil-devx.dev_dna_silver.offline_orders
+      - sahil-devx.dev_dna_silver.platform_orders
+      - sahil-devx.dev_dna_silver.product_bundle
+      - sahil-devx.dev_dna_silver.product_codes
+      - sahil-devx.dev_dna_silver.promotions
+      - sahil-devx.dev_dna_silver.purchase_orders
+      - sahil-devx.dev_dna_silver.qcomm_orders
+      - sahil-devx.dev_dna_silver.returns
+      - sahil-devx.dev_dna_silver.shipments
+      - sahil-devx.dev_dna_silver.suppliers
+    credentials_json: file:~/.config/gcloud/ktx-reader.json
+    location: asia-south1
+    context:
+      queryHistory:
+        enabled: false
+    dataset_ids:
+      - dev_dna_silver
 storage:
   state: sqlite
   search: sqlite-fts5
@@ -6,12 +42,19 @@ storage:
     author: ktx <ktx@example.com>
 llm:
   provider:
-    backend: none
-  models: {}
+    backend: claude-code
+  models:
+    default: sonnet
+    triage: haiku
+    candidateExtraction: sonnet
+    curator: opus
+    reconcile: opus
+    repair: haiku
 ingest:
   embeddings:
-    backend: none
-    dimensions: 8
+    backend: sentence-transformers
+    model: all-MiniLM-L6-v2
+    dimensions: 384
   workUnits:
     stepBudget: 40
     maxConcurrency: 1
@@ -26,7 +69,11 @@ agent:
       - sl_read_source
 scan:
   enrichment:
-    mode: none
+    mode: llm
+    embeddings:
+      backend: sentence-transformers
+      model: all-MiniLM-L6-v2
+      dimensions: 384
   relationships:
     enabled: true
     llmProposals: true
