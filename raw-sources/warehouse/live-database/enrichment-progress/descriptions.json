@@ -1,0 +1,240 @@
+{
+  "inputHash": "c470fe60f6b7f2ff557a241ef2d0ed1d2a811f68ae5487767ee2b0b4ae30e3bb",
+  "descriptions": [
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "tableDescription": "Silver-layer conformed customer master storing the latest profile, contact details, location, acquisition channel, and loyalty tier for every known customer.",
+      "columnDescriptions": {
+        "hash_key": "Internal pipeline fingerprint for deduplication and change detection; not meaningful for business use.",
+        "customer_master_id": "Cross-channel unique identifier linking this customer to all fact tables and the gold dimension.",
+        "customer_name": "Full name as captured on the customer's most recent order.",
+        "email": "Primary contact and identity-matching key used to unify the customer across channels.",
+        "phone": "Secondary contact and identity-matching key used to resolve the customer across channels.",
+        "city": "City from the customer's most recently known address.",
+        "state": "State or region from the customer's most recently known address.",
+        "country": "Country from the customer's most recently known address.",
+        "signup_date": "Date the customer's account was first created across any channel.",
+        "acquisition_channel": "Sales channel where the customer placed their very first order.",
+        "loyalty_tier": "Current membership tier (e.g., Bronze, Silver, Gold) assigned by the loyalty program.",
+        "rn": "Recency rank per customer; value of 1 marks the current, deduplicated record.",
+        "insert_timestamp": "Pipeline load time when the record first entered the silver layer.",
+        "modified_timestamp": "Pipeline processing time of the most recent update to this record.",
+        "source_name": "Upstream system or file this record was ingested from; used for lineage only.",
+        "is_deleted": "TRUE indicates the source record was removed upstream; exclude from business reporting."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "tableDescription": "Records each line item sold at a physical cafe outlet, capturing product, quantity, price, payment method, and sales channel per POS transaction.",
+      "columnDescriptions": {
+        "hash_key": "Internal deduplication key generated at ingestion; exclude from all business reporting.",
+        "bill_no": "POS receipt number; combine with store_location to uniquely identify a transaction.",
+        "txn_datetime": "Exact date and time the sale was rung up at the till.",
+        "store_location": "Name or code of the cafe outlet where the sale occurred.",
+        "item_name": "Raw menu item name as captured directly from the POS system.",
+        "qty": "Number of units of this item purchased on this bill line.",
+        "rate": "Unit selling price charged for this item, in INR.",
+        "amount": "Total line revenue in INR (qty × rate), before any bill-level discounts.",
+        "payment_mode": "Customer's chosen payment method — cash, card, UPI, or wallet.",
+        "channel_code": "Short sales-channel code; join dim_channels for full name, group, and settlement currency.",
+        "insert_timestamp": "UTC pipeline load time into the silver layer; not a business event.",
+        "modified_timestamp": "UTC time the ingestion pipeline last updated this row; not a business event.",
+        "source_name": "Originating upstream system or file name; used for data lineage only.",
+        "is_deleted": "Soft-delete flag; always exclude TRUE rows from business reporting.",
+        "order_date_key": "Transaction calendar date; use this to join dim_date for period-level reporting.",
+        "product_id": "Canonical SKU mapped from the till item name; joins to item_master."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "tableDescription": "Silver-layer fact table storing retail invoice line items, one row per product sold, across multiple sales channels.",
+      "columnDescriptions": {
+        "hash_key": "Pipeline-generated deduplication key; not a business attribute and should be excluded from reporting.",
+        "invoice_no": "Retail invoice identifier; 'C' prefix signals cancellation; one invoice spans multiple product lines.",
+        "stock_code": "Internal product identifier assigned by the legacy retail system.",
+        "description": "Free-text product name captured at the point of sale from the legacy system.",
+        "quantity": "Units sold on this line; negative values represent cancellations or credit adjustments.",
+        "invoice_date": "Business timestamp when the invoice line was recorded in the legacy system.",
+        "unit_price": "Price per unit charged on this line in the legacy transaction currency.",
+        "customer_id": "Legacy customer identifier; blank for guest or otherwise unidentified transactions.",
+        "country": "Destination country for the order as recorded at point of sale.",
+        "is_cancelled": "TRUE for cancellation or credit lines; mirrors the 'C'-prefixed invoice numbers.",
+        "line_amount": "Total value for this line: quantity multiplied by unit price.",
+        "channel_code": "Sales channel short code (e.g., D2C, OFFLINE); joins to dim_channels for full details.",
+        "insert_timestamp": "UTC pipeline load time into the silver layer; not a business event timestamp.",
+        "modified_timestamp": "UTC timestamp of the last pipeline update; not a business event timestamp.",
+        "source_name": "Upstream source system or file name; used for lineage and troubleshooting only.",
+        "is_deleted": "Soft-delete flag set by the pipeline; exclude TRUE rows from business reporting."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "tableDescription": "Line-item-level direct-to-consumer Shopify orders capturing product, pricing, discounts, shipping, and customer details for revenue analysis.",
+      "columnDescriptions": {
+        "hash_key": "Internal deduplication key generated during ingestion; not meaningful for business reporting.",
+        "order_name": "Shopify-assigned order identifier (e.g. #1001); shared across all line items of the same order.",
+        "created_at": "Exact date and time the customer placed the order on the storefront.",
+        "customer_email": "Email used at checkout; links this order to the customer master.",
+        "customer_name": "Full name entered by the customer during checkout.",
+        "billing_city": "City from the billing address provided at checkout.",
+        "line_item_title": "Storefront product name for this specific order line.",
+        "line_item_qty": "Number of units of the product purchased on this line.",
+        "line_item_price": "Per-unit selling price in INR at time of order, before discounts.",
+        "discount_code": "Promotional or coupon code the customer applied at checkout.",
+        "shipping_amount": "Shipping fee in INR charged on the order; may repeat per line.",
+        "line_total": "Revenue collected for this line in INR, after discounts.",
+        "channel_code": "Identifies the sales channel (e.g. D2C, CAFE); joins to dim_channels.",
+        "insert_timestamp": "Pipeline load time into the silver layer; not a business event.",
+        "modified_timestamp": "Last pipeline update time; reflects ingestion processing, not business activity.",
+        "source_name": "Upstream system or file this record came from; used for lineage only.",
+        "is_deleted": "Marks records removed upstream; exclude TRUE rows from business reporting.",
+        "order_date_key": "Transaction date in YYYY-MM-DD; use to join dim_date for period reporting.",
+        "product_id": "SKU identifier linking to item_master for product name, category, and brand."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_d2c_order"
+      },
+      "tableDescription": "Dimension table storing direct-to-consumer Shopify orders, capturing order identity, placement date, and customer contact details.",
+      "columnDescriptions": {
+        "order_name": "Shopify-generated order identifier; serves as the unique key for each D2C transaction.",
+        "order_date_key": "Calendar date the order was placed; primary key for time-based reporting joins.",
+        "customer_email": "Email address provided by the customer at purchase; used for customer identification."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_date"
+      },
+      "tableDescription": "Date dimension providing calendar attributes for every date, enabling time-based filtering, grouping, and joining across all fact tables.",
+      "columnDescriptions": {
+        "date_key": "Primary grain and join key linking all fact table date foreign keys.",
+        "cal_year": "Four-digit calendar year for annual reporting and filtering.",
+        "cal_month": "Numeric month (1–12) for monthly filtering and aggregation.",
+        "year_month": "Sortable YYYY-MM string enabling consistent month-over-month trend grouping.",
+        "month_name": "Human-readable month label for display in reports and dashboards.",
+        "cal_quarter": "Quarter number (1–4) supporting quarterly performance rollups and comparisons.",
+        "day_of_week": "Numeric day-of-week identifier for weekly pattern and cycle analysis.",
+        "is_weekend": "Flags Saturday and Sunday dates for weekday versus weekend segmentation."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "tableDescription": "Conformed customer dimension with one current record per customer, covering identity, location, acquisition channel, and loyalty tier.",
+      "columnDescriptions": {
+        "hash_key": "Internal pipeline identifier for deduplication and change-detection; exclude from business reporting.",
+        "customer_master_id": "Unique enterprise-wide identifier linking this customer across all source systems.",
+        "customer_name": "Full name as recorded on the customer's most recent order.",
+        "email": "Primary contact address and identity-matching key used during customer resolution.",
+        "phone": "Secondary contact number and identity-matching key used during customer resolution.",
+        "city": "City from the customer's most recently known address.",
+        "state": "State or region from the customer's most recently known address.",
+        "country": "Country from the customer's most recently known address.",
+        "signup_date": "Date the customer first created an account in any channel.",
+        "acquisition_channel": "Sales or marketing channel through which the customer was originally acquired.",
+        "loyalty_tier": "Current membership tier level assigned to the customer (e.g., Bronze, Platinum).",
+        "rn": "Pipeline row number; value of 1 identifies the current, latest record version.",
+        "insert_timestamp": "UTC pipeline load time when the record first entered the silver layer; not a business event.",
+        "modified_timestamp": "UTC pipeline processing time of the most recent update; not a business event.",
+        "source_name": "Upstream system or file name; supports data lineage and troubleshooting only.",
+        "is_deleted": "Soft-delete flag; rows marked TRUE were removed upstream and must be excluded from reporting."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "tableDescription": "Stores employee records including identity, job role, store assignment, sales channel, hire date, and employment status.",
+      "columnDescriptions": {
+        "hash_key": "Internal deduplication key; not meaningful for business reporting.",
+        "employee_id": "Unique identifier for each employee across the organization.",
+        "employee_name": "Full legal or display name of the employee.",
+        "role": "Job title or function held by the employee (e.g., Barista, Store Manager).",
+        "channel_code": "Sales or operational channel the employee is staffed under.",
+        "store_id": "Physical store or outlet where the employee is assigned.",
+        "hire_date": "Date the employee officially joined the company.",
+        "employment_status": "Current workforce standing: Active, On Leave, Resigned, or Terminated.",
+        "rn": "Ingestion pipeline row number; value of 1 indicates the latest record version.",
+        "insert_timestamp": "Pipeline load time when the record first entered the silver layer.",
+        "modified_timestamp": "Pipeline time of the most recent record update; not a business event.",
+        "source_name": "Upstream source system or file; used for lineage, not business analysis.",
+        "is_deleted": "Soft-delete flag; TRUE means the record was removed upstream and should be excluded."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "inventory_snapshot_expanded"
+      },
+      "tableDescription": "Daily point-in-time stock level snapshots per product, tracking units on hand across all locations for inventory visibility.",
+      "columnDescriptions": {
+        "hash_key": "Internal deduplication key; not for business reporting or analysis.",
+        "product_id": "Unique product/SKU identifier linking to the item master catalog.",
+        "snapshot_date": "The calendar date when stock levels were recorded.",
+        "units_on_hand": "Total stock units available across all locations on the snapshot date.",
+        "rn": "Row number where 1 = most recent record; filters out historical duplicates.",
+        "insert_timestamp": "Pipeline load time when the record entered the silver layer; not a business event.",
+        "modified_timestamp": "Pipeline processing time of the last record update; not a business event.",
+        "source_name": "Upstream system or file that provided this record; used for lineage only.",
+        "is_deleted": "Marks records removed upstream; TRUE rows should be excluded from reporting."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "tableDescription": "Records cross-border export orders including product, pricing, shipping costs, customs duties, destination country, and current shipment status per line item.",
+      "columnDescriptions": {
+        "hash_key": "Internal deduplication key generated at ingestion; not a business attribute, exclude from reporting.",
+        "order_ref": "Unique business reference number assigned to each international export order.",
+        "order_date": "Date the customer placed the order.",
+        "dest_country": "Country to which the order was shipped.",
+        "customer_name": "Full name of the purchasing customer as entered at checkout.",
+        "product_desc": "Free-text product description captured from the international order source system.",
+        "product_ref_code": "Source system's product code before mapping to the canonical product identifier.",
+        "qty": "Number of product units included in this order line.",
+        "unit_price_usd": "Price charged per unit on this line, denominated in USD.",
+        "shipping_cost_usd": "Total shipping fee charged on this order, in USD.",
+        "customs_duty_usd": "Import/customs duty levied on this order, in USD.",
+        "shipment_status": "Current fulfillment stage of the order (e.g., Delivered, In Transit, Customs Hold).",
+        "channel_code": "Sales channel identifier; join to dim_channels for full name and settlement currency.",
+        "insert_timestamp": "Pipeline load time when the record entered the silver layer; not a business event.",
+        "modified_timestamp": "Pipeline processing time of the last ingestion update; not a business event.",
+        "source_name": "Upstream system or file the record was ingested from; used for lineage only.",
+        "is_deleted": "Soft-delete flag; exclude rows marked TRUE from all business reporting.",
+        "order_date_key": "Canonical order date for joining to dim_date for period-based reporting.",
+        "product_id": "Canonical SKU; join to item_master for product name, category, and brand."
+      }
+    }
+  ]
+}
