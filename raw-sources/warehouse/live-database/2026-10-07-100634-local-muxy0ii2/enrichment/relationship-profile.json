@@ -1,0 +1,7350 @@
+{
+  "connectionId": "warehouse",
+  "driver": "bigquery",
+  "sqlAvailable": true,
+  "queryCount": 23,
+  "tables": [
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "rowCount": 923000
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "rowCount": 531225
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "rowCount": 1600
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "rowCount": 2780076
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "rowCount": 1496
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_d2c_order"
+      },
+      "rowCount": 1321485
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_date"
+      },
+      "rowCount": 500
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "rowCount": 1050
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "rowCount": 461500
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "inventory_snapshot_expanded"
+      },
+      "rowCount": 1656
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "item_master"
+      },
+      "rowCount": 18
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "rowCount": 1292200
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "rowCount": 1900
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "mrp_master"
+      },
+      "rowCount": 36
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "rowCount": 2320
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "rowCount": 1000
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "rowCount": 2076750
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_bundle"
+      },
+      "rowCount": 9
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_codes"
+      },
+      "rowCount": 108
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "rowCount": 1000
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "rowCount": 1300
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "rowCount": 1938300
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "rowCount": 606960
+    }
+  ],
+  "columns": {
+    "cafe_sales.rate": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "rate",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1859,
+      "uniquenessRatio": 0.1859,
+      "nullRate": 0,
+      "sampleValues": [
+        "58.37",
+        "82.49",
+        "69.54",
+        "59.75",
+        "67.92"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 7
+    },
+    "cafe_sales.txn_datetime": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "txn_datetime",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 8975,
+      "uniquenessRatio": 0.8975,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-12-07 19:34:47+00",
+        "2026-06-14 19:34:47+00",
+        "2025-07-11 18:16:44+00",
+        "2025-10-01 18:16:44+00",
+        "2025-10-01 18:50:21+00"
+      ],
+      "minTextLength": 22,
+      "maxTextLength": 22
+    },
+    "cafe_sales.bill_no": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "bill_no",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 9991,
+      "uniquenessRatio": 0.9991,
+      "nullRate": 0,
+      "sampleValues": [
+        "B2510040787",
+        "B2510091908",
+        "B2510121908",
+        "B2510173052",
+        "B2510303052"
+      ],
+      "minTextLength": 11,
+      "maxTextLength": 11
+    },
+    "cafe_sales.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "cafe_sales.store_location": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "store_location",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 19,
+      "uniquenessRatio": 0.0019,
+      "nullRate": 0,
+      "sampleValues": [
+        "Hyderabad Cafe",
+        "Lucknow Cafe",
+        "Chennai Cafe",
+        "Surat Cafe",
+        "Nagpur Cafe"
+      ],
+      "minTextLength": 9,
+      "maxTextLength": 15
+    },
+    "cafe_sales.channel_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "CAFE"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 4
+    },
+    "cafe_sales.amount": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "amount",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1865,
+      "uniquenessRatio": 0.1865,
+      "nullRate": 0,
+      "sampleValues": [
+        "139.08",
+        "120.4",
+        "209.7",
+        "59.75",
+        "67.92"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 7
+    },
+    "cafe_sales.qty": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "qty",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "1",
+        "2"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "cafe_sales.item_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "item_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 0.0018,
+      "nullRate": 0,
+      "sampleValues": [
+        "Protein Pancake Mix 300g",
+        "Green Tea Pack of 25",
+        "Makhana Peri Peri 60g",
+        "Choco Fudge Protein Bar",
+        "Trail Mix 150g"
+      ],
+      "minTextLength": 14,
+      "maxTextLength": 29
+    },
+    "cafe_sales.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_CAFE_SALES"
+      ],
+      "minTextLength": 17,
+      "maxTextLength": 17
+    },
+    "cafe_sales.payment_mode": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "payment_mode",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.0003,
+      "nullRate": 0,
+      "sampleValues": [
+        "UPI",
+        "CASH",
+        "CARD"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 4
+    },
+    "cafe_sales.order_date_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "order_date_key",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 420,
+      "uniquenessRatio": 0.042,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-11-26",
+        "2025-11-16",
+        "2025-10-04",
+        "2025-11-22",
+        "2025-10-11"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "cafe_sales.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 6,
+      "uniquenessRatio": 0.0006,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-01 15:04:25.801881+00",
+        "2026-08-01 13:04:25.801881+00",
+        "2026-08-01 16:04:25.801881+00",
+        "2026-08-01 17:04:25.801881+00",
+        "2026-08-01 14:04:25.801881+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "cafe_sales.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 10000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "000377a27a8aa5b355a4b2683d0621f2",
+        "000adb100bb02972c7eda480d6ba90d3",
+        "002109e510d153c2c6d3ba58da67062c",
+        "002dbe8ff39f70634bbebc4c8bc6669a",
+        "00319a6176d89fb4d0c5a329702e42e6"
+      ],
+      "minTextLength": 32,
+      "maxTextLength": 32
+    },
+    "cafe_sales.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 6,
+      "uniquenessRatio": 0.0006,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-01 15:04:25.801881+00",
+        "2026-08-01 13:04:25.801881+00",
+        "2026-08-01 16:04:25.801881+00",
+        "2026-08-01 17:04:25.801881+00",
+        "2026-08-01 14:04:25.801881+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "cafe_sales.product_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "cafe_sales"
+      },
+      "column": "product_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 0.0018,
+      "nullRate": 0,
+      "sampleValues": [
+        "PROD0016",
+        "PROD0018",
+        "PROD0008",
+        "PROD0001",
+        "PROD0017"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "customer.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_CUSTOMER"
+      ],
+      "minTextLength": 15,
+      "maxTextLength": 15
+    },
+    "customer.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-03 18:56:39.493740+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "customer.is_cancelled": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "is_cancelled",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "false",
+        "true"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 5
+    },
+    "customer.line_amount": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "line_amount",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 70,
+      "uniquenessRatio": 0.007,
+      "nullRate": 0,
+      "sampleValues": [
+        "3.3",
+        "0",
+        "6.6",
+        "8.42",
+        "83.4"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 7
+    },
+    "customer.unit_price": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "unit_price",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 50,
+      "uniquenessRatio": 0.005,
+      "nullRate": 0,
+      "sampleValues": [
+        "1.65",
+        "0",
+        "0.55",
+        "4.21",
+        "0.64"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 6
+    },
+    "customer.channel_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "ONLINE_RETAIL"
+      ],
+      "minTextLength": 13,
+      "maxTextLength": 13
+    },
+    "customer.customer_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "customer_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 3121,
+      "distinctCount": 1160,
+      "uniquenessRatio": 0.116,
+      "nullRate": 0.3121,
+      "sampleValues": [
+        "17841",
+        "15005",
+        "12748",
+        "13263",
+        "15311"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "customer.country": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "country",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 21,
+      "uniquenessRatio": 0.0021,
+      "nullRate": 0,
+      "sampleValues": [
+        "UNITED KINGDOM",
+        "EIRE",
+        "NETHERLANDS",
+        "GERMANY",
+        "FRANCE"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 14
+    },
+    "customer.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-03 18:56:39.493740+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "customer.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "customer.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 10000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "0005b7399d8bbef06eab79ae4d1362a63a6ffbacfb7b0106324f68d52020dcdb",
+        "000d61bb3940d3363bd97d3f160cb1376795afc1e8d1d1293d754dd3ee88ec4b",
+        "00108db5f80ba1a02e06fb7007f3bcf1cc8deffc2b2b7df572666a5e4ba697b1",
+        "001523544f0ed8990668494d1b90fbfc6f258ba2879d4ee8003eeb97cd933fd5",
+        "001e4034dd32d12f18600692e916c8b0b204344bc04ee3cdd68d6d2fa6a2c652"
+      ],
+      "minTextLength": 64,
+      "maxTextLength": 64
+    },
+    "customer.invoice_no": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "invoice_no",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 5162,
+      "uniquenessRatio": 0.5162,
+      "nullRate": 0,
+      "sampleValues": [
+        "539856",
+        "537534",
+        "545176",
+        "553521",
+        "558340"
+      ],
+      "minTextLength": 6,
+      "maxTextLength": 7
+    },
+    "customer.quantity": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "quantity",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 450,
+      "uniquenessRatio": 0.045,
+      "nullRate": 0,
+      "sampleValues": [
+        "2",
+        "4",
+        "1",
+        "12",
+        "6"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 5
+    },
+    "customer.stock_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "stock_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1785,
+      "uniquenessRatio": 0.1785,
+      "nullRate": 0,
+      "sampleValues": [
+        "20727",
+        "22382",
+        "20725",
+        "22383",
+        "20728"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 12
+    },
+    "customer.description": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "description",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 1454,
+      "distinctCount": 873,
+      "uniquenessRatio": 0.0873,
+      "nullRate": 0.1454,
+      "sampleValues": [
+        "LUNCH BAG  BLACK SKULL.",
+        "LUNCH BAG SPACEBOY DESIGN",
+        "LUNCH BAG RED RETROSPOT",
+        "LUNCH BAG CARS BLUE",
+        "check"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 35
+    },
+    "customer.invoice_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customer"
+      },
+      "column": "invoice_date",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 4657,
+      "uniquenessRatio": 0.4657,
+      "nullRate": 0,
+      "sampleValues": [
+        "2010-12-22 14:41:00+00",
+        "2010-12-07 11:48:00+00",
+        "2011-02-28 14:19:00+00",
+        "2011-05-17 14:35:00+00",
+        "2011-06-28 14:01:00+00"
+      ],
+      "minTextLength": 22,
+      "maxTextLength": 22
+    },
+    "customers_master.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 1600,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "00337cc4659784e3cc0b6892aad57ad6d791d3821da7f3d42ef4cb940c0367c7",
+        "004587f587f2dcd9e38a334974a74c634d2d85c6006f4126c3dc484df7c29475",
+        "00518856257de0f809612323a4dfc338e35690bc8a1718ddd867a8453148ffad",
+        "0082d1143cb8e1e49e6b8649b3c7e281993722fae54501d17334151e703159a2",
+        "0096aa20a75d3a620fd31d5ac68fc88087a0924e692d4c317a22513099aa58e8"
+      ],
+      "minTextLength": 64,
+      "maxTextLength": 64
+    },
+    "customers_master.customer_master_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "customer_master_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 1600,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "CUSTM00001",
+        "CUSTM00002",
+        "CUSTM00003",
+        "CUSTM00004",
+        "CUSTM00005"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "customers_master.customer_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "customer_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 1575,
+      "uniquenessRatio": 0.984375,
+      "nullRate": 0,
+      "sampleValues": [
+        "Lisa Smith",
+        "Amanda Brown",
+        "Amy Jones",
+        "Andrew Davis",
+        "Anthony Lewis"
+      ],
+      "minTextLength": 6,
+      "maxTextLength": 24
+    },
+    "customers_master.email": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "email",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 1496,
+      "uniquenessRatio": 0.935,
+      "nullRate": 0,
+      "sampleValues": [
+        "vpatel@example.com",
+        "aaronconner@example.com",
+        "alyssacoleman@example.net",
+        "amy38@example.com",
+        "batesdavid@example.com"
+      ],
+      "minTextLength": 16,
+      "maxTextLength": 33
+    },
+    "customers_master.phone": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "phone",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 1600,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "0014569448",
+        "0014759582",
+        "0016172785",
+        "0021335246",
+        "0022080119"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "customers_master.city": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "city",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 20,
+      "uniquenessRatio": 0.0125,
+      "nullRate": 0,
+      "sampleValues": [
+        "Chandigarh",
+        "Bhopal",
+        "Coimbatore",
+        "Kochi",
+        "Vadodara"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 10
+    },
+    "customers_master.state": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "state",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 14,
+      "uniquenessRatio": 0.00875,
+      "nullRate": 0,
+      "sampleValues": [
+        "Haryana",
+        "Bihar",
+        "Rajasthan",
+        "Kerala",
+        "Maharashtra"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 14
+    },
+    "customers_master.country": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "country",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.000625,
+      "nullRate": 0,
+      "sampleValues": [
+        "INDIA"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "customers_master.signup_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "signup_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 591,
+      "uniquenessRatio": 0.369375,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-03",
+        "2026-06-22",
+        "2026-02-04",
+        "2025-02-25",
+        "2025-09-29"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "customers_master.acquisition_channel": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "acquisition_channel",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 6,
+      "uniquenessRatio": 0.00375,
+      "nullRate": 0,
+      "sampleValues": [
+        "INTERNATIONAL",
+        "D2C",
+        "QCOMM",
+        "OFFLINE",
+        "CAFE"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 13
+    },
+    "customers_master.loyalty_tier": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "loyalty_tier",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 4,
+      "uniquenessRatio": 0.0025,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE",
+        "SILVER",
+        "GOLD",
+        "PLATINUM"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 8
+    },
+    "customers_master.rn": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "rn",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.000625,
+      "nullRate": 0,
+      "sampleValues": [
+        "1"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "customers_master.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.000625,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 08:59:34.394514+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "customers_master.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.000625,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 08:59:34.394514+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "customers_master.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.000625,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_CUSTOMERS_MASTER"
+      ],
+      "minTextLength": 23,
+      "maxTextLength": 23
+    },
+    "customers_master.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "customers_master"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 1600,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.000625,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "d2c_orders.discount_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "discount_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 4602,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.0003,
+      "nullRate": 0.4602,
+      "sampleValues": [
+        "APP15",
+        "WELCOME10",
+        "FEST20"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 9
+    },
+    "d2c_orders.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 5,
+      "uniquenessRatio": 0.0005,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-01 13:16:12.265908+00",
+        "2026-08-01 14:16:12.265908+00",
+        "2026-08-01 16:16:12.265908+00",
+        "2026-08-01 15:16:12.265908+00",
+        "2026-08-01 17:16:12.265908+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "d2c_orders.order_date_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "order_date_key",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 420,
+      "uniquenessRatio": 0.042,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-10-04",
+        "2025-10-18",
+        "2025-11-24",
+        "2025-11-22",
+        "2025-10-22"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "d2c_orders.line_total": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "line_total",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 4020,
+      "uniquenessRatio": 0.402,
+      "nullRate": 0,
+      "sampleValues": [
+        "178",
+        "359.86",
+        "938.44",
+        "72.06",
+        "119.86"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 7
+    },
+    "d2c_orders.channel_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "D2C"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 3
+    },
+    "d2c_orders.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "false",
+        "true"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 5
+    },
+    "d2c_orders.product_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "product_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 0.0018,
+      "nullRate": 0,
+      "sampleValues": [
+        "PROD0005",
+        "PROD0001",
+        "PROD0008",
+        "PROD0006",
+        "PROD0011"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "d2c_orders.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 5,
+      "uniquenessRatio": 0.0005,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-01 13:16:12.265908+00",
+        "2026-08-01 16:16:12.265908+00",
+        "2026-08-01 14:16:12.265908+00",
+        "2026-08-01 15:16:12.265908+00",
+        "2026-08-01 17:16:12.265908+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "d2c_orders.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_D2C_ORDERS"
+      ],
+      "minTextLength": 17,
+      "maxTextLength": 17
+    },
+    "d2c_orders.billing_city": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "billing_city",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 20,
+      "uniquenessRatio": 0.002,
+      "nullRate": 0,
+      "sampleValues": [
+        "Pune",
+        "Kolkata",
+        "Lucknow",
+        "Chennai",
+        "Nagpur"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 10
+    },
+    "d2c_orders.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 10000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "0007dacd5d18e7629dfccee7d10631a7",
+        "000d6ace789e6f58af2f10eff97fd8d2",
+        "001200fd7beba76e581e886b3e7e8f97",
+        "001849418aaaf1ec47d59da96e4982c5",
+        "002820bb1a566d799f677dec29ddeee3"
+      ],
+      "minTextLength": 32,
+      "maxTextLength": 64
+    },
+    "d2c_orders.line_item_price": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "line_item_price",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 3943,
+      "uniquenessRatio": 0.3943,
+      "nullRate": 0,
+      "sampleValues": [
+        "62.23",
+        "72.06",
+        "72.8",
+        "68.34",
+        "62.84"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 7
+    },
+    "d2c_orders.created_at": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "created_at",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 9590,
+      "uniquenessRatio": 0.959,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-10-04 15:20:21+00",
+        "2025-10-04 18:05:57+00",
+        "2025-10-21 14:07:10+00",
+        "2025-11-08 11:35:58+00",
+        "2025-11-08 19:11:59+00"
+      ],
+      "minTextLength": 22,
+      "maxTextLength": 22
+    },
+    "d2c_orders.customer_email": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "customer_email",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1495,
+      "uniquenessRatio": 0.1495,
+      "nullRate": 0,
+      "sampleValues": [
+        "ryan77@example.net",
+        "judith12@example.net",
+        "brownrichard@example.net",
+        "changjustin@example.com",
+        "charles49@example.org"
+      ],
+      "minTextLength": 16,
+      "maxTextLength": 33
+    },
+    "d2c_orders.line_item_qty": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "line_item_qty",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "2",
+        "1"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "d2c_orders.line_item_title": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "line_item_title",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 0.0018,
+      "nullRate": 0,
+      "sampleValues": [
+        "Whey Isolate Vanilla 1kg",
+        "Choco Fudge Protein Bar",
+        "Makhana Peri Peri 60g",
+        "Berry Blast Protein Bar",
+        "Cold Brew Coffee 250ml"
+      ],
+      "minTextLength": 14,
+      "maxTextLength": 29
+    },
+    "d2c_orders.order_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "order_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 9961,
+      "uniquenessRatio": 0.9961,
+      "nullRate": 0,
+      "sampleValues": [
+        "#D2C400038",
+        "#D2C400138",
+        "#D2C400805",
+        "#D2C401107",
+        "#D2C401157"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 16
+    },
+    "d2c_orders.customer_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "customer_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1571,
+      "uniquenessRatio": 0.1571,
+      "nullRate": 0,
+      "sampleValues": [
+        "Carrie Williams",
+        "Lisa Smith",
+        "Michael Jackson",
+        "Michael Martin",
+        "Samantha Shaw"
+      ],
+      "minTextLength": 6,
+      "maxTextLength": 24
+    },
+    "d2c_orders.shipping_amount": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "d2c_orders"
+      },
+      "column": "shipping_amount",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 51,
+      "uniquenessRatio": 0.0051,
+      "nullRate": 0,
+      "sampleValues": [
+        "0",
+        "108.9",
+        "49",
+        "96.03",
+        "102.96"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 6
+    },
+    "dim_customer.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 1496,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "00337cc4659784e3cc0b6892aad57ad6d791d3821da7f3d42ef4cb940c0367c7",
+        "004587f587f2dcd9e38a334974a74c634d2d85c6006f4126c3dc484df7c29475",
+        "00518856257de0f809612323a4dfc338e35690bc8a1718ddd867a8453148ffad",
+        "0082d1143cb8e1e49e6b8649b3c7e281993722fae54501d17334151e703159a2",
+        "0096aa20a75d3a620fd31d5ac68fc88087a0924e692d4c317a22513099aa58e8"
+      ],
+      "minTextLength": 64,
+      "maxTextLength": 64
+    },
+    "dim_customer.customer_master_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "customer_master_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 1496,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "CUSTM00001",
+        "CUSTM00003",
+        "CUSTM00005",
+        "CUSTM00006",
+        "CUSTM00009"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "dim_customer.customer_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "customer_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 1476,
+      "uniquenessRatio": 0.9866310160427807,
+      "nullRate": 0,
+      "sampleValues": [
+        "Lisa Smith",
+        "Amanda Brown",
+        "Amy Jones",
+        "Andrew Davis",
+        "Anthony Lewis"
+      ],
+      "minTextLength": 6,
+      "maxTextLength": 24
+    },
+    "dim_customer.email": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "email",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 1496,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "aaronconner@example.com",
+        "abaldwin@example.net",
+        "abarron@example.com",
+        "abrown@example.net",
+        "acastaneda@example.net"
+      ],
+      "minTextLength": 16,
+      "maxTextLength": 33
+    },
+    "dim_customer.phone": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "phone",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 1496,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "0014569448",
+        "0014759582",
+        "0016172785",
+        "0021335246",
+        "0022080119"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "dim_customer.city": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "city",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 20,
+      "uniquenessRatio": 0.013368983957219251,
+      "nullRate": 0,
+      "sampleValues": [
+        "Chandigarh",
+        "Bhopal",
+        "Coimbatore",
+        "Kochi",
+        "Vadodara"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 10
+    },
+    "dim_customer.state": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "state",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 14,
+      "uniquenessRatio": 0.009358288770053475,
+      "nullRate": 0,
+      "sampleValues": [
+        "Haryana",
+        "Bihar",
+        "Maharashtra",
+        "Rajasthan",
+        "Karnataka"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 14
+    },
+    "dim_customer.country": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "country",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0006684491978609625,
+      "nullRate": 0,
+      "sampleValues": [
+        "INDIA"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "dim_customer.signup_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "signup_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 570,
+      "uniquenessRatio": 0.3810160427807487,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-03",
+        "2026-06-22",
+        "2026-02-04",
+        "2025-09-29",
+        "2025-02-25"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "dim_customer.acquisition_channel": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "acquisition_channel",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 6,
+      "uniquenessRatio": 0.004010695187165776,
+      "nullRate": 0,
+      "sampleValues": [
+        "INTERNATIONAL",
+        "D2C",
+        "QCOMM",
+        "CAFE",
+        "PLATFORM"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 13
+    },
+    "dim_customer.loyalty_tier": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "loyalty_tier",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 4,
+      "uniquenessRatio": 0.00267379679144385,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE",
+        "SILVER",
+        "GOLD",
+        "PLATINUM"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 8
+    },
+    "dim_customer.rn": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "rn",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0006684491978609625,
+      "nullRate": 0,
+      "sampleValues": [
+        "1"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "dim_customer.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0006684491978609625,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 08:59:34.394514+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "dim_customer.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0006684491978609625,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 08:59:34.394514+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "dim_customer.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0006684491978609625,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_CUSTOMERS_MASTER"
+      ],
+      "minTextLength": 23,
+      "maxTextLength": 23
+    },
+    "dim_customer.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_customer"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 1496,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0006684491978609625,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "dim_d2c_order.order_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_d2c_order"
+      },
+      "column": "order_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 10000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "#D2C400070",
+        "#D2C400297",
+        "#D2C400352",
+        "#D2C400530",
+        "#D2C400834"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 16
+    },
+    "dim_d2c_order.order_date_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_d2c_order"
+      },
+      "column": "order_date_key",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 421,
+      "uniquenessRatio": 0.0421,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-11-12",
+        "2025-11-16",
+        "2025-11-23",
+        "2025-11-26",
+        "2025-10-25"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "dim_d2c_order.customer_email": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_d2c_order"
+      },
+      "column": "customer_email",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 28,
+      "uniquenessRatio": 0.0028,
+      "nullRate": 0,
+      "sampleValues": [
+        "aaronconner@example.com",
+        "acastaneda@example.net",
+        "abarron@example.com",
+        "abaldwin@example.net",
+        "abrown@example.net"
+      ],
+      "minTextLength": 18,
+      "maxTextLength": 29
+    },
+    "dim_date.date_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_date"
+      },
+      "column": "date_key",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 500,
+      "nullCount": 0,
+      "distinctCount": 500,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-06-01",
+        "2025-06-02",
+        "2025-06-03",
+        "2025-06-04",
+        "2025-06-05"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "dim_date.cal_year": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_date"
+      },
+      "column": "cal_year",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 500,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.004,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026",
+        "2025"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 4
+    },
+    "dim_date.cal_month": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_date"
+      },
+      "column": "cal_month",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 500,
+      "nullCount": 0,
+      "distinctCount": 12,
+      "uniquenessRatio": 0.024,
+      "nullRate": 0,
+      "sampleValues": [
+        "7",
+        "8",
+        "6",
+        "9",
+        "10"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 2
+    },
+    "dim_date.year_month": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_date"
+      },
+      "column": "year_month",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 500,
+      "nullCount": 0,
+      "distinctCount": 17,
+      "uniquenessRatio": 0.034,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-07",
+        "2025-08",
+        "2025-10",
+        "2025-12",
+        "2026-01"
+      ],
+      "minTextLength": 7,
+      "maxTextLength": 7
+    },
+    "dim_date.month_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_date"
+      },
+      "column": "month_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 500,
+      "nullCount": 0,
+      "distinctCount": 12,
+      "uniquenessRatio": 0.024,
+      "nullRate": 0,
+      "sampleValues": [
+        "August",
+        "July",
+        "June",
+        "September",
+        "October"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 9
+    },
+    "dim_date.cal_quarter": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_date"
+      },
+      "column": "cal_quarter",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 500,
+      "nullCount": 0,
+      "distinctCount": 4,
+      "uniquenessRatio": 0.008,
+      "nullRate": 0,
+      "sampleValues": [
+        "3",
+        "2",
+        "4",
+        "1"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "dim_date.day_of_week": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_date"
+      },
+      "column": "day_of_week",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 500,
+      "nullCount": 0,
+      "distinctCount": 7,
+      "uniquenessRatio": 0.014,
+      "nullRate": 0,
+      "sampleValues": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "dim_date.is_weekend": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "dim_date"
+      },
+      "column": "is_weekend",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 500,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.004,
+      "nullRate": 0,
+      "sampleValues": [
+        "false",
+        "true"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 5
+    },
+    "employees.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1050,
+      "nullCount": 0,
+      "distinctCount": 1050,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "005862efb2915339fcb7b7aae74fc72c45c14186ae26ab314cfcc5119f1347f1",
+        "009aff1c1476fc27031eaed772e220fc932ad059f817409f899a6643d6c92e39",
+        "00bcf24050182815f9fe2e8d04d400abe7c54d32334ad6ba68b10baddd48a836",
+        "014e502a3b0d281440f42392e3f2cecedb7db33838349af43b1cf86e0f639496",
+        "01bc6f25e65de9c337bc157fa90a6dd6ddc6b4041cd273a2f017fa33971e5099"
+      ],
+      "minTextLength": 64,
+      "maxTextLength": 64
+    },
+    "employees.employee_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "column": "employee_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1050,
+      "nullCount": 0,
+      "distinctCount": 1050,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "EMP00001",
+        "EMP00002",
+        "EMP00003",
+        "EMP00004",
+        "EMP00005"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "employees.employee_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "column": "employee_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1050,
+      "nullCount": 0,
+      "distinctCount": 1033,
+      "uniquenessRatio": 0.9838095238095238,
+      "nullRate": 0,
+      "sampleValues": [
+        "Amanda Allen",
+        "Brooke Smith",
+        "Christian Smith",
+        "Christopher Norris",
+        "David Bell"
+      ],
+      "minTextLength": 7,
+      "maxTextLength": 25
+    },
+    "employees.role": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "column": "role",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1050,
+      "nullCount": 0,
+      "distinctCount": 10,
+      "uniquenessRatio": 0.009523809523809525,
+      "nullRate": 0,
+      "sampleValues": [
+        "Export Ops Coordinator",
+        "Customer Success Rep",
+        "Marketplace Account Manager",
+        "Cashier",
+        "Dark Store Ops Lead"
+      ],
+      "minTextLength": 6,
+      "maxTextLength": 27
+    },
+    "employees.channel_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "column": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1050,
+      "nullCount": 0,
+      "distinctCount": 6,
+      "uniquenessRatio": 0.005714285714285714,
+      "nullRate": 0,
+      "sampleValues": [
+        "QCOMM",
+        "CAFE",
+        "INTERNATIONAL",
+        "D2C",
+        "PLATFORM"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 13
+    },
+    "employees.store_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "column": "store_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1050,
+      "nullCount": 515,
+      "distinctCount": 89,
+      "uniquenessRatio": 0.08476190476190476,
+      "nullRate": 0.49047619047619045,
+      "sampleValues": [
+        "ST019",
+        "ST039",
+        "ST051",
+        "ST060",
+        "ST082"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "employees.hire_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "column": "hire_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 1050,
+      "nullCount": 0,
+      "distinctCount": 692,
+      "uniquenessRatio": 0.659047619047619,
+      "nullRate": 0,
+      "sampleValues": [
+        "2024-03-16",
+        "2025-01-20",
+        "2023-10-25",
+        "2023-12-15",
+        "2023-12-20"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "employees.employment_status": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "column": "employment_status",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1050,
+      "nullCount": 0,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.002857142857142857,
+      "nullRate": 0,
+      "sampleValues": [
+        "ACTIVE",
+        "ON LEAVE",
+        "RESIGNED"
+      ],
+      "minTextLength": 6,
+      "maxTextLength": 8
+    },
+    "employees.rn": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "column": "rn",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 1050,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0009523809523809524,
+      "nullRate": 0,
+      "sampleValues": [
+        "1"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "employees.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1050,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0009523809523809524,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 07:22:37.913790+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "employees.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1050,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0009523809523809524,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 07:22:37.913790+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "employees.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1050,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0009523809523809524,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_EMPLOYEES"
+      ],
+      "minTextLength": 16,
+      "maxTextLength": 16
+    },
+    "employees.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "employees"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 1050,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0009523809523809524,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "international_orders.product_desc": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "product_desc",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 0.0018,
+      "nullRate": 0,
+      "sampleValues": [
+        "Whey Isolate Chocolate 1kg",
+        "Trail Mix 150g",
+        "Kombucha Ginger 300ml",
+        "Berry Blast Protein Bar",
+        "Oats Masala 300g"
+      ],
+      "minTextLength": 14,
+      "maxTextLength": 29
+    },
+    "international_orders.unit_price_usd": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "unit_price_usd",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 231,
+      "uniquenessRatio": 0.0231,
+      "nullRate": 0,
+      "sampleValues": [
+        "1.34",
+        "1.29",
+        "1.06",
+        "1.35",
+        "1.73"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 5
+    },
+    "international_orders.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 68,
+      "uniquenessRatio": 0.0068,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 02:04:29.837989+00",
+        "2026-08-03 21:04:29.837989+00",
+        "2026-08-04 09:04:29.837989+00",
+        "2026-08-02 02:04:29.837989+00",
+        "2026-08-01 19:04:29.837989+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "international_orders.dest_country": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "dest_country",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 8,
+      "uniquenessRatio": 0.0008,
+      "nullRate": 0,
+      "sampleValues": [
+        "AUSTRALIA",
+        "GERMANY",
+        "CANADA",
+        "SINGAPORE",
+        "USA"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 12
+    },
+    "international_orders.order_ref": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "order_ref",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 9999,
+      "uniquenessRatio": 0.9999,
+      "nullRate": 0,
+      "sampleValues": [
+        "EXP2511-96963f",
+        "EXP-500025",
+        "EXP-500104",
+        "EXP-500105",
+        "EXP-500183"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 14
+    },
+    "international_orders.order_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "order_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 421,
+      "uniquenessRatio": 0.0421,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-11-02",
+        "2025-11-22",
+        "2025-11-25",
+        "2025-10-04",
+        "2025-10-19"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "international_orders.shipping_cost_usd": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "shipping_cost_usd",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 65,
+      "uniquenessRatio": 0.0065,
+      "nullRate": 0,
+      "sampleValues": [
+        "14.68",
+        "28.56",
+        "19.46",
+        "9.9",
+        "25.6"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 5
+    },
+    "international_orders.customer_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "customer_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1571,
+      "uniquenessRatio": 0.1571,
+      "nullRate": 0,
+      "sampleValues": [
+        "Dana Smith",
+        "Lisa Smith",
+        "Jason Cervantes",
+        "Jeffrey King",
+        "Christopher Davis"
+      ],
+      "minTextLength": 6,
+      "maxTextLength": 24
+    },
+    "international_orders.qty": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "qty",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 5,
+      "uniquenessRatio": 0.0005,
+      "nullRate": 0,
+      "sampleValues": [
+        "2",
+        "1",
+        "3",
+        "4",
+        "5"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "international_orders.order_date_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "order_date_key",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 421,
+      "uniquenessRatio": 0.0421,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-11-02",
+        "2025-11-22",
+        "2025-11-25",
+        "2025-10-04",
+        "2025-10-19"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "international_orders.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 10000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "00042783b663a4a842a9a2b88f59044f",
+        "000763c3914c97c5b5132b588a1c5a90",
+        "00157c03584a227b4ee319ac1676e96d",
+        "002187b0c1e58423c738cb03bcbaae93",
+        "0022904d29fe9f85944c80760aa1f3d0"
+      ],
+      "minTextLength": 32,
+      "maxTextLength": 64
+    },
+    "international_orders.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_INTERNATIONAL_ORDERS"
+      ],
+      "minTextLength": 27,
+      "maxTextLength": 27
+    },
+    "international_orders.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 68,
+      "uniquenessRatio": 0.0068,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 02:04:29.837989+00",
+        "2026-08-03 21:04:29.837989+00",
+        "2026-08-04 09:04:29.837989+00",
+        "2026-08-02 02:04:29.837989+00",
+        "2026-08-01 19:04:29.837989+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "international_orders.customs_duty_usd": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "customs_duty_usd",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 180,
+      "uniquenessRatio": 0.018,
+      "nullRate": 0,
+      "sampleValues": [
+        "0.32",
+        "0.29",
+        "0.25",
+        "0.19",
+        "0.15"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 5
+    },
+    "international_orders.product_ref_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "product_ref_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 0.0018,
+      "nullRate": 0,
+      "sampleValues": [
+        "INTL-5004",
+        "INTL-5017",
+        "INTL-5011",
+        "INTL-5003",
+        "INTL-5014"
+      ],
+      "minTextLength": 9,
+      "maxTextLength": 9
+    },
+    "international_orders.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "international_orders.shipment_status": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "shipment_status",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.0003,
+      "nullRate": 0,
+      "sampleValues": [
+        "DELIVERED",
+        "IN TRANSIT",
+        "CUSTOMS HOLD"
+      ],
+      "minTextLength": 9,
+      "maxTextLength": 12
+    },
+    "international_orders.channel_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "INTERNATIONAL"
+      ],
+      "minTextLength": 13,
+      "maxTextLength": 13
+    },
+    "international_orders.product_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "international_orders"
+      },
+      "column": "product_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 0.0018,
+      "nullRate": 0,
+      "sampleValues": [
+        "PROD0004",
+        "PROD0017",
+        "PROD0011",
+        "PROD0003",
+        "PROD0014"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "inventory_snapshot_expanded.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "inventory_snapshot_expanded"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1656,
+      "nullCount": 0,
+      "distinctCount": 1656,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "00026b28ce805e6d5f0d8ace02aeb8a605719dd205c69d2636007dc8d55d8fa8",
+        "000adbb3436f25c7ff8464c58bbe63721504f13ea59a813dbbffc6bd1b452c52",
+        "003f29e3ad78e014a487478827a678ca02dd73dbc08bccfb1435c59851943d16",
+        "0065de01dff8a99c7ea44b7ed802bf3cd6a38d6716187b6258a60bbcc8a34409",
+        "0096a1ee3dc2912fcd5383e9a529bb88c7fa29487e6a7328eeb4833c20665467"
+      ],
+      "minTextLength": 64,
+      "maxTextLength": 64
+    },
+    "inventory_snapshot_expanded.product_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "inventory_snapshot_expanded"
+      },
+      "column": "product_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1656,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 0.010869565217391304,
+      "nullRate": 0,
+      "sampleValues": [
+        "PROD0001",
+        "PROD0002",
+        "PROD0003",
+        "PROD0004",
+        "PROD0005"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "inventory_snapshot_expanded.snapshot_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "inventory_snapshot_expanded"
+      },
+      "column": "snapshot_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 1656,
+      "nullCount": 0,
+      "distinctCount": 92,
+      "uniquenessRatio": 0.05555555555555555,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-06-01",
+        "2026-06-02",
+        "2026-06-03",
+        "2026-06-04",
+        "2026-06-05"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "inventory_snapshot_expanded.units_on_hand": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "inventory_snapshot_expanded"
+      },
+      "column": "units_on_hand",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 1656,
+      "nullCount": 0,
+      "distinctCount": 1467,
+      "uniquenessRatio": 0.8858695652173914,
+      "nullRate": 0,
+      "sampleValues": [
+        "0",
+        "421",
+        "890",
+        "1058",
+        "1736"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 4
+    },
+    "inventory_snapshot_expanded.rn": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "inventory_snapshot_expanded"
+      },
+      "column": "rn",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 1656,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0006038647342995169,
+      "nullRate": 0,
+      "sampleValues": [
+        "1"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "inventory_snapshot_expanded.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "inventory_snapshot_expanded"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1656,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0006038647342995169,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 09:00:07.950552+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "inventory_snapshot_expanded.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "inventory_snapshot_expanded"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1656,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0006038647342995169,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 09:00:07.950552+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "inventory_snapshot_expanded.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "inventory_snapshot_expanded"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1656,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0006038647342995169,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_INVENTORY_SNAPSHOT_EXPANDED"
+      ],
+      "minTextLength": 34,
+      "maxTextLength": 34
+    },
+    "inventory_snapshot_expanded.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "inventory_snapshot_expanded"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 1656,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0006038647342995169,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "item_master.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "item_master"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 18,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "04a77e9e0fbaf18cc92e3c9a79e0f0afa92e3745e96b64281bae432c456ac32c",
+        "0c39529d458d66316c924272affba71ba878229438d56903680ab781e52a037b",
+        "2af6523d15d4f28a6de909132c5c9dbc9a8d8ece3e3b8a6cae3d8799a0cdaada",
+        "4b7027cfad8c9090a027d6cfed0fa804ec090588b1fee190ea16d7a94eb57a59",
+        "72a4aafd2e91f612b0bcb5e9cffa8140b47b1f3e22f1016c70e0ce8f22f1ccb6"
+      ],
+      "minTextLength": 64,
+      "maxTextLength": 64
+    },
+    "item_master.product_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "item_master"
+      },
+      "column": "product_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 18,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "PROD0001",
+        "PROD0002",
+        "PROD0003",
+        "PROD0004",
+        "PROD0005"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "item_master.product_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "item_master"
+      },
+      "column": "product_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 18,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "Berry Blast Protein Bar",
+        "Choco Fudge Protein Bar",
+        "Cold Brew Coffee 250ml",
+        "Granola Honey 500g",
+        "Green Tea Pack of 25"
+      ],
+      "minTextLength": 14,
+      "maxTextLength": 29
+    },
+    "item_master.category": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "item_master"
+      },
+      "column": "category",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 18,
+      "nullCount": 0,
+      "distinctCount": 5,
+      "uniquenessRatio": 0.2777777777777778,
+      "nullRate": 0,
+      "sampleValues": [
+        "Beverages",
+        "Breakfast",
+        "Snacking",
+        "Protein Bars",
+        "Protein Powder"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 14
+    },
+    "item_master.brand": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "item_master"
+      },
+      "column": "brand",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 18,
+      "nullCount": 0,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.16666666666666666,
+      "nullRate": 0,
+      "sampleValues": [
+        "Nutro",
+        "Verde",
+        "Brewly"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 6
+    },
+    "item_master.uom": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "item_master"
+      },
+      "column": "uom",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 18,
+      "nullCount": 0,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.16666666666666666,
+      "nullRate": 0,
+      "sampleValues": [
+        "pack",
+        "bottle",
+        "piece"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 6
+    },
+    "item_master.status": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "item_master"
+      },
+      "column": "status",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 18,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.05555555555555555,
+      "nullRate": 0,
+      "sampleValues": [
+        "ACTIVE"
+      ],
+      "minTextLength": 6,
+      "maxTextLength": 6
+    },
+    "item_master.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "item_master"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 18,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.05555555555555555,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 05:32:00.584509+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "item_master.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "item_master"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 18,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.05555555555555555,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 05:32:00.584509+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "item_master.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "item_master"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 18,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.05555555555555555,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_ITEM_MASTER"
+      ],
+      "minTextLength": 18,
+      "maxTextLength": 18
+    },
+    "item_master.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "item_master"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 18,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.05555555555555555,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "offline_orders.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_OFFLINE_ORDERS"
+      ],
+      "minTextLength": 21,
+      "maxTextLength": 21
+    },
+    "offline_orders.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 59,
+      "uniquenessRatio": 0.0059,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-03 14:04:23.225092+00",
+        "2026-08-02 16:04:23.225092+00",
+        "2026-08-01 14:04:23.225092+00",
+        "2026-08-02 11:04:23.225092+00",
+        "2026-08-03 03:04:23.225092+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "offline_orders.payment_type": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "payment_type",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.0003,
+      "nullRate": 0,
+      "sampleValues": [
+        "CARD",
+        "UPI",
+        "CASH"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 4
+    },
+    "offline_orders.order_date_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "order_date_key",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 422,
+      "uniquenessRatio": 0.0422,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-10-04",
+        "2025-10-18",
+        "2025-11-27",
+        "2025-10-11",
+        "2025-11-30"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "offline_orders.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 59,
+      "uniquenessRatio": 0.0059,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-03 14:04:23.225092+00",
+        "2026-08-02 16:04:23.225092+00",
+        "2026-08-01 14:04:23.225092+00",
+        "2026-08-02 11:04:23.225092+00",
+        "2026-08-03 03:04:23.225092+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "offline_orders.channel_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "OFFLINE"
+      ],
+      "minTextLength": 7,
+      "maxTextLength": 7
+    },
+    "offline_orders.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "false",
+        "true"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 5
+    },
+    "offline_orders.net_amount": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "net_amount",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 5664,
+      "uniquenessRatio": 0.5664,
+      "nullRate": 0,
+      "sampleValues": [
+        "40.45",
+        "43.93",
+        "45.71",
+        "46.82",
+        "47.64"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 6
+    },
+    "offline_orders.qty": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "qty",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.0003,
+      "nullRate": 0,
+      "sampleValues": [
+        "3",
+        "1",
+        "2"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "offline_orders.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 10000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "00017a07c298fe2966453cdbff3f1893",
+        "0003a4530f085fe86433b85a60f35e02",
+        "000add496d27c85901375f53f999e9d4",
+        "00100ba991feac591e4796c1f7a7ca5a",
+        "0013875d8bbd0af6932acf27ecc55473"
+      ],
+      "minTextLength": 32,
+      "maxTextLength": 64
+    },
+    "offline_orders.invoice_no": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "invoice_no",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 10000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "INV600123",
+        "INV600196",
+        "INV600374",
+        "INV600400",
+        "INV600440"
+      ],
+      "minTextLength": 9,
+      "maxTextLength": 18
+    },
+    "offline_orders.txn_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "txn_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 422,
+      "uniquenessRatio": 0.0422,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-10-04",
+        "2025-10-18",
+        "2025-11-27",
+        "2025-10-11",
+        "2025-11-30"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "offline_orders.item_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "item_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "Berry Blast Protein Bar",
+        "Choco Fudge Protein Bar"
+      ],
+      "minTextLength": 23,
+      "maxTextLength": 23
+    },
+    "offline_orders.mrp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "mrp",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1600,
+      "uniquenessRatio": 0.16,
+      "nullRate": 0,
+      "sampleValues": [
+        "56.87",
+        "63.52",
+        "60.44",
+        "65.37",
+        "66.1"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 5
+    },
+    "offline_orders.city": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "city",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 20,
+      "uniquenessRatio": 0.002,
+      "nullRate": 0,
+      "sampleValues": [
+        "Coimbatore",
+        "Kolkata",
+        "Vadodara",
+        "Pune",
+        "Lucknow"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 10
+    },
+    "offline_orders.product_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "product_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "PROD0001",
+        "PROD0002"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "offline_orders.item_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "item_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "SKU-1003",
+        "SKU-1001"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "offline_orders.discount_pct": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "discount_pct",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 15,
+      "uniquenessRatio": 0.0015,
+      "nullRate": 0,
+      "sampleValues": [
+        "29",
+        "24",
+        "28",
+        "25",
+        "32"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 2
+    },
+    "offline_orders.store_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "column": "store_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 70,
+      "uniquenessRatio": 0.007,
+      "nullRate": 0,
+      "sampleValues": [
+        "ST042",
+        "ST055",
+        "ST075",
+        "ST083",
+        "ST008"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "marketing_spend.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1900,
+      "nullCount": 0,
+      "distinctCount": 1900,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "003f56c12d9ee0fc7428db7e4b868973b9d81dc2cfeebf024d59edfe22adc4ba",
+        "005772ab486407cfddae8916fb320d03a71760e5d0404eb57039e1d7d8cfcf86",
+        "005e0e81f56565c26be81cad1b99c5ed500bf6c4ff358e2521a45d4a1792b9c0",
+        "009bb1ed9a45bee82af2a0045843da7ca7a5ca99caf5da56d617efe529f77667",
+        "00bc4047c1fef75ea9f325392c5edcd33d4ff5f8953d26cc8e9e3bf0fc78ab10"
+      ],
+      "minTextLength": 64,
+      "maxTextLength": 64
+    },
+    "marketing_spend.spend_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "column": "spend_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1900,
+      "nullCount": 0,
+      "distinctCount": 1900,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "MKT00001",
+        "MKT00002",
+        "MKT00003",
+        "MKT00004",
+        "MKT00005"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "marketing_spend.promo_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "column": "promo_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1900,
+      "nullCount": 0,
+      "distinctCount": 835,
+      "uniquenessRatio": 0.4394736842105263,
+      "nullRate": 0,
+      "sampleValues": [
+        "PROMO0033",
+        "PROMO0145",
+        "PROMO0318",
+        "PROMO0475",
+        "PROMO0481"
+      ],
+      "minTextLength": 9,
+      "maxTextLength": 9
+    },
+    "marketing_spend.channel_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "column": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1900,
+      "nullCount": 0,
+      "distinctCount": 6,
+      "uniquenessRatio": 0.003157894736842105,
+      "nullRate": 0,
+      "sampleValues": [
+        "PLATFORM",
+        "INTERNATIONAL",
+        "CAFE",
+        "QCOMM",
+        "OFFLINE"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 13
+    },
+    "marketing_spend.spend_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "column": "spend_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 1900,
+      "nullCount": 0,
+      "distinctCount": 382,
+      "uniquenessRatio": 0.20105263157894737,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-02",
+        "2026-08-09",
+        "2026-08-30",
+        "2026-08-10",
+        "2026-08-05"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "marketing_spend.spend_amount_inr": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "column": "spend_amount_inr",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 1900,
+      "nullCount": 0,
+      "distinctCount": 1899,
+      "uniquenessRatio": 0.9994736842105263,
+      "nullRate": 0,
+      "sampleValues": [
+        "171029.27",
+        "201.07",
+        "282.6",
+        "359.87",
+        "463.21"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 9
+    },
+    "marketing_spend.impressions": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "column": "impressions",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 1900,
+      "nullCount": 0,
+      "distinctCount": 1898,
+      "uniquenessRatio": 0.9989473684210526,
+      "nullRate": 0,
+      "sampleValues": [
+        "337955",
+        "361718",
+        "5275",
+        "5370",
+        "5506"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 6
+    },
+    "marketing_spend.clicks": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "column": "clicks",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 1900,
+      "nullCount": 0,
+      "distinctCount": 1736,
+      "uniquenessRatio": 0.9136842105263158,
+      "nullRate": 0,
+      "sampleValues": [
+        "1770",
+        "5311",
+        "369",
+        "1237",
+        "1334"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 5
+    },
+    "marketing_spend.rn": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "column": "rn",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 1900,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0005263157894736842,
+      "nullRate": 0,
+      "sampleValues": [
+        "1"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "marketing_spend.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1900,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0005263157894736842,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 08:59:41.450593+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "marketing_spend.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1900,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0005263157894736842,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 08:59:41.450593+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "marketing_spend.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1900,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0005263157894736842,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_MARKETING_SPEND"
+      ],
+      "minTextLength": 22,
+      "maxTextLength": 22
+    },
+    "marketing_spend.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 1900,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0005263157894736842,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "mrp_master.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "mrp_master"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 36,
+      "nullCount": 0,
+      "distinctCount": 36,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "0319a485f8658bfb9c52edf1bd655ae70dd840c7586b20a771ab43f91f72a3d9",
+        "0ebd9dfbfb52f7c5a766ecd9b68aa673b3c70b65868bd5139051c3693ee12fb0",
+        "18b11dc66fb0f4d279eda6f4d07b116decac1c47eb3d6ec26dcd914d5ce7b11d",
+        "19ddf06dd80851da54fa029190b8d8eb400f83880bfa14ae897a4446f192419d",
+        "21f5f38ad92e2c4c6568f10e418c75a1c6b78f936b67e4e135943ef2fdb2d1dc"
+      ],
+      "minTextLength": 64,
+      "maxTextLength": 64
+    },
+    "mrp_master.product_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "mrp_master"
+      },
+      "column": "product_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 36,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 0.5,
+      "nullRate": 0,
+      "sampleValues": [
+        "PROD0001",
+        "PROD0002",
+        "PROD0003",
+        "PROD0004",
+        "PROD0005"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "mrp_master.mrp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "mrp_master"
+      },
+      "column": "mrp",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 36,
+      "nullCount": 0,
+      "distinctCount": 36,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "60",
+        "62",
+        "63.25",
+        "65",
+        "66.15"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 7
+    },
+    "mrp_master.effective_from": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "mrp_master"
+      },
+      "column": "effective_from",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 36,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.05555555555555555,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-01-01",
+        "2026-05-01"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "mrp_master.effective_to": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "mrp_master"
+      },
+      "column": "effective_to",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 36,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.05555555555555555,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-04-30",
+        "9999-12-31"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "mrp_master.currency": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "mrp_master"
+      },
+      "column": "currency",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 36,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.027777777777777776,
+      "nullRate": 0,
+      "sampleValues": [
+        "INR"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 3
+    },
+    "mrp_master.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "mrp_master"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 36,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.027777777777777776,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 05:33:22.077477+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "mrp_master.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "mrp_master"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 36,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.027777777777777776,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 05:33:22.077477+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "mrp_master.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "mrp_master"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 36,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.027777777777777776,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_MRP_MASTER"
+      ],
+      "minTextLength": 17,
+      "maxTextLength": 17
+    },
+    "mrp_master.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "mrp_master"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 36,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.027777777777777776,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "shipments.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 2320,
+      "nullCount": 0,
+      "distinctCount": 2320,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "00139be1c7ad0e6f7b7b0bc4b2a1e3ffd599ba591a4924dcae5971316b213d54",
+        "0016587b8aea85ba7589bfba44f679388320e0ddd8653d04ba6bf0dc950e994c",
+        "0020ebbc013aca0db2371508a3a2906b0a5a07febc7b1e6c7bbe0106e85e317c",
+        "00217110494d2ca923ac3efdeaf6b7db16509da6664a9a3741eee3e1211e668a",
+        "00232cdc81a95aa949f210094759f0db6c36d70a7bf2c64cf776a09027226f7f"
+      ],
+      "minTextLength": 64,
+      "maxTextLength": 64
+    },
+    "shipments.shipment_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "column": "shipment_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 2320,
+      "nullCount": 0,
+      "distinctCount": 2320,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "SHIP00001",
+        "SHIP00002",
+        "SHIP00003",
+        "SHIP00004",
+        "SHIP00005"
+      ],
+      "minTextLength": 9,
+      "maxTextLength": 9
+    },
+    "shipments.channel_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "column": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 2320,
+      "nullCount": 0,
+      "distinctCount": 5,
+      "uniquenessRatio": 0.0021551724137931034,
+      "nullRate": 0,
+      "sampleValues": [
+        "PLATFORM",
+        "QCOMM",
+        "D2C",
+        "OFFLINE",
+        "INTERNATIONAL"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 13
+    },
+    "shipments.order_ref": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "column": "order_ref",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 2320,
+      "nullCount": 0,
+      "distinctCount": 2320,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "#D2C400003",
+        "#D2C400006",
+        "#D2C400007",
+        "#D2C400011",
+        "#D2C400012"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 10
+    },
+    "shipments.courier_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "column": "courier_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 2320,
+      "nullCount": 0,
+      "distinctCount": 8,
+      "uniquenessRatio": 0.0034482758620689655,
+      "nullRate": 0,
+      "sampleValues": [
+        "Delhivery",
+        "Bluedart",
+        "Shadowfax",
+        "XpressBees",
+        "Ekart"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 19
+    },
+    "shipments.dispatch_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "column": "dispatch_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 2320,
+      "nullCount": 0,
+      "distinctCount": 30,
+      "uniquenessRatio": 0.01293103448275862,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-03",
+        "2026-08-30",
+        "2026-08-14",
+        "2026-08-28",
+        "2026-08-06"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "shipments.delivered_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "column": "delivered_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 2320,
+      "nullCount": 221,
+      "distinctCount": 33,
+      "uniquenessRatio": 0.014224137931034483,
+      "nullRate": 0.09525862068965517,
+      "sampleValues": [
+        "2026-08-04",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-05",
+        "2026-08-18"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "shipments.delivery_status": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "column": "delivery_status",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 2320,
+      "nullCount": 0,
+      "distinctCount": 4,
+      "uniquenessRatio": 0.0017241379310344827,
+      "nullRate": 0,
+      "sampleValues": [
+        "DELIVERED",
+        "IN TRANSIT",
+        "RTO",
+        "LOST"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 10
+    },
+    "shipments.rn": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "column": "rn",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 2320,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0004310344827586207,
+      "nullRate": 0,
+      "sampleValues": [
+        "1"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "shipments.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 2320,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0004310344827586207,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 08:59:48.660228+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "shipments.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 2320,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0004310344827586207,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 08:59:48.660228+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "shipments.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 2320,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0004310344827586207,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_SHIPMENTS"
+      ],
+      "minTextLength": 16,
+      "maxTextLength": 16
+    },
+    "shipments.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 2320,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0004310344827586207,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "suppliers.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 1000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "0016e4eac310bc9e58755cfd8aeb584c0ad2170c9b3b5591c8bde65247633d33",
+        "002d04b1014fbc88209ba0e8323c97c720cd3ff8c6a6a4498185375973accf18",
+        "00bc439ac3ca78ce9df69a8b2bba3fdec8aaca29340bcd4d282d61c350dd2367",
+        "00d9e4d6049d70f680831ac1bc990e35b92c12b3710ea224366a2a1771ce5dee",
+        "0139e0c788b2f5de83efa9d13fe6f4038bc3ad9e4edf90fef26ca3d4efe09408"
+      ],
+      "minTextLength": 64,
+      "maxTextLength": 64
+    },
+    "suppliers.supplier_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "column": "supplier_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 1000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "SUP0001",
+        "SUP0002",
+        "SUP0003",
+        "SUP0004",
+        "SUP0005"
+      ],
+      "minTextLength": 7,
+      "maxTextLength": 7
+    },
+    "suppliers.supplier_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "column": "supplier_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 975,
+      "uniquenessRatio": 0.975,
+      "nullRate": 0,
+      "sampleValues": [
+        "Jones PLC",
+        "Smith Ltd",
+        "Williams Group",
+        "Acosta and Sons",
+        "Anderson LLC"
+      ],
+      "minTextLength": 7,
+      "maxTextLength": 33
+    },
+    "suppliers.category": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "column": "category",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 6,
+      "uniquenessRatio": 0.006,
+      "nullRate": 0,
+      "sampleValues": [
+        "Raw Ingredients",
+        "Flavoring Agents",
+        "Packaging",
+        "Protein Base",
+        "Logistics"
+      ],
+      "minTextLength": 9,
+      "maxTextLength": 16
+    },
+    "suppliers.country": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "column": "country",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 7,
+      "uniquenessRatio": 0.007,
+      "nullRate": 0,
+      "sampleValues": [
+        "THAILAND",
+        "USA",
+        "INDIA",
+        "GERMANY",
+        "SRI LANKA"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 9
+    },
+    "suppliers.contract_start_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "column": "contract_start_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 703,
+      "uniquenessRatio": 0.703,
+      "nullRate": 0,
+      "sampleValues": [
+        "2023-11-06",
+        "2023-01-14",
+        "2023-07-30",
+        "2023-09-27",
+        "2023-11-08"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "suppliers.avg_lead_time_days": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "column": "avg_lead_time_days",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 594,
+      "uniquenessRatio": 0.594,
+      "nullRate": 0,
+      "sampleValues": [
+        "15.6",
+        "42.1",
+        "55.6",
+        "83.3",
+        "85.9"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 4
+    },
+    "suppliers.status": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "column": "status",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.002,
+      "nullRate": 0,
+      "sampleValues": [
+        "ACTIVE",
+        "INACTIVE"
+      ],
+      "minTextLength": 6,
+      "maxTextLength": 8
+    },
+    "suppliers.rn": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "column": "rn",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.001,
+      "nullRate": 0,
+      "sampleValues": [
+        "1"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "suppliers.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.001,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 07:23:11.788026+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "suppliers.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.001,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 07:23:11.788026+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "suppliers.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.001,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_SUPPLIERS"
+      ],
+      "minTextLength": 16,
+      "maxTextLength": 16
+    },
+    "suppliers.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.001,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "platform_orders.promo_discount": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "promo_discount",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1448,
+      "uniquenessRatio": 0.1448,
+      "nullRate": 0,
+      "sampleValues": [
+        "0",
+        "24.89",
+        "16.44",
+        "15.45",
+        "18.3"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 5
+    },
+    "platform_orders.unit_price": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "unit_price",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2264,
+      "uniquenessRatio": 0.2264,
+      "nullRate": 0,
+      "sampleValues": [
+        "75.06",
+        "76.38",
+        "73.9",
+        "71.11",
+        "77.21"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 5
+    },
+    "platform_orders.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "false",
+        "true"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 5
+    },
+    "platform_orders.channel_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "PLATFORM"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "platform_orders.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 10000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "000666924e8a063ef0aa291840e31fc6",
+        "00102519cac178b9eced7ec72477c6c5",
+        "001b28376f732b807c5cb86f195bd9cf",
+        "002974a39f012bb5871c3de63986251a",
+        "0029e3cc15f3d59adca4a913e48bed35"
+      ],
+      "minTextLength": 32,
+      "maxTextLength": 32
+    },
+    "platform_orders.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 71,
+      "uniquenessRatio": 0.0071,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-02 16:04:18.338427+00",
+        "2026-08-02 10:04:18.338427+00",
+        "2026-08-03 05:04:18.338427+00",
+        "2026-08-02 19:04:18.338427+00",
+        "2026-08-02 18:04:18.338427+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "platform_orders.marketplace_fee": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "marketplace_fee",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2487,
+      "uniquenessRatio": 0.2487,
+      "nullRate": 0,
+      "sampleValues": [
+        "12.84",
+        "12.47",
+        "23.63",
+        "10.87",
+        "12.24"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 5
+    },
+    "platform_orders.units": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "units",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 4,
+      "uniquenessRatio": 0.0004,
+      "nullRate": 0,
+      "sampleValues": [
+        "1",
+        "3",
+        "2",
+        "4"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "platform_orders.order_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "order_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 421,
+      "uniquenessRatio": 0.0421,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-10-25",
+        "2025-11-22",
+        "2025-11-25",
+        "2025-11-08",
+        "2025-11-20"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "platform_orders.product_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "product_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "PROD0003",
+        "PROD0001"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "platform_orders.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 71,
+      "uniquenessRatio": 0.0071,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-02 16:04:18.338427+00",
+        "2026-08-02 10:04:18.338427+00",
+        "2026-08-03 05:04:18.338427+00",
+        "2026-08-02 19:04:18.338427+00",
+        "2026-08-02 18:04:18.338427+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "platform_orders.ship_to_city": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "ship_to_city",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 20,
+      "uniquenessRatio": 0.002,
+      "nullRate": 0,
+      "sampleValues": [
+        "Mumbai",
+        "Coimbatore",
+        "Kochi",
+        "Jaipur",
+        "Lucknow"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 10
+    },
+    "platform_orders.order_date_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "order_date_key",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 421,
+      "uniquenessRatio": 0.0421,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-10-25",
+        "2025-11-22",
+        "2025-11-25",
+        "2025-11-08",
+        "2025-11-20"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "platform_orders.product_title": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "product_title",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 53,
+      "uniquenessRatio": 0.0053,
+      "nullRate": 0,
+      "sampleValues": [
+        "Kombucha Ginger 300ml - Combo",
+        "Whey Isolate Chocolate 1kg - Combo",
+        "Peanut Butter Protein Bar - Value Pack",
+        "Trail Mix 150g - Standard",
+        "Trail Mix 150g - Value Pack"
+      ],
+      "minTextLength": 22,
+      "maxTextLength": 42
+    },
+    "platform_orders.ship_to_country": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "ship_to_country",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "INDIA"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "platform_orders.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_PLATFORM_ORDERS"
+      ],
+      "minTextLength": 22,
+      "maxTextLength": 22
+    },
+    "platform_orders.marketplace": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "marketplace",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.0003,
+      "nullRate": 0,
+      "sampleValues": [
+        "FLIPKART",
+        "AMAZON_IN",
+        "MYNTRA"
+      ],
+      "minTextLength": 6,
+      "maxTextLength": 9
+    },
+    "platform_orders.marketplace_sku": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "marketplace_sku",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 190,
+      "uniquenessRatio": 0.019,
+      "nullRate": 0,
+      "sampleValues": [
+        "ASIN102168",
+        "FSN301790",
+        "ASIN100703",
+        "ASIN100368",
+        "ASIN101269"
+      ],
+      "minTextLength": 9,
+      "maxTextLength": 10
+    },
+    "platform_orders.fulfillment_status": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "fulfillment_status",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.0003,
+      "nullRate": 0,
+      "sampleValues": [
+        "SHIPPED",
+        "REFUNDED",
+        "PENDING"
+      ],
+      "minTextLength": 7,
+      "maxTextLength": 8
+    },
+    "platform_orders.order_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "column": "order_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 10000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "AMA250611-108e87",
+        "AMA250611-25182d",
+        "AMA250611-5f1646",
+        "AMA250611-c1daa4",
+        "AMA250611-de0b79"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 16
+    },
+    "product_bundle.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_bundle"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 9,
+      "nullCount": 0,
+      "distinctCount": 9,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "2f600f1d084a5b012e49cebd72d0729ac482b844d26bd791d0f593a0ac94da38",
+        "3d510c571b4bc710030d6c4803b00c212e0f8e999387e3208c7e1f5f43002fb6",
+        "5e48c29ae71ebde04b8d9afb29472bc920fcb23b88dacdac6b4673fb0f4a9ce6",
+        "9b984a2171f22b87c06f2c9508d3c64954665e9a123b2e8bc36f71cd39291cf0",
+        "aee3cdf9c13c0dd29399d9a66e9cc3591631c70a6c0e28e5d2f9d56f46059e74"
+      ],
+      "minTextLength": 64,
+      "maxTextLength": 64
+    },
+    "product_bundle.bundle_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_bundle"
+      },
+      "column": "bundle_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 9,
+      "nullCount": 0,
+      "distinctCount": 4,
+      "uniquenessRatio": 0.4444444444444444,
+      "nullRate": 0,
+      "sampleValues": [
+        "BNDL004",
+        "BNDL001",
+        "BNDL002",
+        "BNDL003"
+      ],
+      "minTextLength": 7,
+      "maxTextLength": 7
+    },
+    "product_bundle.bundle_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_bundle"
+      },
+      "column": "bundle_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 9,
+      "nullCount": 0,
+      "distinctCount": 4,
+      "uniquenessRatio": 0.4444444444444444,
+      "nullRate": 0,
+      "sampleValues": [
+        "Snack Trio",
+        "Morning Fuel Pack",
+        "Protein Starter Combo",
+        "Whey + Shaker Combo"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 21
+    },
+    "product_bundle.component_product_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_bundle"
+      },
+      "column": "component_product_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 9,
+      "nullCount": 0,
+      "distinctCount": 9,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "PROD0001",
+        "PROD0002",
+        "PROD0004",
+        "PROD0007",
+        "PROD0008"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "product_bundle.component_qty": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_bundle"
+      },
+      "column": "component_qty",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 9,
+      "nullCount": 0,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.3333333333333333,
+      "nullRate": 0,
+      "sampleValues": [
+        "1",
+        "3",
+        "2"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "product_bundle.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_bundle"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 9,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.1111111111111111,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 05:33:32.424878+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "product_bundle.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_bundle"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 9,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.1111111111111111,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 05:33:32.424878+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "product_bundle.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_bundle"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 9,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.1111111111111111,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_PRODUCT_BUNDLE"
+      ],
+      "minTextLength": 21,
+      "maxTextLength": 21
+    },
+    "product_bundle.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_bundle"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 9,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.1111111111111111,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "product_codes.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_codes"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 108,
+      "nullCount": 0,
+      "distinctCount": 108,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "0043fae537f3a9b3b520ad30d18e3733e96f5416fd783eb9f26dd933f816e90e",
+        "0616eaaa4e17c2b5f96188da3a7c177add8ef30d1ad1e4ebf88e4fc36ed6262f",
+        "0a89cf7cff6b143e51173a1b1ffda4cc1e9d40070a082cecbe23fd5eb0222507",
+        "0c16dc4c41d9bd8c639edd13f38a913e782c4ffbe3321d4ab8f2e8a40077ac75",
+        "0d2332f552faf1d55ef93028d353400f5e37b5b09919e253ca47d5c46060ba12"
+      ],
+      "minTextLength": 64,
+      "maxTextLength": 64
+    },
+    "product_codes.product_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_codes"
+      },
+      "column": "product_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 108,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 0.16666666666666666,
+      "nullRate": 0,
+      "sampleValues": [
+        "PROD0001",
+        "PROD0002",
+        "PROD0003",
+        "PROD0004",
+        "PROD0005"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "product_codes.channel_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_codes"
+      },
+      "column": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 108,
+      "nullCount": 0,
+      "distinctCount": 6,
+      "uniquenessRatio": 0.05555555555555555,
+      "nullRate": 0,
+      "sampleValues": [
+        "CAFE",
+        "D2C",
+        "INTERNATIONAL",
+        "OFFLINE",
+        "PLATFORM"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 13
+    },
+    "product_codes.source_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_codes"
+      },
+      "column": "source_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 108,
+      "nullCount": 0,
+      "distinctCount": 90,
+      "uniquenessRatio": 0.8333333333333334,
+      "nullRate": 0,
+      "sampleValues": [
+        "SKU-1001",
+        "SKU-1002",
+        "SKU-1003",
+        "SKU-1004",
+        "SKU-1005"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 11
+    },
+    "product_codes.source_product_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_codes"
+      },
+      "column": "source_product_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 108,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 0.16666666666666666,
+      "nullRate": 0,
+      "sampleValues": [
+        "Berry Blast Protein Bar",
+        "Choco Fudge Protein Bar",
+        "Cold Brew Coffee 250ml",
+        "Granola Honey 500g",
+        "Green Tea Pack of 25"
+      ],
+      "minTextLength": 14,
+      "maxTextLength": 29
+    },
+    "product_codes.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_codes"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 108,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.009259259259259259,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 05:32:50.342011+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "product_codes.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_codes"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 108,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.009259259259259259,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 05:32:50.342011+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "product_codes.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_codes"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 108,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.009259259259259259,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_PRODUCT_CODES"
+      ],
+      "minTextLength": 20,
+      "maxTextLength": 20
+    },
+    "product_codes.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_codes"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 108,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.009259259259259259,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "promotions.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 1000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "002adbc9ee559d02f8caebe3f29c6dddf478d11a9d77cff4402d48b5ceb3b94f",
+        "0051dcb5d907f8d3ee8b612fdb1ff42e09a5e83bd4593c7b4fffbc4beaad974b",
+        "0068438bb320ef1e07351368cc846eaf728bbf53f7bfa257c902ab92d7a62eca",
+        "00e54a9476e2f561ee65b344e9ab1d8e3deaa077de11cadb9cd6965d7bc1d180",
+        "00f56742345dadc430b4cd2e7966ce4331cadbcaf05a76bb564822636fb13501"
+      ],
+      "minTextLength": 64,
+      "maxTextLength": 64
+    },
+    "promotions.promo_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "column": "promo_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 1000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "PROMO0001",
+        "PROMO0002",
+        "PROMO0003",
+        "PROMO0004",
+        "PROMO0005"
+      ],
+      "minTextLength": 9,
+      "maxTextLength": 9
+    },
+    "promotions.promo_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "column": "promo_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 456,
+      "uniquenessRatio": 0.456,
+      "nullRate": 0,
+      "sampleValues": [
+        "OFF36OFF",
+        "D2C78OFF",
+        "CAF62OFF",
+        "CAF87OFF",
+        "D2C23OFF"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "promotions.channel_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "column": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 6,
+      "uniquenessRatio": 0.006,
+      "nullRate": 0,
+      "sampleValues": [
+        "PLATFORM",
+        "OFFLINE",
+        "D2C",
+        "CAFE",
+        "QCOMM"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 13
+    },
+    "promotions.discount_pct": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "column": "discount_pct",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 6,
+      "uniquenessRatio": 0.006,
+      "nullRate": 0,
+      "sampleValues": [
+        "25",
+        "5",
+        "30",
+        "10",
+        "15"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 2
+    },
+    "promotions.start_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "column": "start_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 346,
+      "uniquenessRatio": 0.346,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-02-05",
+        "2025-12-06",
+        "2026-05-26",
+        "2025-08-08",
+        "2025-08-10"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "promotions.end_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "column": "end_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 355,
+      "uniquenessRatio": 0.355,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-11-09",
+        "2025-12-18",
+        "2026-01-29",
+        "2026-06-16",
+        "2026-07-17"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "promotions.campaign_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "column": "campaign_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 6,
+      "uniquenessRatio": 0.006,
+      "nullRate": 0,
+      "sampleValues": [
+        "Flash Sale",
+        "New User Offer",
+        "Festive Sale",
+        "Clearance",
+        "Bundle Promo"
+      ],
+      "minTextLength": 9,
+      "maxTextLength": 14
+    },
+    "promotions.rn": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "column": "rn",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.001,
+      "nullRate": 0,
+      "sampleValues": [
+        "1"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "promotions.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.001,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 07:24:34.143404+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "promotions.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.001,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 07:24:34.143404+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "promotions.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.001,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_PROMOTIONS"
+      ],
+      "minTextLength": 17,
+      "maxTextLength": 17
+    },
+    "promotions.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 1000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.001,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "purchase_orders.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1300,
+      "nullCount": 0,
+      "distinctCount": 1300,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "00720a59a2012420a3666c624b0c4fcb1c177661d84c6272c7d64512264a7943",
+        "00927659319baad2588d342bf777aa31a732d5e6b3ea53b9d9644975f23364b9",
+        "00fbc28bd407191d652e1d7e2b844dadc6f1c95d5690034b029094703996d1f2",
+        "011dcb7b9023aa0d6a4441973013f9a97ef880ba44131926c256105b3c39041e",
+        "0125b4bcf596ccf934d0628fd5ebd8132c4fe50da9a625fc7d01af2fcc75b32a"
+      ],
+      "minTextLength": 64,
+      "maxTextLength": 64
+    },
+    "purchase_orders.po_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "column": "po_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1300,
+      "nullCount": 0,
+      "distinctCount": 1300,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "PO00001",
+        "PO00002",
+        "PO00003",
+        "PO00004",
+        "PO00005"
+      ],
+      "minTextLength": 7,
+      "maxTextLength": 7
+    },
+    "purchase_orders.supplier_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "column": "supplier_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1300,
+      "nullCount": 0,
+      "distinctCount": 730,
+      "uniquenessRatio": 0.5615384615384615,
+      "nullRate": 0,
+      "sampleValues": [
+        "SUP0133",
+        "SUP0268",
+        "SUP0364",
+        "SUP0641",
+        "SUP0219"
+      ],
+      "minTextLength": 7,
+      "maxTextLength": 7
+    },
+    "purchase_orders.product_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "column": "product_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1300,
+      "nullCount": 0,
+      "distinctCount": 18,
+      "uniquenessRatio": 0.013846153846153847,
+      "nullRate": 0,
+      "sampleValues": [
+        "PROD0012",
+        "PROD0010",
+        "PROD0009",
+        "PROD0006",
+        "PROD0016"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "purchase_orders.qty_ordered": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "column": "qty_ordered",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 1300,
+      "nullCount": 0,
+      "distinctCount": 1254,
+      "uniquenessRatio": 0.9646153846153847,
+      "nullRate": 0,
+      "sampleValues": [
+        "3886",
+        "5430",
+        "796",
+        "1165",
+        "1180"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 5
+    },
+    "purchase_orders.unit_cost": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "column": "unit_cost",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 1300,
+      "nullCount": 0,
+      "distinctCount": 1289,
+      "uniquenessRatio": 0.9915384615384616,
+      "nullRate": 0,
+      "sampleValues": [
+        "157.09",
+        "164.98",
+        "191.28",
+        "302.71",
+        "322.94"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 6
+    },
+    "purchase_orders.po_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "column": "po_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 1300,
+      "nullCount": 0,
+      "distinctCount": 357,
+      "uniquenessRatio": 0.2746153846153846,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-01-11",
+        "2026-05-24",
+        "2026-06-26",
+        "2026-08-02",
+        "2026-07-22"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "purchase_orders.expected_delivery_date": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "column": "expected_delivery_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 1300,
+      "nullCount": 0,
+      "distinctCount": 374,
+      "uniquenessRatio": 0.2876923076923077,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-07-04",
+        "2026-06-18",
+        "2025-10-30",
+        "2025-10-04",
+        "2025-11-11"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "purchase_orders.po_status": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "column": "po_status",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1300,
+      "nullCount": 0,
+      "distinctCount": 4,
+      "uniquenessRatio": 0.003076923076923077,
+      "nullRate": 0,
+      "sampleValues": [
+        "DELIVERED",
+        "IN TRANSIT",
+        "DELAYED",
+        "CANCELLED"
+      ],
+      "minTextLength": 7,
+      "maxTextLength": 10
+    },
+    "purchase_orders.rn": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "column": "rn",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 1300,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0007692307692307692,
+      "nullRate": 0,
+      "sampleValues": [
+        "1"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "purchase_orders.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1300,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0007692307692307692,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 07:23:54.713121+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "purchase_orders.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 1300,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0007692307692307692,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-04 07:23:54.713121+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "purchase_orders.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 1300,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0007692307692307692,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_PURCHASE_ORDERS"
+      ],
+      "minTextLength": 22,
+      "maxTextLength": 22
+    },
+    "purchase_orders.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "purchase_orders"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 1300,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0007692307692307692,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "qcomm_orders.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "false",
+        "true"
+      ],
+      "minTextLength": 4,
+      "maxTextLength": 5
+    },
+    "qcomm_orders.order_ts": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "order_ts",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 9627,
+      "uniquenessRatio": 0.9627,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-10-08 20:33:35+00",
+        "2025-11-05 17:42:59+00",
+        "2025-12-28 21:30:39+00",
+        "2025-12-29 18:49:50+00",
+        "2026-03-08 17:49:38+00"
+      ],
+      "minTextLength": 22,
+      "maxTextLength": 22
+    },
+    "qcomm_orders.dark_store": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "dark_store",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 164,
+      "uniquenessRatio": 0.0164,
+      "nullRate": 0,
+      "sampleValues": [
+        "Patna Dark Store 7",
+        "Jaipur Dark Store 2",
+        "Hyderabad Dark Store 9",
+        "Nagpur Dark Store 6",
+        "Coimbatore Dark Store 10"
+      ],
+      "minTextLength": 17,
+      "maxTextLength": 24
+    },
+    "qcomm_orders.item_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "item_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "SKU-1001",
+        "SKU-1002"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "qcomm_orders.platform_order_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "platform_order_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 10000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "BLI250611-08b2c8",
+        "BLI250611-939bc2",
+        "BLI250611-c6aee5",
+        "BLI250611-d007d8",
+        "BLI250612-d99853"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 16
+    },
+    "qcomm_orders.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 70,
+      "uniquenessRatio": 0.007,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-01 18:04:20.880217+00",
+        "2026-08-02 00:04:20.880217+00",
+        "2026-08-01 21:04:20.880217+00",
+        "2026-08-02 07:04:20.880217+00",
+        "2026-08-02 23:04:20.880217+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "qcomm_orders.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "BRONZE_QCOMM_ORDERS"
+      ],
+      "minTextLength": 19,
+      "maxTextLength": 19
+    },
+    "qcomm_orders.order_date_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "order_date_key",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 425,
+      "uniquenessRatio": 0.0425,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-11-25",
+        "2025-10-26",
+        "2025-11-08",
+        "2025-11-19",
+        "2025-11-26"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "qcomm_orders.channel_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "QCOMM"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "qcomm_orders.order_status": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "order_status",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.0003,
+      "nullRate": 0,
+      "sampleValues": [
+        "DELIVERED",
+        "RTO",
+        "CANCELLED"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 9
+    },
+    "qcomm_orders.cust_mobile": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "cust_mobile",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1598,
+      "uniquenessRatio": 0.1598,
+      "nullRate": 0,
+      "sampleValues": [
+        "2915921897",
+        "2815915840",
+        "7840650242",
+        "1225453294",
+        "9741693548"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "qcomm_orders.delivery_fee": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "delivery_fee",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 76,
+      "uniquenessRatio": 0.0076,
+      "nullRate": 0,
+      "sampleValues": [
+        "0",
+        "19.4",
+        "27.9",
+        "27",
+        "19.2"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 4
+    },
+    "qcomm_orders.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 10000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "000f4de63384ea1bee9986bd6a011565",
+        "0010ae483d2de0159dd9d62c48441ed1",
+        "00241c45d3f27b84738fc33eccf662e4",
+        "0028333ee8ef1eb6860e8a8b30968967",
+        "0035072bf5eb97011366555ce0d7d82d"
+      ],
+      "minTextLength": 32,
+      "maxTextLength": 64
+    },
+    "qcomm_orders.selling_price": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "selling_price",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1856,
+      "uniquenessRatio": 0.1856,
+      "nullRate": 0,
+      "sampleValues": [
+        "60.12",
+        "55.8",
+        "55.84",
+        "51.73",
+        "53.32"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 5
+    },
+    "qcomm_orders.total_discount": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "total_discount",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1780,
+      "uniquenessRatio": 0.178,
+      "nullRate": 0,
+      "sampleValues": [
+        "0.06",
+        "0.02",
+        "0.12",
+        "8.61",
+        "6.74"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 5
+    },
+    "qcomm_orders.mrp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "mrp",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1717,
+      "uniquenessRatio": 0.1717,
+      "nullRate": 0,
+      "sampleValues": [
+        "60.68",
+        "58.02",
+        "56.4",
+        "60.32",
+        "64.96"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 5
+    },
+    "qcomm_orders.qty": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "qty",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.0003,
+      "nullRate": 0,
+      "sampleValues": [
+        "3",
+        "1",
+        "2"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "qcomm_orders.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 70,
+      "uniquenessRatio": 0.007,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-01 18:04:20.880217+00",
+        "2026-08-02 00:04:20.880217+00",
+        "2026-08-01 21:04:20.880217+00",
+        "2026-08-02 05:04:20.880217+00",
+        "2026-08-03 13:04:20.880217+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "qcomm_orders.product_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "product_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "PROD0003",
+        "PROD0001"
+      ],
+      "minTextLength": 8,
+      "maxTextLength": 8
+    },
+    "qcomm_orders.platform_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "platform_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.0003,
+      "nullRate": 0,
+      "sampleValues": [
+        "INSTAMART",
+        "BLINKIT",
+        "ZEPTO"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 9
+    },
+    "qcomm_orders.item_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "qcomm_orders"
+      },
+      "column": "item_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "Berry Blast Protein Bar",
+        "Choco Fudge Protein Bar"
+      ],
+      "minTextLength": 23,
+      "maxTextLength": 23
+    },
+    "returns.insert_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 20,
+      "uniquenessRatio": 0.002,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-01 22:16:22.482065+00",
+        "2026-08-02 06:16:22.482065+00",
+        "2026-08-01 16:16:22.482065+00",
+        "2026-08-01 15:16:22.482065+00",
+        "2026-08-02 03:16:22.482065+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "returns.exchange_order_ref": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "exchange_order_ref",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 6929,
+      "distinctCount": 3039,
+      "uniquenessRatio": 0.3039,
+      "nullRate": 0.6929,
+      "sampleValues": [
+        "EXC250712-85611b",
+        "EXC250801-aba218",
+        "EXC250805-ab9b06",
+        "EXC250816-90012b",
+        "EXC251009-de7f75"
+      ],
+      "minTextLength": 16,
+      "maxTextLength": 16
+    },
+    "returns.channel_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "D2C"
+      ],
+      "minTextLength": 3,
+      "maxTextLength": 3
+    },
+    "returns.initiated_at": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "initiated_at",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 426,
+      "uniquenessRatio": 0.0426,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-10-30 00:00:00+00",
+        "2025-11-24 00:00:00+00",
+        "2025-10-28 00:00:00+00",
+        "2025-11-27 00:00:00+00",
+        "2025-11-04 00:00:00+00"
+      ],
+      "minTextLength": 22,
+      "maxTextLength": 22
+    },
+    "returns.rn": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "rn",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "1",
+        "2"
+      ],
+      "minTextLength": 1,
+      "maxTextLength": 1
+    },
+    "returns.return_id": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "return_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 9896,
+      "uniquenessRatio": 0.9896,
+      "nullRate": 0,
+      "sampleValues": [
+        "RET2506-1721ba7",
+        "RET2506-18de237",
+        "RET2506-40e7458",
+        "RET2506-97dc1b3",
+        "RET2507-037a9ec"
+      ],
+      "minTextLength": 15,
+      "maxTextLength": 15
+    },
+    "returns.refund_amount": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "refund_amount",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 9681,
+      "uniquenessRatio": 0.9681,
+      "nullRate": 0,
+      "sampleValues": [
+        "43.19",
+        "66.56",
+        "151.82",
+        "157.4",
+        "172.1"
+      ],
+      "minTextLength": 2,
+      "maxTextLength": 8
+    },
+    "returns.source_name": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "returns_api"
+      ],
+      "minTextLength": 11,
+      "maxTextLength": 11
+    },
+    "returns.reason_code": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "reason_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 6,
+      "uniquenessRatio": 0.0006,
+      "nullRate": 0,
+      "sampleValues": [
+        "Damaged In Transit",
+        "Late Delivery",
+        "Changed Mind",
+        "Wrong Item Sent",
+        "Quality Issue"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 18
+    },
+    "returns.hash_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 10000,
+      "uniquenessRatio": 1,
+      "nullRate": 0,
+      "sampleValues": [
+        "000340e57e72fcf363d0435c904873a7",
+        "000ca59f8184ee0bb02763a5d1be6795",
+        "001253b08a6d97d3bdeed4cfd1b39bcf",
+        "00171e009651d7ff5e149d18bffba2ff",
+        "003452a746c6b739eb414d41422af5ea"
+      ],
+      "minTextLength": 32,
+      "maxTextLength": 35
+    },
+    "returns.return_type": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "return_type",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 2,
+      "uniquenessRatio": 0.0002,
+      "nullRate": 0,
+      "sampleValues": [
+        "Return",
+        "Exchange"
+      ],
+      "minTextLength": 6,
+      "maxTextLength": 8
+    },
+    "returns.return_date_key": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "return_date_key",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 428,
+      "uniquenessRatio": 0.0428,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-11-23",
+        "2025-12-02",
+        "2025-12-03",
+        "2025-11-29",
+        "2025-10-09"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 10
+    },
+    "returns.original_order_ref": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "original_order_ref",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 9896,
+      "uniquenessRatio": 0.9896,
+      "nullRate": 0,
+      "sampleValues": [
+        "DTC250615-37df96",
+        "DTC250620-6ce3df",
+        "DTC250621-22d9d3",
+        "DTC250624-be3ef6",
+        "DTC250705-d419ce"
+      ],
+      "minTextLength": 10,
+      "maxTextLength": 16
+    },
+    "returns.is_deleted": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 1,
+      "uniquenessRatio": 0.0001,
+      "nullRate": 0,
+      "sampleValues": [
+        "false"
+      ],
+      "minTextLength": 5,
+      "maxTextLength": 5
+    },
+    "returns.modified_timestamp": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 20,
+      "uniquenessRatio": 0.002,
+      "nullRate": 0,
+      "sampleValues": [
+        "2026-08-01 22:16:22.482065+00",
+        "2026-08-02 06:16:22.482065+00",
+        "2026-08-01 16:16:22.482065+00",
+        "2026-08-01 15:16:22.482065+00",
+        "2026-08-02 03:16:22.482065+00"
+      ],
+      "minTextLength": 29,
+      "maxTextLength": 29
+    },
+    "returns.warehouse_received_at": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "warehouse_received_at",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 431,
+      "uniquenessRatio": 0.0431,
+      "nullRate": 0,
+      "sampleValues": [
+        "2025-12-02 00:00:00+00",
+        "2025-12-04 00:00:00+00",
+        "2025-10-31 00:00:00+00",
+        "2025-11-20 00:00:00+00",
+        "2025-11-06 00:00:00+00"
+      ],
+      "minTextLength": 22,
+      "maxTextLength": 22
+    },
+    "returns.restock_status": {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "returns"
+      },
+      "column": "restock_status",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "rowCount": 10000,
+      "nullCount": 0,
+      "distinctCount": 3,
+      "uniquenessRatio": 0.0003,
+      "nullRate": 0,
+      "sampleValues": [
+        "Written Off",
+        "Quarantine",
+        "Restocked"
+      ],
+      "minTextLength": 9,
+      "maxTextLength": 11
+    }
+  },
+  "warnings": []
+}
