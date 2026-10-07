@@ -1,0 +1,22 @@
+{
+  "connectionId": "warehouse",
+  "driver": "bigquery",
+  "extractedAt": "2026-10-07T10:06:39.712Z",
+  "scope": {
+    "catalogs": [
+      "sahil-devx"
+    ],
+    "datasets": [
+      "dev_dna_silver"
+    ]
+  },
+  "metadata": {
+    "project_id": "sahil-devx",
+    "datasets": [
+      "dev_dna_silver"
+    ],
+    "table_count": 23,
+    "total_columns": 317
+  },
+  "tableCount": 23
+}

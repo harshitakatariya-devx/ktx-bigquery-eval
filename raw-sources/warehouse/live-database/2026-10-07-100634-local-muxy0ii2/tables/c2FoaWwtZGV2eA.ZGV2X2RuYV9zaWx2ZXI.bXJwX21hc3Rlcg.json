@@ -1,0 +1,101 @@
+{
+  "catalog": "sahil-devx",
+  "db": "dev_dna_silver",
+  "name": "mrp_master",
+  "kind": "table",
+  "comment": "Time-versioned Maximum Retail Price (list price) per product. One row per price change; effective_from/effective_to define the validity window.",
+  "estimatedRows": 36,
+  "columns": [
+    {
+      "name": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting."
+    },
+    {
+      "name": "product_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Canonical product/SKU identifier. Joins to item_master."
+    },
+    {
+      "name": "mrp",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "dimensionType": "number",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Maximum Retail Price (list price before any discount) in effect during this row's validity window."
+    },
+    {
+      "name": "effective_from",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "dimensionType": "time",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Date this MRP became effective (inclusive)."
+    },
+    {
+      "name": "effective_to",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "dimensionType": "time",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Date this MRP stopped being effective (exclusive/inclusive per pipeline convention); NULL or a far-future date marks the current price."
+    },
+    {
+      "name": "currency",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Currency this MRP is denominated in."
+    },
+    {
+      "name": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "dimensionType": "time",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time."
+    },
+    {
+      "name": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "dimensionType": "time",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time."
+    },
+    {
+      "name": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis."
+    },
+    {
+      "name": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "dimensionType": "boolean",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting."
+    }
+  ],
+  "foreignKeys": []
+}
