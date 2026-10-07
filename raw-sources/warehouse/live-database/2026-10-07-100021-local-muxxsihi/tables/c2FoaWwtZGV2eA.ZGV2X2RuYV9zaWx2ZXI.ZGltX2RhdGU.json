@@ -1,0 +1,83 @@
+{
+  "catalog": "sahil-devx",
+  "db": "dev_dna_silver",
+  "name": "dim_date",
+  "kind": "table",
+  "comment": "Silver-layer calendar/date dimension. One row per calendar date, used to derive time-based fields during transformation.",
+  "estimatedRows": 500,
+  "columns": [
+    {
+      "name": "date_key",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "dimensionType": "time",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Calendar date (YYYY-MM-DD); the grain of this table and the join key used by every order_date_key/return_date_key column."
+    },
+    {
+      "name": "cal_year",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "dimensionType": "number",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Calendar year of this date."
+    },
+    {
+      "name": "cal_month",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "dimensionType": "number",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Calendar month number (1-12) of this date."
+    },
+    {
+      "name": "year_month",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Year and month as a sortable string (e.g. 2026-08), useful for month-over-month grouping."
+    },
+    {
+      "name": "month_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Full calendar month name (e.g. August)."
+    },
+    {
+      "name": "cal_quarter",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "dimensionType": "number",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Calendar quarter number (1-4) of this date."
+    },
+    {
+      "name": "day_of_week",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "dimensionType": "number",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Day of week number for this date."
+    },
+    {
+      "name": "is_weekend",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "dimensionType": "boolean",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "TRUE when this date falls on a Saturday or Sunday."
+    }
+  ],
+  "foreignKeys": []
+}

@@ -1,0 +1,38 @@
+{
+  "catalog": "sahil-devx",
+  "db": "dev_dna_silver",
+  "name": "_demo_calendar",
+  "kind": "table",
+  "comment": null,
+  "estimatedRows": 420,
+  "columns": [
+    {
+      "name": "dt",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "dimensionType": "time",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": null
+    },
+    {
+      "name": "age",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "dimensionType": "number",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": null
+    },
+    {
+      "name": "reps",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "dimensionType": "number",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": null
+    }
+  ],
+  "foreignKeys": []
+}

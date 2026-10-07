@@ -1,0 +1,38 @@
+{
+  "catalog": "sahil-devx",
+  "db": "dev_dna_silver",
+  "name": "dim_d2c_order",
+  "kind": "table",
+  "comment": "Lightweight order-header lookup for D2C orders (one row per order, not per line item) — use this to count distinct orders or find which customer/date an order_name belongs to without double-counting across line items.",
+  "estimatedRows": 1321485,
+  "columns": [
+    {
+      "name": "order_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Shopify order number/name; unique per order."
+    },
+    {
+      "name": "order_date_key",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "dimensionType": "time",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Calendar date the order was placed."
+    },
+    {
+      "name": "customer_email",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Email address the customer used to place this order."
+    }
+  ],
+  "foreignKeys": []
+}

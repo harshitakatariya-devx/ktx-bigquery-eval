@@ -1,0 +1,182 @@
+{
+  "catalog": "sahil-devx",
+  "db": "dev_dna_silver",
+  "name": "international_orders",
+  "kind": "table",
+  "comment": "Line-grain cross-border orders shipped to customers outside the home market. Channel: INTL.",
+  "estimatedRows": 461500,
+  "columns": [
+    {
+      "name": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting."
+    },
+    {
+      "name": "order_ref",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Unique reference number for this international order."
+    },
+    {
+      "name": "order_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "dimensionType": "time",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Timestamp/date the order was placed."
+    },
+    {
+      "name": "dest_country",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Destination country the order was shipped to."
+    },
+    {
+      "name": "customer_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Customer's name as provided at checkout."
+    },
+    {
+      "name": "product_desc",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Product description text as recorded by the international order source."
+    },
+    {
+      "name": "product_ref_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Source system's own product reference code for this line item, prior to mapping onto the canonical product_id."
+    },
+    {
+      "name": "qty",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "dimensionType": "number",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Quantity of this product ordered on this line."
+    },
+    {
+      "name": "unit_price_usd",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "dimensionType": "number",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Unit price charged for this line, in USD."
+    },
+    {
+      "name": "shipping_cost_usd",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "dimensionType": "number",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Shipping cost charged on this order, in USD."
+    },
+    {
+      "name": "customs_duty_usd",
+      "nativeType": "NUMERIC",
+      "normalizedType": "DECIMAL",
+      "dimensionType": "number",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Customs/import duty charged on this order, in USD."
+    },
+    {
+      "name": "shipment_status",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Current shipping status of this order (e.g. Pending, Shipped, Delivered, Returned)."
+    },
+    {
+      "name": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Short code identifying the sales channel this record belongs to (e.g. D2C, OFFLINE, QCOMM, PLATFORM, INTL, CAFE). Joins to dim_channels for the channel's full name, group and settlement currency."
+    },
+    {
+      "name": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "dimensionType": "time",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time."
+    },
+    {
+      "name": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "dimensionType": "time",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time."
+    },
+    {
+      "name": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis."
+    },
+    {
+      "name": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "dimensionType": "boolean",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting."
+    },
+    {
+      "name": "order_date_key",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "dimensionType": "time",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Calendar date (YYYY-MM-DD) the order/transaction occurred, derived from the transaction timestamp. Use this column (not the raw timestamp) to join to dim_date for month/quarter/year reporting."
+    },
+    {
+      "name": "product_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Canonical product/SKU identifier. Joins to item_master for product name, category and brand."
+    }
+  ],
+  "foreignKeys": []
+}

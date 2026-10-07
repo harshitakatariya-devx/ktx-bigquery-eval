@@ -1,0 +1,128 @@
+{
+  "catalog": "sahil-devx",
+  "db": "dev_dna_silver",
+  "name": "employees",
+  "kind": "table",
+  "comment": "Employee master across all channels that have staff (retail stores, cafes, warehouses).",
+  "estimatedRows": 1050,
+  "columns": [
+    {
+      "name": "hash_key",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting."
+    },
+    {
+      "name": "employee_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Unique employee identifier."
+    },
+    {
+      "name": "employee_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Employee's full name."
+    },
+    {
+      "name": "role",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Employee's job role/title (e.g. Store Manager, Cashier, Barista)."
+    },
+    {
+      "name": "channel_code",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Sales channel this employee is staffed under (e.g. OFFLINE, CAFE)."
+    },
+    {
+      "name": "store_id",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Store or outlet code the employee is assigned to."
+    },
+    {
+      "name": "hire_date",
+      "nativeType": "DATE",
+      "normalizedType": "DATE",
+      "dimensionType": "time",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Date the employee joined the company."
+    },
+    {
+      "name": "employment_status",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Employee's current status (e.g. Active, On Leave, Terminated)."
+    },
+    {
+      "name": "rn",
+      "nativeType": "INTEGER",
+      "normalizedType": "BIGINT",
+      "dimensionType": "number",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Row number assigned per natural key by the ingestion pipeline (partitioned by business key, ordered by recency). rn = 1 identifies the current/latest version of a record when historized duplicates exist in this table."
+    },
+    {
+      "name": "insert_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "dimensionType": "time",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time."
+    },
+    {
+      "name": "modified_timestamp",
+      "nativeType": "TIMESTAMP",
+      "normalizedType": "TIMESTAMP",
+      "dimensionType": "time",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time."
+    },
+    {
+      "name": "source_name",
+      "nativeType": "STRING",
+      "normalizedType": "VARCHAR",
+      "dimensionType": "string",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis."
+    },
+    {
+      "name": "is_deleted",
+      "nativeType": "BOOLEAN",
+      "normalizedType": "BOOLEAN",
+      "dimensionType": "boolean",
+      "nullable": true,
+      "primaryKey": false,
+      "comment": "Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting."
+    }
+  ],
+  "foreignKeys": []
+}
