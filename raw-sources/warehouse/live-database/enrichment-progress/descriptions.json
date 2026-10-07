@@ -235,6 +235,236 @@
         "order_date_key": "Canonical order date for joining to dim_date for period-based reporting.",
         "product_id": "Canonical SKU; join to item_master for product name, category, and brand."
       }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "item_master"
+      },
+      "tableDescription": "Central product catalog storing SKU-level attributes including name, category, brand, unit of measure, and lifecycle status for all channels.",
+      "columnDescriptions": {
+        "hash_key": "Internal deduplication key generated at ingestion; not meaningful for business reporting or analysis.",
+        "product_id": "Cross-channel canonical SKU identifier used after source code mapping.",
+        "product_name": "Official display name shown to customers and used across channels.",
+        "category": "Broad grouping of similar products, such as Beverages or Apparel.",
+        "brand": "Commercial brand under which the product is marketed and sold.",
+        "uom": "Selling and stocking unit, such as each, kilogram, or box.",
+        "status": "Indicates whether the product is active, discontinued, or another lifecycle stage.",
+        "insert_timestamp": "Pipeline load time when the record first entered the silver layer.",
+        "modified_timestamp": "Pipeline processing time of the most recent update to this record.",
+        "source_name": "Identifies the upstream system or file for lineage and troubleshooting only.",
+        "is_deleted": "Soft-delete flag; TRUE means the source removed this product—exclude from reporting."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "mrp_master"
+      },
+      "tableDescription": "Stores time-versioned Maximum Retail Price records per product, enabling point-in-time price lookups across validity windows.",
+      "columnDescriptions": {
+        "hash_key": "Internal deduplication key; not a business attribute, exclude from reporting.",
+        "product_id": "Links each price record to a specific product or SKU.",
+        "mrp": "Official list price before discounts, valid during the defined date window.",
+        "effective_from": "Inclusive start date of this MRP's validity period.",
+        "effective_to": "End date of MRP validity; NULL or far-future date indicates the current active price.",
+        "currency": "Currency in which the MRP value is expressed.",
+        "insert_timestamp": "Pipeline load time when the record first entered the silver layer.",
+        "modified_timestamp": "Pipeline processing time of the most recent update to this record.",
+        "source_name": "Upstream system or file origin; used for lineage and troubleshooting only.",
+        "is_deleted": "Marks records removed upstream; exclude TRUE rows from business reporting."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "offline_orders"
+      },
+      "tableDescription": "Line-level sales transactions recorded at physical retail store tills, capturing product, pricing, discount, and payment details per invoice line.",
+      "columnDescriptions": {
+        "hash_key": "Pipeline-generated deduplication key; not a business attribute, exclude from reporting.",
+        "invoice_no": "Unique bill number issued by the POS system at the store till.",
+        "txn_date": "Calendar date the in-store sale took place.",
+        "store_code": "Identifier for the retail store where the transaction occurred.",
+        "city": "City where the selling store is located.",
+        "item_name": "Raw product name as captured by the POS system at the till.",
+        "item_code": "POS-native item identifier before mapping to the canonical product ID.",
+        "qty": "Number of units of this product sold on the invoice line.",
+        "mrp": "Published list price of the item at the time of sale.",
+        "discount_pct": "Percentage discount applied to reduce MRP on this line item.",
+        "net_amount": "Amount charged to the customer after discount, in Indian Rupees.",
+        "payment_type": "Customer's payment method, such as cash, card, or UPI.",
+        "channel_code": "Short code for the sales channel; join dim_channels for full details.",
+        "insert_timestamp": "Pipeline load time when the record first entered the silver layer.",
+        "modified_timestamp": "Pipeline processing time when the record was last updated by ingestion.",
+        "source_name": "Upstream source system or file name; used for lineage and troubleshooting only.",
+        "is_deleted": "Soft-delete flag; exclude rows marked TRUE from all business reporting.",
+        "order_date_key": "Transaction date for joining to dim_date for time-based reporting.",
+        "product_id": "Canonical SKU identifier; joins to item_master for product attributes."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "shipments"
+      },
+      "tableDescription": "Tracks individual shipments from dispatch to delivery, linking orders across sales channels to couriers and current delivery status.",
+      "columnDescriptions": {
+        "hash_key": "Internal deduplication key; not a business attribute, exclude from reporting.",
+        "shipment_id": "Unique business identifier for each shipment.",
+        "channel_code": "Sales channel through which the shipped order was originally placed.",
+        "order_ref": "Cross-channel reference linking this shipment to its originating order.",
+        "courier_name": "Logistics partner responsible for physically carrying and delivering the shipment.",
+        "dispatch_date": "Date the shipment physically left the warehouse or store.",
+        "delivered_date": "Date the shipment reached the customer; NULL means not yet delivered.",
+        "delivery_status": "Current tracking status such as In Transit, Delivered, or Lost.",
+        "rn": "Row number per shipment; value of 1 indicates the latest active record.",
+        "insert_timestamp": "Pipeline load timestamp when the record entered the silver layer; not a business event.",
+        "modified_timestamp": "Pipeline timestamp of the most recent update; not a business event.",
+        "source_name": "Upstream source system or file; for lineage and troubleshooting only.",
+        "is_deleted": "Soft-delete flag; exclude rows where TRUE from all business reporting."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "marketing_spend"
+      },
+      "tableDescription": "Records daily marketing expenditure, impressions, and clicks per promotion and sales channel, enabling campaign spend performance analysis.",
+      "columnDescriptions": {
+        "hash_key": "Internal deduplication key; not for reporting or business use.",
+        "spend_id": "Unique business identifier for a single marketing spend transaction.",
+        "promo_id": "Links this spend to a specific promotion or campaign.",
+        "channel_code": "Identifies the sales channel targeted, e.g., PLATFORM, OFFLINE, D2C, CAFE.",
+        "spend_date": "Calendar date on which the marketing expenditure was incurred.",
+        "spend_amount_inr": "Total marketing money spent in Indian Rupees for this record.",
+        "impressions": "Total ad views delivered for this promotion and channel on the date.",
+        "clicks": "Total user ad clicks for this promotion and channel on the date.",
+        "rn": "Value of 1 marks the current record among historical duplicates.",
+        "insert_timestamp": "UTC time when the record first loaded into the silver layer.",
+        "modified_timestamp": "UTC time of the most recent pipeline update to this record.",
+        "source_name": "Upstream system or file this record originated from; for lineage only.",
+        "is_deleted": "TRUE when the source record was removed; exclude from business reporting."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "suppliers"
+      },
+      "tableDescription": "Master list of approved suppliers including their category, country, contract start date, average lead time, and current status.",
+      "columnDescriptions": {
+        "hash_key": "Internal deduplication key; not meaningful for business analysis or reporting.",
+        "supplier_id": "Unique business identifier for each supplier.",
+        "supplier_name": "Legal or trading name of the supplier company.",
+        "category": "Type of goods or services the supplier provides.",
+        "country": "Country where the supplier operates or is headquartered.",
+        "contract_start_date": "Date the active supply agreement with this supplier commenced.",
+        "avg_lead_time_days": "Average number of days from purchase order placement to delivery.",
+        "status": "Indicates whether the supplier is Active, Suspended, or Terminated.",
+        "rn": "Row number; value of 1 identifies the latest active record version.",
+        "insert_timestamp": "Pipeline load time when the record entered the silver layer; not a business event.",
+        "modified_timestamp": "Pipeline processing time of the last record update; not a business event.",
+        "source_name": "Upstream system or file the record originated from; used for lineage only.",
+        "is_deleted": "Flags records removed upstream; TRUE rows should be excluded from reporting."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "platform_orders"
+      },
+      "tableDescription": "Order line-level sales from third-party marketplaces, capturing product, pricing, fees, discounts, shipping destination, and fulfillment status.",
+      "columnDescriptions": {
+        "hash_key": "Internal deduplication key generated at ingestion. Exclude from all business reporting.",
+        "marketplace": "Third-party platform where the order was placed (e.g., Amazon, Flipkart, Myntra).",
+        "order_id": "Unique order identifier assigned by the marketplace.",
+        "order_date": "Calendar date the customer placed the order on the marketplace.",
+        "product_title": "Product name as displayed on the marketplace listing for this order line.",
+        "marketplace_sku": "Platform-specific listing ID before mapping to the canonical product identifier.",
+        "units": "Number of product units purchased on this order line.",
+        "unit_price": "Per-unit selling price in INR, before marketplace fees or promotional discounts.",
+        "marketplace_fee": "Commission charged by the marketplace on this order line, in INR.",
+        "promo_discount": "Promotional discount applied to this order line by the marketplace, in INR.",
+        "ship_to_city": "City the order was delivered to.",
+        "ship_to_country": "Country the order was delivered to.",
+        "fulfillment_status": "Current order lifecycle status (e.g., Pending, Shipped, Delivered, Cancelled, Refunded).",
+        "channel_code": "Short sales-channel code; joins to dim_channels for full name, group, and settlement currency.",
+        "insert_timestamp": "Pipeline load time when the record first entered the silver layer; not a business event.",
+        "modified_timestamp": "Pipeline processing time of the most recent record update; not a business event.",
+        "source_name": "Upstream source system or file name; used for lineage and troubleshooting only.",
+        "is_deleted": "Soft-delete flag; exclude rows marked TRUE from all business reporting.",
+        "order_date_key": "Join key to dim_date for calendar-based month, quarter, and year reporting.",
+        "product_id": "Canonical SKU identifier; joins to item_master for product name, category, and brand."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_bundle"
+      },
+      "tableDescription": "Defines sellable product bundles and their component SKUs, capturing each included product and quantity per bundle unit.",
+      "columnDescriptions": {
+        "hash_key": "Internal deduplication key generated at ingestion; exclude from all business reporting and analysis.",
+        "bundle_id": "Unique business identifier for a sellable product bundle or combo.",
+        "bundle_name": "Customer-facing display name of the bundle as marketed and sold.",
+        "component_product_id": "Identifies a single SKU within the bundle; links to item_master for product details.",
+        "component_qty": "Number of units of this component product included in one bundle.",
+        "insert_timestamp": "Pipeline load time when the record first entered the silver layer; not a business event.",
+        "modified_timestamp": "Pipeline processing time of the most recent record update; not a business event time.",
+        "source_name": "Upstream system or file the record originated from; used for lineage only.",
+        "is_deleted": "Marks records removed upstream; exclude rows flagged TRUE from business reporting."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "product_codes"
+      },
+      "tableDescription": "Maps each sales channel's native product codes and names to a canonical product identifier for cross-channel reconciliation.",
+      "columnDescriptions": {
+        "hash_key": "Pipeline-generated deduplication and change-detection key; not a business attribute.",
+        "product_id": "Canonical product/SKU identifier linking this channel code to the master product catalog.",
+        "channel_code": "Identifies the sales channel (e.g., OFFLINE, CAFE, D2C) to which this code mapping applies.",
+        "source_code": "Native product or SKU code assigned by the upstream channel before canonical mapping.",
+        "source_product_name": "Native product name used by the upstream channel before canonical mapping.",
+        "insert_timestamp": "UTC pipeline load time when the record was first ingested into the silver layer.",
+        "modified_timestamp": "UTC pipeline time of the most recent record update; not a business event.",
+        "source_name": "Upstream system or file the record was ingested from; used for data lineage.",
+        "is_deleted": "Soft-delete flag; rows marked TRUE were removed upstream and should be excluded from reporting."
+      }
+    },
+    {
+      "table": {
+        "catalog": "sahil-devx",
+        "db": "dev_dna_silver",
+        "name": "promotions"
+      },
+      "tableDescription": "Stores marketing promotions and discount campaigns across sales channels, including coupon codes, discount rates, and active date ranges.",
+      "columnDescriptions": {
+        "hash_key": "Pipeline-internal deduplication key; exclude from all business reporting and analysis.",
+        "promo_id": "Primary business identifier distinguishing each individual promotion or campaign offer.",
+        "promo_code": "Alphanumeric code customers apply at checkout to redeem the discount.",
+        "channel_code": "Sales or distribution channel where the promotion was made available.",
+        "discount_pct": "Percentage reduction in price granted to customers under this promotion.",
+        "start_date": "First day customers can redeem this promotion, inclusive.",
+        "end_date": "Last day customers can redeem this promotion, inclusive.",
+        "campaign_name": "Broader marketing campaign grouping that this promotion belongs to.",
+        "rn": "Filter to rn = 1 to retrieve only the latest record version.",
+        "insert_timestamp": "Pipeline load time into the silver layer; not a business event.",
+        "modified_timestamp": "Pipeline processing time of the last update; not a business event.",
+        "source_name": "Upstream system or file the record originated from; for lineage only.",
+        "is_deleted": "TRUE indicates the promotion was removed upstream; exclude from reporting."
+      }
     }
   ]
 }
