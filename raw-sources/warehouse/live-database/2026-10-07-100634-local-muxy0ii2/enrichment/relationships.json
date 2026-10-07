@@ -1,0 +1,2727 @@
+{
+  "connectionId": "warehouse",
+  "accepted": [
+    {
+      "id": "sahil-devx.dev_dna_silver.cafe_sales:(sahil-devx.dev_dna_silver.cafe_sales.order_date_key)->sahil-devx.dev_dna_silver.dim_date:(sahil-devx.dev_dna_silver.dim_date.date_key)",
+      "status": "accepted",
+      "source": "column_suffix_match",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.cafe_sales",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.cafe_sales.order_date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "cafe_sales"
+        },
+        "columns": [
+          "order_date_key"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.dim_date",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.dim_date.date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "dim_date"
+        },
+        "columns": [
+          "date_key"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.952,
+      "pkScore": 0.976,
+      "fkScore": 0.981,
+      "score": 0.99,
+      "evidence": {
+        "sourceColumnBase": "order_date",
+        "targetTableBase": "date",
+        "targetColumnBase": "date_key",
+        "targetKeyScore": 0.82,
+        "nameScore": 0.78,
+        "reasons": [
+          "column_suffix_match",
+          "target_key_like",
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "signalVector": {
+          "nameSimilarity": 0.78,
+          "typeCompatibility": 1,
+          "valueOverlap": 0,
+          "embeddingSimilarity": 0,
+          "profileUniqueness": 1,
+          "profileNullRate": 1,
+          "structuralPrior": 0.4
+        },
+        "scoreBreakdown": {
+          "score": 0.952,
+          "signals": {
+            "nameSimilarity": 0.78,
+            "typeCompatibility": 1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 1,
+            "profileNullRate": 1,
+            "structuralPrior": 0.4
+          },
+          "weights": {
+            "nameSimilarity": 0.24000000000000002,
+            "typeCompatibility": 0.10000000000000002,
+            "valueOverlap": 0.22000000000000003,
+            "embeddingSimilarity": 0.10000000000000002,
+            "profileUniqueness": 0.22000000000000003,
+            "profileNullRate": 0.08000000000000002,
+            "structuralPrior": 0.04000000000000001
+          },
+          "contributions": {
+            "nameSimilarity": 0.1872,
+            "typeCompatibility": 0.1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 0.22,
+            "profileNullRate": 0.08,
+            "structuralPrior": 0.016
+          }
+        },
+        "llmConfidence": 0.92,
+        "llmRationale": "Column description explicitly states 'use this to join dim_date for period-level reporting.' Both columns are DATE type with overlapping sample values. dim_date.date_key is the declared grain key."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 447,
+        "parentDistinct": 500,
+        "overlap": 447,
+        "checkedValues": 447,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.976,
+        "incomingCandidateCount": 8,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "column_suffix_match",
+        "target_key_like",
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.cafe_sales:(sahil-devx.dev_dna_silver.cafe_sales.product_id)->sahil-devx.dev_dna_silver.item_master:(sahil-devx.dev_dna_silver.item_master.product_id)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.cafe_sales",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.cafe_sales.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "cafe_sales"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.item_master",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.item_master.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "item_master"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.92,
+      "pkScore": 0.986,
+      "fkScore": 0.977,
+      "score": 0.984,
+      "evidence": {
+        "sourceColumnBase": "product_id",
+        "targetTableBase": "item_master",
+        "targetColumnBase": "product_id",
+        "targetKeyScore": 0.88,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "llmConfidence": 0.92,
+        "llmRationale": "cafe_sales.product_id column description explicitly states 'Canonical SKU mapped from the till item name; joins to item_master.' Sample values PROD0001–PROD0018 align with item_master.product_id domain (18 SKUs)."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 18,
+        "parentDistinct": 18,
+        "overlap": 18,
+        "checkedValues": 18,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.986,
+        "incomingCandidateCount": 11,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.d2c_orders:(sahil-devx.dev_dna_silver.d2c_orders.customer_email)->sahil-devx.dev_dna_silver.dim_customer:(sahil-devx.dev_dna_silver.dim_customer.email)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.d2c_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.d2c_orders.customer_email"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "d2c_orders"
+        },
+        "columns": [
+          "customer_email"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.dim_customer",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.dim_customer.email"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "dim_customer"
+        },
+        "columns": [
+          "email"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.88,
+      "pkScore": 0.923,
+      "fkScore": 0.949,
+      "score": 0.976,
+      "evidence": {
+        "sourceColumnBase": "customer_email",
+        "targetTableBase": "customer",
+        "targetColumnBase": "email",
+        "targetKeyScore": 0.68,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal"
+        ],
+        "llmConfidence": 0.88,
+        "llmRationale": "d2c_orders.customer_email description states 'links this order to the customer master.' dim_customer.email has uniquenessRatio=1 (1496 distinct values) and identical sample email patterns. d2c_orders distinctCount of 1495 emails aligns with dim_customer's 1496 unique emails."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 1496,
+        "parentDistinct": 1496,
+        "overlap": 1496,
+        "checkedValues": 1496,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.923,
+        "incomingCandidateCount": 2,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.d2c_orders:(sahil-devx.dev_dna_silver.d2c_orders.order_date_key)->sahil-devx.dev_dna_silver.dim_date:(sahil-devx.dev_dna_silver.dim_date.date_key)",
+      "status": "accepted",
+      "source": "column_suffix_match",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.d2c_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.d2c_orders.order_date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "d2c_orders"
+        },
+        "columns": [
+          "order_date_key"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.dim_date",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.dim_date.date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "dim_date"
+        },
+        "columns": [
+          "date_key"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.952,
+      "pkScore": 0.976,
+      "fkScore": 0.981,
+      "score": 0.99,
+      "evidence": {
+        "sourceColumnBase": "order_date",
+        "targetTableBase": "date",
+        "targetColumnBase": "date_key",
+        "targetKeyScore": 0.82,
+        "nameScore": 0.78,
+        "reasons": [
+          "column_suffix_match",
+          "target_key_like",
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "signalVector": {
+          "nameSimilarity": 0.78,
+          "typeCompatibility": 1,
+          "valueOverlap": 0,
+          "embeddingSimilarity": 0,
+          "profileUniqueness": 1,
+          "profileNullRate": 1,
+          "structuralPrior": 0.4
+        },
+        "scoreBreakdown": {
+          "score": 0.952,
+          "signals": {
+            "nameSimilarity": 0.78,
+            "typeCompatibility": 1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 1,
+            "profileNullRate": 1,
+            "structuralPrior": 0.4
+          },
+          "weights": {
+            "nameSimilarity": 0.24000000000000002,
+            "typeCompatibility": 0.10000000000000002,
+            "valueOverlap": 0.22000000000000003,
+            "embeddingSimilarity": 0.10000000000000002,
+            "profileUniqueness": 0.22000000000000003,
+            "profileNullRate": 0.08000000000000002,
+            "structuralPrior": 0.04000000000000001
+          },
+          "contributions": {
+            "nameSimilarity": 0.1872,
+            "typeCompatibility": 0.1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 0.22,
+            "profileNullRate": 0.08,
+            "structuralPrior": 0.016
+          }
+        },
+        "llmConfidence": 0.92,
+        "llmRationale": "Column description states 'use to join dim_date for period reporting.' DATE type matches dim_date.date_key grain. Overlapping sample date values confirm shared domain."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 447,
+        "parentDistinct": 500,
+        "overlap": 447,
+        "checkedValues": 447,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.976,
+        "incomingCandidateCount": 8,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "column_suffix_match",
+        "target_key_like",
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.d2c_orders:(sahil-devx.dev_dna_silver.d2c_orders.order_name)->sahil-devx.dev_dna_silver.dim_d2c_order:(sahil-devx.dev_dna_silver.dim_d2c_order.order_name)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.d2c_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.d2c_orders.order_name"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "d2c_orders"
+        },
+        "columns": [
+          "order_name"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.dim_d2c_order",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.dim_d2c_order.order_name"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "dim_d2c_order"
+        },
+        "columns": [
+          "order_name"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.9,
+      "pkScore": 0.923,
+      "fkScore": 0.952,
+      "score": 0.977,
+      "evidence": {
+        "sourceColumnBase": "order_name",
+        "targetTableBase": "d_2_c_order",
+        "targetColumnBase": "order_name",
+        "targetKeyScore": 0.88,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "llmConfidence": 0.9,
+        "llmRationale": "Both columns carry Shopify order identifiers with identical #D2C-prefixed format (e.g., #D2C400038). dim_d2c_order is explicitly a dimension table for D2C orders and order_name is its declared unique key. d2c_orders is the fact source."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 0.9947,
+        "violationCount": 53,
+        "violationRatio": 0.0053,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 10000,
+        "parentDistinct": 1321485,
+        "overlap": 9947,
+        "checkedValues": 10000,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.923,
+        "incomingCandidateCount": 1,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.d2c_orders:(sahil-devx.dev_dna_silver.d2c_orders.product_id)->sahil-devx.dev_dna_silver.item_master:(sahil-devx.dev_dna_silver.item_master.product_id)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.d2c_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.d2c_orders.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "d2c_orders"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.item_master",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.item_master.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "item_master"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.92,
+      "pkScore": 0.986,
+      "fkScore": 0.977,
+      "score": 0.984,
+      "evidence": {
+        "sourceColumnBase": "product_id",
+        "targetTableBase": "item_master",
+        "targetColumnBase": "product_id",
+        "targetKeyScore": 0.88,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "llmConfidence": 0.92,
+        "llmRationale": "d2c_orders.product_id column description states 'SKU identifier linking to item_master for product name, category, and brand.' Sample values match the PROD0001–PROD0018 domain of item_master."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 18,
+        "parentDistinct": 18,
+        "overlap": 18,
+        "checkedValues": 18,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.986,
+        "incomingCandidateCount": 11,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.dim_customer:(sahil-devx.dev_dna_silver.dim_customer.customer_master_id)->sahil-devx.dev_dna_silver.customers_master:(sahil-devx.dev_dna_silver.customers_master.customer_master_id)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.dim_customer",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.dim_customer.customer_master_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "dim_customer"
+        },
+        "columns": [
+          "customer_master_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.customers_master",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.customers_master.customer_master_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "customers_master"
+        },
+        "columns": [
+          "customer_master_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.85,
+      "pkScore": 0.921,
+      "fkScore": 0.941,
+      "score": 0.97,
+      "evidence": {
+        "sourceColumnBase": "customer_master_id",
+        "targetTableBase": "customers_master",
+        "targetColumnBase": "customer_master_id",
+        "targetKeyScore": 0.88,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "llmConfidence": 0.85,
+        "llmRationale": "dim_customer shares identical hash_key values and source_name (BRONZE_CUSTOMERS_MASTER) with customers_master, confirming it is derived from customers_master with rn=1 filter. dim_customer (1496 rows) is a subset of customers_master (1600 rows); customer_master_id is the shared business key."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 1496,
+        "parentDistinct": 1600,
+        "overlap": 1496,
+        "checkedValues": 1496,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.921,
+        "incomingCandidateCount": 1,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.dim_d2c_order:(sahil-devx.dev_dna_silver.dim_d2c_order.customer_email)->sahil-devx.dev_dna_silver.dim_customer:(sahil-devx.dev_dna_silver.dim_customer.email)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.dim_d2c_order",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.dim_d2c_order.customer_email"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "dim_d2c_order"
+        },
+        "columns": [
+          "customer_email"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.dim_customer",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.dim_customer.email"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "dim_customer"
+        },
+        "columns": [
+          "email"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.87,
+      "pkScore": 0.923,
+      "fkScore": 0.946,
+      "score": 0.974,
+      "evidence": {
+        "sourceColumnBase": "customer_email",
+        "targetTableBase": "customer",
+        "targetColumnBase": "email",
+        "targetKeyScore": 0.68,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal"
+        ],
+        "llmConfidence": 0.87,
+        "llmRationale": "dim_d2c_order.customer_email has only 28 distinct values in the sample, all matching the example.com/example.net domain patterns seen in dim_customer.email. dim_customer.email has uniquenessRatio=1, making it a valid join target for customer resolution."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 1496,
+        "parentDistinct": 1496,
+        "overlap": 1496,
+        "checkedValues": 1496,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.923,
+        "incomingCandidateCount": 2,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.dim_d2c_order:(sahil-devx.dev_dna_silver.dim_d2c_order.order_date_key)->sahil-devx.dev_dna_silver.dim_date:(sahil-devx.dev_dna_silver.dim_date.date_key)",
+      "status": "accepted",
+      "source": "column_suffix_match",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.dim_d2c_order",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.dim_d2c_order.order_date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "dim_d2c_order"
+        },
+        "columns": [
+          "order_date_key"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.dim_date",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.dim_date.date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "dim_date"
+        },
+        "columns": [
+          "date_key"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.952,
+      "pkScore": 0.976,
+      "fkScore": 0.981,
+      "score": 0.99,
+      "evidence": {
+        "sourceColumnBase": "order_date",
+        "targetTableBase": "date",
+        "targetColumnBase": "date_key",
+        "targetKeyScore": 0.82,
+        "nameScore": 0.78,
+        "reasons": [
+          "column_suffix_match",
+          "target_key_like",
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "signalVector": {
+          "nameSimilarity": 0.78,
+          "typeCompatibility": 1,
+          "valueOverlap": 0,
+          "embeddingSimilarity": 0,
+          "profileUniqueness": 1,
+          "profileNullRate": 1,
+          "structuralPrior": 0.4
+        },
+        "scoreBreakdown": {
+          "score": 0.952,
+          "signals": {
+            "nameSimilarity": 0.78,
+            "typeCompatibility": 1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 1,
+            "profileNullRate": 1,
+            "structuralPrior": 0.4
+          },
+          "weights": {
+            "nameSimilarity": 0.24000000000000002,
+            "typeCompatibility": 0.10000000000000002,
+            "valueOverlap": 0.22000000000000003,
+            "embeddingSimilarity": 0.10000000000000002,
+            "profileUniqueness": 0.22000000000000003,
+            "profileNullRate": 0.08000000000000002,
+            "structuralPrior": 0.04000000000000001
+          },
+          "contributions": {
+            "nameSimilarity": 0.1872,
+            "typeCompatibility": 0.1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 0.22,
+            "profileNullRate": 0.08,
+            "structuralPrior": 0.016
+          }
+        },
+        "llmConfidence": 0.88,
+        "llmRationale": "Column description states it is the 'primary key for time-based reporting joins.' DATE type; 421 distinct dates align with dim_date coverage. Standard dimension-to-date-dimension join pattern."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 447,
+        "parentDistinct": 500,
+        "overlap": 447,
+        "checkedValues": 447,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.976,
+        "incomingCandidateCount": 8,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "column_suffix_match",
+        "target_key_like",
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.international_orders:(sahil-devx.dev_dna_silver.international_orders.order_date_key)->sahil-devx.dev_dna_silver.dim_date:(sahil-devx.dev_dna_silver.dim_date.date_key)",
+      "status": "accepted",
+      "source": "column_suffix_match",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.international_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.international_orders.order_date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "international_orders"
+        },
+        "columns": [
+          "order_date_key"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.dim_date",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.dim_date.date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "dim_date"
+        },
+        "columns": [
+          "date_key"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.952,
+      "pkScore": 0.976,
+      "fkScore": 0.981,
+      "score": 0.99,
+      "evidence": {
+        "sourceColumnBase": "order_date",
+        "targetTableBase": "date",
+        "targetColumnBase": "date_key",
+        "targetKeyScore": 0.82,
+        "nameScore": 0.78,
+        "reasons": [
+          "column_suffix_match",
+          "target_key_like",
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "signalVector": {
+          "nameSimilarity": 0.78,
+          "typeCompatibility": 1,
+          "valueOverlap": 0,
+          "embeddingSimilarity": 0,
+          "profileUniqueness": 1,
+          "profileNullRate": 1,
+          "structuralPrior": 0.4
+        },
+        "scoreBreakdown": {
+          "score": 0.952,
+          "signals": {
+            "nameSimilarity": 0.78,
+            "typeCompatibility": 1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 1,
+            "profileNullRate": 1,
+            "structuralPrior": 0.4
+          },
+          "weights": {
+            "nameSimilarity": 0.24000000000000002,
+            "typeCompatibility": 0.10000000000000002,
+            "valueOverlap": 0.22000000000000003,
+            "embeddingSimilarity": 0.10000000000000002,
+            "profileUniqueness": 0.22000000000000003,
+            "profileNullRate": 0.08000000000000002,
+            "structuralPrior": 0.04000000000000001
+          },
+          "contributions": {
+            "nameSimilarity": 0.1872,
+            "typeCompatibility": 0.1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 0.22,
+            "profileNullRate": 0.08,
+            "structuralPrior": 0.016
+          }
+        },
+        "llmConfidence": 0.92,
+        "llmRationale": "Column description states 'Canonical order date for joining to dim_date for period-based reporting.' DATE type; overlapping sample values (2025-10-04 etc.) fall within dim_date's range."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 447,
+        "parentDistinct": 500,
+        "overlap": 447,
+        "checkedValues": 447,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.976,
+        "incomingCandidateCount": 8,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "column_suffix_match",
+        "target_key_like",
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.international_orders:(sahil-devx.dev_dna_silver.international_orders.product_id)->sahil-devx.dev_dna_silver.item_master:(sahil-devx.dev_dna_silver.item_master.product_id)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.international_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.international_orders.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "international_orders"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.item_master",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.item_master.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "item_master"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.92,
+      "pkScore": 0.986,
+      "fkScore": 0.977,
+      "score": 0.984,
+      "evidence": {
+        "sourceColumnBase": "product_id",
+        "targetTableBase": "item_master",
+        "targetColumnBase": "product_id",
+        "targetKeyScore": 0.88,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "llmConfidence": 0.92,
+        "llmRationale": "Column description states 'Canonical SKU; join to item_master for product name, category, and brand.' Sample values match the PROD0001–PROD0018 domain. 18 distinct product_ids match item_master row count exactly."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 18,
+        "parentDistinct": 18,
+        "overlap": 18,
+        "checkedValues": 18,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.986,
+        "incomingCandidateCount": 11,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.inventory_snapshot_expanded:(sahil-devx.dev_dna_silver.inventory_snapshot_expanded.product_id)->sahil-devx.dev_dna_silver.item_master:(sahil-devx.dev_dna_silver.item_master.product_id)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.inventory_snapshot_expanded",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.inventory_snapshot_expanded.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "inventory_snapshot_expanded"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.item_master",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.item_master.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "item_master"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.93,
+      "pkScore": 0.986,
+      "fkScore": 0.979,
+      "score": 0.986,
+      "evidence": {
+        "sourceColumnBase": "product_id",
+        "targetTableBase": "item_master",
+        "targetColumnBase": "product_id",
+        "targetKeyScore": 0.88,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "llmConfidence": 0.93,
+        "llmRationale": "Column description states 'Unique product/SKU identifier linking to the item master catalog.' Exactly 18 distinct product_ids match item_master row count (18 SKUs). Strong domain alignment."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 18,
+        "parentDistinct": 18,
+        "overlap": 18,
+        "checkedValues": 18,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.986,
+        "incomingCandidateCount": 11,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.marketing_spend:(sahil-devx.dev_dna_silver.marketing_spend.promo_id)->sahil-devx.dev_dna_silver.promotions:(sahil-devx.dev_dna_silver.promotions.promo_id)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.marketing_spend",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.marketing_spend.promo_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "marketing_spend"
+        },
+        "columns": [
+          "promo_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.promotions",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.promotions.promo_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "promotions"
+        },
+        "columns": [
+          "promo_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.88,
+      "pkScore": 0.923,
+      "fkScore": 0.949,
+      "score": 0.976,
+      "evidence": {
+        "sourceColumnBase": "promo_id",
+        "targetTableBase": "promotion",
+        "targetColumnBase": "promo_id",
+        "targetKeyScore": 0.88,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "llmConfidence": 0.88,
+        "llmRationale": "Column description states 'Links this spend to a specific promotion or campaign.' Sample values PROMO0033, PROMO0145 match promotions.promo_id pattern (PROMO0001–PROMO1000). 835 distinct promo_ids in marketing_spend are within the 1000-row promotions table."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 835,
+        "parentDistinct": 1000,
+        "overlap": 835,
+        "checkedValues": 835,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.923,
+        "incomingCandidateCount": 1,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.mrp_master:(sahil-devx.dev_dna_silver.mrp_master.product_id)->sahil-devx.dev_dna_silver.item_master:(sahil-devx.dev_dna_silver.item_master.product_id)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.mrp_master",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.mrp_master.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "mrp_master"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.item_master",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.item_master.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "item_master"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.93,
+      "pkScore": 0.986,
+      "fkScore": 0.979,
+      "score": 0.986,
+      "evidence": {
+        "sourceColumnBase": "product_id",
+        "targetTableBase": "item_master",
+        "targetColumnBase": "product_id",
+        "targetKeyScore": 0.88,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "llmConfidence": 0.93,
+        "llmRationale": "Column description states 'Links each price record to a specific product or SKU.' mrp_master has 18 distinct product_ids across 36 rows (2 price windows per product), perfectly matching item_master's 18 rows."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 18,
+        "parentDistinct": 18,
+        "overlap": 18,
+        "checkedValues": 18,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.986,
+        "incomingCandidateCount": 11,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.offline_orders:(sahil-devx.dev_dna_silver.offline_orders.order_date_key)->sahil-devx.dev_dna_silver.dim_date:(sahil-devx.dev_dna_silver.dim_date.date_key)",
+      "status": "accepted",
+      "source": "column_suffix_match",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.offline_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.offline_orders.order_date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "offline_orders"
+        },
+        "columns": [
+          "order_date_key"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.dim_date",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.dim_date.date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "dim_date"
+        },
+        "columns": [
+          "date_key"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.952,
+      "pkScore": 0.976,
+      "fkScore": 0.981,
+      "score": 0.99,
+      "evidence": {
+        "sourceColumnBase": "order_date",
+        "targetTableBase": "date",
+        "targetColumnBase": "date_key",
+        "targetKeyScore": 0.82,
+        "nameScore": 0.78,
+        "reasons": [
+          "column_suffix_match",
+          "target_key_like",
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "signalVector": {
+          "nameSimilarity": 0.78,
+          "typeCompatibility": 1,
+          "valueOverlap": 0,
+          "embeddingSimilarity": 0,
+          "profileUniqueness": 1,
+          "profileNullRate": 1,
+          "structuralPrior": 0.4
+        },
+        "scoreBreakdown": {
+          "score": 0.952,
+          "signals": {
+            "nameSimilarity": 0.78,
+            "typeCompatibility": 1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 1,
+            "profileNullRate": 1,
+            "structuralPrior": 0.4
+          },
+          "weights": {
+            "nameSimilarity": 0.24000000000000002,
+            "typeCompatibility": 0.10000000000000002,
+            "valueOverlap": 0.22000000000000003,
+            "embeddingSimilarity": 0.10000000000000002,
+            "profileUniqueness": 0.22000000000000003,
+            "profileNullRate": 0.08000000000000002,
+            "structuralPrior": 0.04000000000000001
+          },
+          "contributions": {
+            "nameSimilarity": 0.1872,
+            "typeCompatibility": 0.1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 0.22,
+            "profileNullRate": 0.08,
+            "structuralPrior": 0.016
+          }
+        },
+        "llmConfidence": 0.92,
+        "llmRationale": "Column description states 'Transaction date for joining to dim_date for time-based reporting.' DATE type with matching sample date ranges."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 447,
+        "parentDistinct": 500,
+        "overlap": 447,
+        "checkedValues": 447,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.976,
+        "incomingCandidateCount": 8,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "column_suffix_match",
+        "target_key_like",
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.offline_orders:(sahil-devx.dev_dna_silver.offline_orders.product_id)->sahil-devx.dev_dna_silver.item_master:(sahil-devx.dev_dna_silver.item_master.product_id)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.offline_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.offline_orders.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "offline_orders"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.item_master",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.item_master.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "item_master"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.92,
+      "pkScore": 0.986,
+      "fkScore": 0.977,
+      "score": 0.984,
+      "evidence": {
+        "sourceColumnBase": "product_id",
+        "targetTableBase": "item_master",
+        "targetColumnBase": "product_id",
+        "targetKeyScore": 0.88,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "llmConfidence": 0.92,
+        "llmRationale": "Column description states 'Canonical SKU identifier; joins to item_master for product attributes.' Sample values PROD0001, PROD0002 are within item_master domain."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 18,
+        "parentDistinct": 18,
+        "overlap": 18,
+        "checkedValues": 18,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.986,
+        "incomingCandidateCount": 11,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.platform_orders:(sahil-devx.dev_dna_silver.platform_orders.order_date_key)->sahil-devx.dev_dna_silver.dim_date:(sahil-devx.dev_dna_silver.dim_date.date_key)",
+      "status": "accepted",
+      "source": "column_suffix_match",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.platform_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.platform_orders.order_date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "platform_orders"
+        },
+        "columns": [
+          "order_date_key"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.dim_date",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.dim_date.date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "dim_date"
+        },
+        "columns": [
+          "date_key"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.952,
+      "pkScore": 0.976,
+      "fkScore": 0.981,
+      "score": 0.99,
+      "evidence": {
+        "sourceColumnBase": "order_date",
+        "targetTableBase": "date",
+        "targetColumnBase": "date_key",
+        "targetKeyScore": 0.82,
+        "nameScore": 0.78,
+        "reasons": [
+          "column_suffix_match",
+          "target_key_like",
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "signalVector": {
+          "nameSimilarity": 0.78,
+          "typeCompatibility": 1,
+          "valueOverlap": 0,
+          "embeddingSimilarity": 0,
+          "profileUniqueness": 1,
+          "profileNullRate": 1,
+          "structuralPrior": 0.4
+        },
+        "scoreBreakdown": {
+          "score": 0.952,
+          "signals": {
+            "nameSimilarity": 0.78,
+            "typeCompatibility": 1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 1,
+            "profileNullRate": 1,
+            "structuralPrior": 0.4
+          },
+          "weights": {
+            "nameSimilarity": 0.24000000000000002,
+            "typeCompatibility": 0.10000000000000002,
+            "valueOverlap": 0.22000000000000003,
+            "embeddingSimilarity": 0.10000000000000002,
+            "profileUniqueness": 0.22000000000000003,
+            "profileNullRate": 0.08000000000000002,
+            "structuralPrior": 0.04000000000000001
+          },
+          "contributions": {
+            "nameSimilarity": 0.1872,
+            "typeCompatibility": 0.1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 0.22,
+            "profileNullRate": 0.08,
+            "structuralPrior": 0.016
+          }
+        },
+        "llmConfidence": 0.92,
+        "llmRationale": "Column description states 'Join key to dim_date for calendar-based month, quarter, and year reporting.' DATE type with overlapping sample values."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 447,
+        "parentDistinct": 500,
+        "overlap": 447,
+        "checkedValues": 447,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.976,
+        "incomingCandidateCount": 8,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "column_suffix_match",
+        "target_key_like",
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.platform_orders:(sahil-devx.dev_dna_silver.platform_orders.product_id)->sahil-devx.dev_dna_silver.item_master:(sahil-devx.dev_dna_silver.item_master.product_id)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.platform_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.platform_orders.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "platform_orders"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.item_master",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.item_master.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "item_master"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.92,
+      "pkScore": 0.986,
+      "fkScore": 0.977,
+      "score": 0.984,
+      "evidence": {
+        "sourceColumnBase": "product_id",
+        "targetTableBase": "item_master",
+        "targetColumnBase": "product_id",
+        "targetKeyScore": 0.88,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "llmConfidence": 0.92,
+        "llmRationale": "Column description states 'Canonical SKU identifier; joins to item_master for product name, category, and brand.' Sample values PROD0001, PROD0003 are within item_master domain."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 18,
+        "parentDistinct": 18,
+        "overlap": 18,
+        "checkedValues": 18,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.986,
+        "incomingCandidateCount": 11,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.product_bundle:(sahil-devx.dev_dna_silver.product_bundle.component_product_id)->sahil-devx.dev_dna_silver.item_master:(sahil-devx.dev_dna_silver.item_master.product_id)",
+      "status": "accepted",
+      "source": "column_suffix_match",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.product_bundle",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.product_bundle.component_product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "product_bundle"
+        },
+        "columns": [
+          "component_product_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.item_master",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.item_master.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "item_master"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 1,
+      "pkScore": 0.986,
+      "fkScore": 0.996,
+      "score": 1,
+      "evidence": {
+        "sourceColumnBase": "component_product",
+        "targetTableBase": "item_master",
+        "targetColumnBase": "product_id",
+        "targetKeyScore": 0.78,
+        "nameScore": 0.78,
+        "reasons": [
+          "column_suffix_match",
+          "profile_unique_target",
+          "profile_sample_overlap",
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "signalVector": {
+          "nameSimilarity": 0.78,
+          "typeCompatibility": 1,
+          "valueOverlap": 0.6,
+          "embeddingSimilarity": 0,
+          "profileUniqueness": 1,
+          "profileNullRate": 1,
+          "structuralPrior": 0.7
+        },
+        "scoreBreakdown": {
+          "score": 1,
+          "signals": {
+            "nameSimilarity": 0.78,
+            "typeCompatibility": 1,
+            "valueOverlap": 0.6,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 1,
+            "profileNullRate": 1,
+            "structuralPrior": 0.7
+          },
+          "weights": {
+            "nameSimilarity": 0.24000000000000002,
+            "typeCompatibility": 0.10000000000000002,
+            "valueOverlap": 0.22000000000000003,
+            "embeddingSimilarity": 0.10000000000000002,
+            "profileUniqueness": 0.22000000000000003,
+            "profileNullRate": 0.08000000000000002,
+            "structuralPrior": 0.04000000000000001
+          },
+          "contributions": {
+            "nameSimilarity": 0.1872,
+            "typeCompatibility": 0.1,
+            "valueOverlap": 0.132,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 0.22,
+            "profileNullRate": 0.08,
+            "structuralPrior": 0.028
+          }
+        },
+        "llmConfidence": 0.9,
+        "llmRationale": "Column description states 'Identifies a single SKU within the bundle; links to item_master for product details.' Sample values PROD0001, PROD0002, PROD0004, PROD0007, PROD0008 are within item_master domain."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 9,
+        "parentDistinct": 18,
+        "overlap": 9,
+        "checkedValues": 9,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.986,
+        "incomingCandidateCount": 11,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "column_suffix_match",
+        "profile_unique_target",
+        "profile_sample_overlap",
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.product_codes:(sahil-devx.dev_dna_silver.product_codes.product_id)->sahil-devx.dev_dna_silver.item_master:(sahil-devx.dev_dna_silver.item_master.product_id)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.product_codes",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.product_codes.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "product_codes"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.item_master",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.item_master.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "item_master"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.93,
+      "pkScore": 0.986,
+      "fkScore": 0.979,
+      "score": 0.986,
+      "evidence": {
+        "sourceColumnBase": "product_id",
+        "targetTableBase": "item_master",
+        "targetColumnBase": "product_id",
+        "targetKeyScore": 0.88,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "llmConfidence": 0.93,
+        "llmRationale": "Column description states 'Canonical product/SKU identifier linking this channel code to the master product catalog.' 18 distinct product_ids in product_codes match item_master exactly. product_codes is the mapping/bridge table between channel source codes and item_master."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 18,
+        "parentDistinct": 18,
+        "overlap": 18,
+        "checkedValues": 18,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.986,
+        "incomingCandidateCount": 11,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.purchase_orders:(sahil-devx.dev_dna_silver.purchase_orders.product_id)->sahil-devx.dev_dna_silver.item_master:(sahil-devx.dev_dna_silver.item_master.product_id)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.purchase_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.purchase_orders.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "purchase_orders"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.item_master",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.item_master.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "item_master"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.92,
+      "pkScore": 0.986,
+      "fkScore": 0.977,
+      "score": 0.984,
+      "evidence": {
+        "sourceColumnBase": "product_id",
+        "targetTableBase": "item_master",
+        "targetColumnBase": "product_id",
+        "targetKeyScore": 0.88,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "llmConfidence": 0.92,
+        "llmRationale": "Column description states 'Canonical product/SKU identifier being ordered on this PO line. Joins to item_master.' 18 distinct product_ids across 1300 PO lines match item_master domain."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 18,
+        "parentDistinct": 18,
+        "overlap": 18,
+        "checkedValues": 18,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.986,
+        "incomingCandidateCount": 11,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.purchase_orders:(sahil-devx.dev_dna_silver.purchase_orders.supplier_id)->sahil-devx.dev_dna_silver.suppliers:(sahil-devx.dev_dna_silver.suppliers.supplier_id)",
+      "status": "accepted",
+      "source": "normalized_table_match",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.purchase_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.purchase_orders.supplier_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "purchase_orders"
+        },
+        "columns": [
+          "supplier_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.suppliers",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.suppliers.supplier_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "suppliers"
+        },
+        "columns": [
+          "supplier_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.982,
+      "pkScore": 0.931,
+      "fkScore": 0.975,
+      "score": 0.996,
+      "evidence": {
+        "sourceColumnBase": "supplier",
+        "targetTableBase": "supplier",
+        "targetColumnBase": "supplier_id",
+        "targetKeyScore": 0.9,
+        "nameScore": 0.92,
+        "reasons": [
+          "foreign_key_suffix",
+          "target_key_like",
+          "normalized_table_name",
+          "exact_column_name",
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "signalVector": {
+          "nameSimilarity": 0.92,
+          "typeCompatibility": 1,
+          "valueOverlap": 0,
+          "embeddingSimilarity": 0,
+          "profileUniqueness": 1,
+          "profileNullRate": 1,
+          "structuralPrior": 0.7
+        },
+        "scoreBreakdown": {
+          "score": 0.982,
+          "signals": {
+            "nameSimilarity": 0.92,
+            "typeCompatibility": 1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 1,
+            "profileNullRate": 1,
+            "structuralPrior": 0.7
+          },
+          "weights": {
+            "nameSimilarity": 0.24000000000000002,
+            "typeCompatibility": 0.10000000000000002,
+            "valueOverlap": 0.22000000000000003,
+            "embeddingSimilarity": 0.10000000000000002,
+            "profileUniqueness": 0.22000000000000003,
+            "profileNullRate": 0.08000000000000002,
+            "structuralPrior": 0.04000000000000001
+          },
+          "contributions": {
+            "nameSimilarity": 0.2208,
+            "typeCompatibility": 0.1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 0.22,
+            "profileNullRate": 0.08,
+            "structuralPrior": 0.028
+          }
+        },
+        "llmConfidence": 0.93,
+        "llmRationale": "Column description explicitly states 'Supplier this PO was raised with. Joins to suppliers.' Sample values SUP0133, SUP0268 match suppliers.supplier_id pattern (SUP0001–SUP1000). 730 distinct supplier_ids are within the 1000-row suppliers table."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 730,
+        "parentDistinct": 1000,
+        "overlap": 730,
+        "checkedValues": 730,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.931,
+        "incomingCandidateCount": 1,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "foreign_key_suffix",
+        "target_key_like",
+        "normalized_table_name",
+        "exact_column_name",
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.qcomm_orders:(sahil-devx.dev_dna_silver.qcomm_orders.order_date_key)->sahil-devx.dev_dna_silver.dim_date:(sahil-devx.dev_dna_silver.dim_date.date_key)",
+      "status": "accepted",
+      "source": "column_suffix_match",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.qcomm_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.qcomm_orders.order_date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "qcomm_orders"
+        },
+        "columns": [
+          "order_date_key"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.dim_date",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.dim_date.date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "dim_date"
+        },
+        "columns": [
+          "date_key"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.952,
+      "pkScore": 0.976,
+      "fkScore": 0.981,
+      "score": 0.99,
+      "evidence": {
+        "sourceColumnBase": "order_date",
+        "targetTableBase": "date",
+        "targetColumnBase": "date_key",
+        "targetKeyScore": 0.82,
+        "nameScore": 0.78,
+        "reasons": [
+          "column_suffix_match",
+          "target_key_like",
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "signalVector": {
+          "nameSimilarity": 0.78,
+          "typeCompatibility": 1,
+          "valueOverlap": 0,
+          "embeddingSimilarity": 0,
+          "profileUniqueness": 1,
+          "profileNullRate": 1,
+          "structuralPrior": 0.4
+        },
+        "scoreBreakdown": {
+          "score": 0.952,
+          "signals": {
+            "nameSimilarity": 0.78,
+            "typeCompatibility": 1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 1,
+            "profileNullRate": 1,
+            "structuralPrior": 0.4
+          },
+          "weights": {
+            "nameSimilarity": 0.24000000000000002,
+            "typeCompatibility": 0.10000000000000002,
+            "valueOverlap": 0.22000000000000003,
+            "embeddingSimilarity": 0.10000000000000002,
+            "profileUniqueness": 0.22000000000000003,
+            "profileNullRate": 0.08000000000000002,
+            "structuralPrior": 0.04000000000000001
+          },
+          "contributions": {
+            "nameSimilarity": 0.1872,
+            "typeCompatibility": 0.1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 0.22,
+            "profileNullRate": 0.08,
+            "structuralPrior": 0.016
+          }
+        },
+        "llmConfidence": 0.92,
+        "llmRationale": "Column description states 'Use this column (not the raw timestamp) to join to dim_date for month/quarter/year reporting.' DATE type with overlapping sample values."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 447,
+        "parentDistinct": 500,
+        "overlap": 447,
+        "checkedValues": 447,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.976,
+        "incomingCandidateCount": 8,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "column_suffix_match",
+        "target_key_like",
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.qcomm_orders:(sahil-devx.dev_dna_silver.qcomm_orders.product_id)->sahil-devx.dev_dna_silver.item_master:(sahil-devx.dev_dna_silver.item_master.product_id)",
+      "status": "accepted",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.qcomm_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.qcomm_orders.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "qcomm_orders"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.item_master",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.item_master.product_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "item_master"
+        },
+        "columns": [
+          "product_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.92,
+      "pkScore": 0.986,
+      "fkScore": 0.977,
+      "score": 0.984,
+      "evidence": {
+        "sourceColumnBase": "product_id",
+        "targetTableBase": "item_master",
+        "targetColumnBase": "product_id",
+        "targetKeyScore": 0.88,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "llmConfidence": 0.92,
+        "llmRationale": "Column description states 'Canonical product/SKU identifier. Joins to item_master for product name, category and brand.' Sample values PROD0001, PROD0003 are within item_master domain."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 18,
+        "parentDistinct": 18,
+        "overlap": 18,
+        "checkedValues": 18,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.986,
+        "incomingCandidateCount": 11,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.returns:(sahil-devx.dev_dna_silver.returns.return_date_key)->sahil-devx.dev_dna_silver.dim_date:(sahil-devx.dev_dna_silver.dim_date.date_key)",
+      "status": "accepted",
+      "source": "column_suffix_match",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.returns",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.returns.return_date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "returns"
+        },
+        "columns": [
+          "return_date_key"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.dim_date",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.dim_date.date_key"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "dim_date"
+        },
+        "columns": [
+          "date_key"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.952,
+      "pkScore": 0.976,
+      "fkScore": 0.981,
+      "score": 0.99,
+      "evidence": {
+        "sourceColumnBase": "return_date",
+        "targetTableBase": "date",
+        "targetColumnBase": "date_key",
+        "targetKeyScore": 0.82,
+        "nameScore": 0.78,
+        "reasons": [
+          "column_suffix_match",
+          "target_key_like",
+          "llm_proposal",
+          "llm_pk_proposal"
+        ],
+        "signalVector": {
+          "nameSimilarity": 0.78,
+          "typeCompatibility": 1,
+          "valueOverlap": 0,
+          "embeddingSimilarity": 0,
+          "profileUniqueness": 1,
+          "profileNullRate": 1,
+          "structuralPrior": 0.4
+        },
+        "scoreBreakdown": {
+          "score": 0.952,
+          "signals": {
+            "nameSimilarity": 0.78,
+            "typeCompatibility": 1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 1,
+            "profileNullRate": 1,
+            "structuralPrior": 0.4
+          },
+          "weights": {
+            "nameSimilarity": 0.24000000000000002,
+            "typeCompatibility": 0.10000000000000002,
+            "valueOverlap": 0.22000000000000003,
+            "embeddingSimilarity": 0.10000000000000002,
+            "profileUniqueness": 0.22000000000000003,
+            "profileNullRate": 0.08000000000000002,
+            "structuralPrior": 0.04000000000000001
+          },
+          "contributions": {
+            "nameSimilarity": 0.1872,
+            "typeCompatibility": 0.1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 0.22,
+            "profileNullRate": 0.08,
+            "structuralPrior": 0.016
+          }
+        },
+        "llmConfidence": 0.92,
+        "llmRationale": "Column description states 'Use this column to join to dim_date for month/quarter/year reporting on returns.' DATE type; 428 distinct dates fall within dim_date coverage."
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 1,
+        "violationCount": 0,
+        "violationRatio": 0,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 452,
+        "parentDistinct": 500,
+        "overlap": 452,
+        "checkedValues": 452,
+        "reasons": [
+          "validation_passed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.976,
+        "incomingCandidateCount": 8,
+        "conflictRank": 1,
+        "reasons": [
+          "target_pk_score_passed",
+          "validation_passed",
+          "fk_score_passed"
+        ]
+      },
+      "reasons": [
+        "column_suffix_match",
+        "target_key_like",
+        "llm_proposal",
+        "llm_pk_proposal",
+        "validation_passed",
+        "target_pk_score_passed",
+        "fk_score_passed"
+      ]
+    }
+  ],
+  "review": [],
+  "rejected": [
+    {
+      "id": "sahil-devx.dev_dna_silver.qcomm_orders:(sahil-devx.dev_dna_silver.qcomm_orders.platform_order_id)->sahil-devx.dev_dna_silver.platform_orders:(sahil-devx.dev_dna_silver.platform_orders.order_id)",
+      "status": "rejected",
+      "source": "normalized_table_match",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.qcomm_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.qcomm_orders.platform_order_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "qcomm_orders"
+        },
+        "columns": [
+          "platform_order_id"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.platform_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.platform_orders.order_id"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "platform_orders"
+        },
+        "columns": [
+          "order_id"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.982,
+      "pkScore": 0.767,
+      "fkScore": 0.606,
+      "score": 0.496,
+      "evidence": {
+        "sourceColumnBase": "platform_order",
+        "targetTableBase": "platform_order",
+        "targetColumnBase": "order_id",
+        "targetKeyScore": 0.9,
+        "nameScore": 0.92,
+        "reasons": [
+          "foreign_key_suffix",
+          "target_key_like",
+          "normalized_table_name"
+        ],
+        "signalVector": {
+          "nameSimilarity": 0.92,
+          "typeCompatibility": 1,
+          "valueOverlap": 0,
+          "embeddingSimilarity": 0,
+          "profileUniqueness": 1,
+          "profileNullRate": 1,
+          "structuralPrior": 0.7
+        },
+        "scoreBreakdown": {
+          "score": 0.982,
+          "signals": {
+            "nameSimilarity": 0.92,
+            "typeCompatibility": 1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 1,
+            "profileNullRate": 1,
+            "structuralPrior": 0.7
+          },
+          "weights": {
+            "nameSimilarity": 0.24000000000000002,
+            "typeCompatibility": 0.10000000000000002,
+            "valueOverlap": 0.22000000000000003,
+            "embeddingSimilarity": 0.10000000000000002,
+            "profileUniqueness": 0.22000000000000003,
+            "profileNullRate": 0.08000000000000002,
+            "structuralPrior": 0.04000000000000001
+          },
+          "contributions": {
+            "nameSimilarity": 0.2208,
+            "typeCompatibility": 0.1,
+            "valueOverlap": 0,
+            "embeddingSimilarity": 0,
+            "profileUniqueness": 0.22,
+            "profileNullRate": 0.08,
+            "structuralPrior": 0.028
+          }
+        }
+      },
+      "validation": {
+        "targetUniqueness": 1,
+        "sourceCoverage": 0,
+        "violationCount": 10000,
+        "violationRatio": 1,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 10000,
+        "parentDistinct": 2076638,
+        "overlap": 0,
+        "checkedValues": 10000,
+        "reasons": [
+          "low_source_coverage",
+          "excessive_violations"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.767,
+        "incomingCandidateCount": 1,
+        "conflictRank": 1,
+        "reasons": [
+          "candidate_validation_rejected",
+          "target_pk_score_low",
+          "fk_score_rejected"
+        ]
+      },
+      "reasons": [
+        "foreign_key_suffix",
+        "target_key_like",
+        "normalized_table_name",
+        "low_source_coverage",
+        "excessive_violations",
+        "candidate_validation_rejected",
+        "target_pk_score_low",
+        "fk_score_rejected"
+      ]
+    },
+    {
+      "id": "sahil-devx.dev_dna_silver.shipments:(sahil-devx.dev_dna_silver.shipments.order_ref)->sahil-devx.dev_dna_silver.d2c_orders:(sahil-devx.dev_dna_silver.d2c_orders.order_name)",
+      "status": "rejected",
+      "source": "llm_proposal",
+      "from": {
+        "tableId": "sahil-devx.dev_dna_silver.shipments",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.shipments.order_ref"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "shipments"
+        },
+        "columns": [
+          "order_ref"
+        ]
+      },
+      "to": {
+        "tableId": "sahil-devx.dev_dna_silver.d2c_orders",
+        "columnIds": [
+          "sahil-devx.dev_dna_silver.d2c_orders.order_name"
+        ],
+        "table": {
+          "catalog": "sahil-devx",
+          "db": "dev_dna_silver",
+          "name": "d2c_orders"
+        },
+        "columns": [
+          "order_name"
+        ]
+      },
+      "relationshipType": "many_to_one",
+      "confidence": 0.72,
+      "pkScore": 0.754,
+      "fkScore": 0.591,
+      "score": 0.551,
+      "evidence": {
+        "sourceColumnBase": "order_ref",
+        "targetTableBase": "d_2_c_order",
+        "targetColumnBase": "order_name",
+        "targetKeyScore": 0.68,
+        "nameScore": 0.45,
+        "reasons": [
+          "llm_proposal"
+        ],
+        "llmConfidence": 0.72,
+        "llmRationale": "shipments.order_ref sample values (#D2C400003, #D2C400006, #D2C400007, etc.) match the #D2C-prefixed format of d2c_orders.order_name exactly. shipments.channel_code includes D2C. However, shipments spans multiple channels (PLATFORM, QCOMM, OFFLINE, INTERNATIONAL) so order_ref is polymorphic; this FK applies only for channel_code='D2C' rows."
+      },
+      "validation": {
+        "targetUniqueness": 0.9961,
+        "sourceCoverage": 0.21724137931034482,
+        "violationCount": 1816,
+        "violationRatio": 0.7827586206896552,
+        "sourceNullRate": 0,
+        "targetNullRate": 0,
+        "childDistinct": 2320,
+        "parentDistinct": 1338205,
+        "overlap": 504,
+        "checkedValues": 2320,
+        "reasons": [
+          "low_source_coverage",
+          "excessive_violations",
+          "llm_proposed_but_validation_failed"
+        ]
+      },
+      "graph": {
+        "targetPkScore": 0.754,
+        "incomingCandidateCount": 1,
+        "conflictRank": 1,
+        "reasons": [
+          "candidate_validation_rejected",
+          "target_pk_score_low",
+          "fk_score_rejected"
+        ]
+      },
+      "reasons": [
+        "llm_proposal",
+        "low_source_coverage",
+        "excessive_violations",
+        "llm_proposed_but_validation_failed",
+        "candidate_validation_rejected",
+        "target_pk_score_low",
+        "fk_score_rejected"
+      ]
+    }
+  ],
+  "skipped": []
+}
