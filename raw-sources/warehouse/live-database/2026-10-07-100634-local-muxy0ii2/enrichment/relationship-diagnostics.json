@@ -1,0 +1,67 @@
+{
+  "connectionId": "warehouse",
+  "generatedAt": "2026-10-07T10:16:14.078Z",
+  "summary": {
+    "accepted": 25,
+    "review": 0,
+    "rejected": 2,
+    "skipped": 0
+  },
+  "noAcceptedReason": null,
+  "partial": false,
+  "partialReason": null,
+  "candidateCountsBySource": {
+    "column_suffix_match": 9,
+    "llm_proposal": 16,
+    "normalized_table_match": 2
+  },
+  "validation": {
+    "available": true,
+    "sqlAvailable": true,
+    "queryCount": 23
+  },
+  "thresholds": {
+    "acceptThreshold": 0.85,
+    "reviewThreshold": 0.55
+  },
+  "policy": {
+    "validationRequiredForManifest": true,
+    "maxCandidatesPerColumn": 25,
+    "profileSampleRows": 10000,
+    "profileConcurrency": 4,
+    "validationConcurrency": 4
+  },
+  "warnings": [
+    {
+      "code": "enrichment_timeout",
+      "message": "Timed out after 185494ms generating batched description for table purchase_orders: aborted",
+      "table": "purchase_orders",
+      "recoverable": true,
+      "metadata": {
+        "connectorId": "bigquery:warehouse",
+        "timeoutMs": 120000
+      }
+    },
+    {
+      "code": "enrichment_timeout",
+      "message": "Timed out after 172842ms generating batched description for table qcomm_orders: aborted",
+      "table": "qcomm_orders",
+      "recoverable": true,
+      "metadata": {
+        "connectorId": "bigquery:warehouse",
+        "timeoutMs": 120000
+      }
+    },
+    {
+      "code": "enrichment_timeout",
+      "message": "Timed out after 168845ms generating batched description for table returns: aborted",
+      "table": "returns",
+      "recoverable": true,
+      "metadata": {
+        "connectorId": "bigquery:warehouse",
+        "timeoutMs": 120000
+      }
+    }
+  ],
+  "profileWarnings": []
+}
