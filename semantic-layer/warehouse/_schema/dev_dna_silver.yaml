@@ -85,6 +85,15 @@ tables:
     descriptions:
       db: "Line-grain point-of-sale transactions from the company's own cafe outlets. One row per line item sold in a single bill. Channel: CAFE."
       ai: Records each line item sold at a physical cafe outlet, capturing product, quantity, price, payment method, and sales channel per POS transaction.
+    joins:
+      - to: dim_date
+        "on": cafe_sales.order_date_key = dim_date.date_key
+        relationship: many_to_one
+        source: inferred
+      - to: item_master
+        "on": cafe_sales.product_id = item_master.product_id
+        relationship: many_to_one
+        source: inferred
   customer:
     table: sahil-devx.dev_dna_silver.customer
     columns:
@@ -257,6 +266,11 @@ tables:
     descriptions:
       db: Golden-record customer master, deduplicated and conformed across all sales channels. One row per unique customer.
       ai: Silver-layer conformed customer master storing the latest profile, contact details, location, acquisition channel, and loyalty tier for every known customer.
+    joins:
+      - to: dim_customer
+        "on": customers_master.customer_master_id = dim_customer.customer_master_id
+        relationship: one_to_many
+        source: inferred
   d2c_orders:
     table: sahil-devx.dev_dna_silver.d2c_orders
     columns:
@@ -358,6 +372,23 @@ tables:
     descriptions:
       db: "Line-grain orders placed on the company's own D2C storefront (Shopify). One row per line item per order. Channel: D2C."
       ai: Line-item-level direct-to-consumer Shopify orders capturing product, pricing, discounts, shipping, and customer details for revenue analysis.
+    joins:
+      - to: dim_customer
+        "on": d2c_orders.customer_email = dim_customer.email
+        relationship: many_to_one
+        source: inferred
+      - to: dim_date
+        "on": d2c_orders.order_date_key = dim_date.date_key
+        relationship: many_to_one
+        source: inferred
+      - to: dim_d2c_order
+        "on": d2c_orders.order_name = dim_d2c_order.order_name
+        relationship: many_to_one
+        source: inferred
+      - to: item_master
+        "on": d2c_orders.product_id = item_master.product_id
+        relationship: many_to_one
+        source: inferred
   dim_customer:
     table: sahil-devx.dev_dna_silver.dim_customer
     columns:
@@ -444,6 +475,19 @@ tables:
     descriptions:
       db: Silver-layer mirror of customers_master used as a stable join target during transformation; carries the same conformed customer attributes.
       ai: Conformed customer dimension with one current record per customer, covering identity, location, acquisition channel, and loyalty tier.
+    joins:
+      - to: d2c_orders
+        "on": dim_customer.email = d2c_orders.customer_email
+        relationship: one_to_many
+        source: inferred
+      - to: customers_master
+        "on": dim_customer.customer_master_id = customers_master.customer_master_id
+        relationship: many_to_one
+        source: inferred
+      - to: dim_d2c_order
+        "on": dim_customer.email = dim_d2c_order.customer_email
+        relationship: one_to_many
+        source: inferred
   dim_d2c_order:
     table: sahil-devx.dev_dna_silver.dim_d2c_order
     columns:
@@ -465,6 +509,19 @@ tables:
     descriptions:
       db: Lightweight order-header lookup for D2C orders (one row per order, not per line item) — use this to count distinct orders or find which customer/date an order_name belongs to without double-counting across line items.
       ai: Dimension table storing direct-to-consumer Shopify orders, capturing order identity, placement date, and customer contact details.
+    joins:
+      - to: d2c_orders
+        "on": dim_d2c_order.order_name = d2c_orders.order_name
+        relationship: one_to_many
+        source: inferred
+      - to: dim_customer
+        "on": dim_d2c_order.customer_email = dim_customer.email
+        relationship: many_to_one
+        source: inferred
+      - to: dim_date
+        "on": dim_d2c_order.order_date_key = dim_date.date_key
+        relationship: many_to_one
+        source: inferred
   dim_date:
     table: sahil-devx.dev_dna_silver.dim_date
     columns:
@@ -511,6 +568,39 @@ tables:
     descriptions:
       db: Silver-layer calendar/date dimension. One row per calendar date, used to derive time-based fields during transformation.
       ai: Date dimension providing calendar attributes for every date, enabling time-based filtering, grouping, and joining across all fact tables.
+    joins:
+      - to: cafe_sales
+        "on": dim_date.date_key = cafe_sales.order_date_key
+        relationship: one_to_many
+        source: inferred
+      - to: d2c_orders
+        "on": dim_date.date_key = d2c_orders.order_date_key
+        relationship: one_to_many
+        source: inferred
+      - to: dim_d2c_order
+        "on": dim_date.date_key = dim_d2c_order.order_date_key
+        relationship: one_to_many
+        source: inferred
+      - to: international_orders
+        "on": dim_date.date_key = international_orders.order_date_key
+        relationship: one_to_many
+        source: inferred
+      - to: offline_orders
+        "on": dim_date.date_key = offline_orders.order_date_key
+        relationship: one_to_many
+        source: inferred
+      - to: platform_orders
+        "on": dim_date.date_key = platform_orders.order_date_key
+        relationship: one_to_many
+        source: inferred
+      - to: qcomm_orders
+        "on": dim_date.date_key = qcomm_orders.order_date_key
+        relationship: one_to_many
+        source: inferred
+      - to: returns
+        "on": dim_date.date_key = returns.return_date_key
+        relationship: one_to_many
+        source: inferred
   employees:
     table: sahil-devx.dev_dna_silver.employees
     columns:
@@ -683,6 +773,15 @@ tables:
     descriptions:
       db: "Line-grain cross-border orders shipped to customers outside the home market. Channel: INTL."
       ai: Records cross-border export orders including product, pricing, shipping costs, customs duties, destination country, and current shipment status per line item.
+    joins:
+      - to: dim_date
+        "on": international_orders.order_date_key = dim_date.date_key
+        relationship: many_to_one
+        source: inferred
+      - to: item_master
+        "on": international_orders.product_id = item_master.product_id
+        relationship: many_to_one
+        source: inferred
   inventory_snapshot_expanded:
     table: sahil-devx.dev_dna_silver.inventory_snapshot_expanded
     columns:
@@ -734,6 +833,11 @@ tables:
     descriptions:
       db: Periodic (daily) stock-on-hand snapshot per product. One row per product per snapshot_date.
       ai: Daily point-in-time stock level snapshots per product, tracking units on hand across all locations for inventory visibility.
+    joins:
+      - to: item_master
+        "on": inventory_snapshot_expanded.product_id = item_master.product_id
+        relationship: many_to_one
+        source: inferred
   item_master:
     table: sahil-devx.dev_dna_silver.item_master
     columns:
@@ -795,6 +899,51 @@ tables:
     descriptions:
       db: Product/SKU master. One row per canonical product, used to enrich every channel's sales, inventory and purchasing tables.
       ai: Central product catalog storing SKU-level attributes including name, category, brand, unit of measure, and lifecycle status for all channels.
+    joins:
+      - to: cafe_sales
+        "on": item_master.product_id = cafe_sales.product_id
+        relationship: one_to_many
+        source: inferred
+      - to: d2c_orders
+        "on": item_master.product_id = d2c_orders.product_id
+        relationship: one_to_many
+        source: inferred
+      - to: international_orders
+        "on": item_master.product_id = international_orders.product_id
+        relationship: one_to_many
+        source: inferred
+      - to: inventory_snapshot_expanded
+        "on": item_master.product_id = inventory_snapshot_expanded.product_id
+        relationship: one_to_many
+        source: inferred
+      - to: mrp_master
+        "on": item_master.product_id = mrp_master.product_id
+        relationship: one_to_many
+        source: inferred
+      - to: offline_orders
+        "on": item_master.product_id = offline_orders.product_id
+        relationship: one_to_many
+        source: inferred
+      - to: platform_orders
+        "on": item_master.product_id = platform_orders.product_id
+        relationship: one_to_many
+        source: inferred
+      - to: product_bundle
+        "on": item_master.product_id = product_bundle.component_product_id
+        relationship: one_to_many
+        source: inferred
+      - to: product_codes
+        "on": item_master.product_id = product_codes.product_id
+        relationship: one_to_many
+        source: inferred
+      - to: purchase_orders
+        "on": item_master.product_id = purchase_orders.product_id
+        relationship: one_to_many
+        source: inferred
+      - to: qcomm_orders
+        "on": item_master.product_id = qcomm_orders.product_id
+        relationship: one_to_many
+        source: inferred
   offline_orders:
     table: sahil-devx.dev_dna_silver.offline_orders
     columns:
@@ -896,6 +1045,15 @@ tables:
     descriptions:
       db: "Line-grain point-of-sale transactions from the company's physical retail stores. One row per line item per bill. Channel: OFFLINE."
       ai: Line-level sales transactions recorded at physical retail store tills, capturing product, pricing, discount, and payment details per invoice line.
+    joins:
+      - to: dim_date
+        "on": offline_orders.order_date_key = dim_date.date_key
+        relationship: many_to_one
+        source: inferred
+      - to: item_master
+        "on": offline_orders.product_id = item_master.product_id
+        relationship: many_to_one
+        source: inferred
   marketing_spend:
     table: sahil-devx.dev_dna_silver.marketing_spend
     columns:
@@ -967,6 +1125,11 @@ tables:
     descriptions:
       db: Daily marketing/advertising spend and performance, by promotion and channel.
       ai: Records daily marketing expenditure, impressions, and clicks per promotion and sales channel, enabling campaign spend performance analysis.
+    joins:
+      - to: promotions
+        "on": marketing_spend.promo_id = promotions.promo_id
+        relationship: many_to_one
+        source: inferred
   mrp_master:
     table: sahil-devx.dev_dna_silver.mrp_master
     columns:
@@ -1023,6 +1186,11 @@ tables:
     descriptions:
       db: Time-versioned Maximum Retail Price (list price) per product. One row per price change; effective_from/effective_to define the validity window.
       ai: Stores time-versioned Maximum Retail Price records per product, enabling point-in-time price lookups across validity windows.
+    joins:
+      - to: item_master
+        "on": mrp_master.product_id = item_master.product_id
+        relationship: many_to_one
+        source: inferred
   shipments:
     table: sahil-devx.dev_dna_silver.shipments
     columns:
@@ -1165,6 +1333,11 @@ tables:
     descriptions:
       db: Supplier/vendor master used for procurement and purchase orders.
       ai: Master list of approved suppliers including their category, country, contract start date, average lead time, and current status.
+    joins:
+      - to: purchase_orders
+        "on": suppliers.supplier_id = purchase_orders.supplier_id
+        relationship: one_to_many
+        source: inferred
   platform_orders:
     table: sahil-devx.dev_dna_silver.platform_orders
     columns:
@@ -1271,6 +1444,15 @@ tables:
     descriptions:
       db: "Line-grain orders sold through third-party e-commerce marketplaces (e.g. Amazon, Flipkart). One row per line item per order. Channel: PLATFORM."
       ai: Order line-level sales from third-party marketplaces, capturing product, pricing, fees, discounts, shipping destination, and fulfillment status.
+    joins:
+      - to: dim_date
+        "on": platform_orders.order_date_key = dim_date.date_key
+        relationship: many_to_one
+        source: inferred
+      - to: item_master
+        "on": platform_orders.product_id = item_master.product_id
+        relationship: many_to_one
+        source: inferred
   product_bundle:
     table: sahil-devx.dev_dna_silver.product_bundle
     columns:
@@ -1322,6 +1504,11 @@ tables:
     descriptions:
       db: "Defines multi-product bundles/combos: which component products make up a bundle, and in what quantity."
       ai: Defines sellable product bundles and their component SKUs, capturing each included product and quantity per bundle unit.
+    joins:
+      - to: item_master
+        "on": product_bundle.component_product_id = item_master.product_id
+        relationship: many_to_one
+        source: inferred
   product_codes:
     table: sahil-devx.dev_dna_silver.product_codes
     columns:
@@ -1373,6 +1560,11 @@ tables:
     descriptions:
       db: Cross-reference mapping each channel's own product code/name onto the canonical product_id, so every channel's raw orders can be joined to item_master.
       ai: Maps each sales channel's native product codes and names to a canonical product identifier for cross-channel reconciliation.
+    joins:
+      - to: item_master
+        "on": product_codes.product_id = item_master.product_id
+        relationship: many_to_one
+        source: inferred
   promotions:
     table: sahil-devx.dev_dna_silver.promotions
     columns:
@@ -1444,6 +1636,11 @@ tables:
     descriptions:
       db: Master list of promotions/discount campaigns run by channel, with their discount and validity window.
       ai: Stores marketing promotions and discount campaigns across sales channels, including coupon codes, discount rates, and active date ranges.
+    joins:
+      - to: marketing_spend
+        "on": promotions.promo_id = marketing_spend.promo_id
+        relationship: one_to_many
+        source: inferred
   purchase_orders:
     table: sahil-devx.dev_dna_silver.purchase_orders
     columns:
@@ -1505,6 +1702,15 @@ tables:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
     descriptions:
       db: Purchase orders raised with suppliers to replenish inventory. One row per PO line.
+    joins:
+      - to: item_master
+        "on": purchase_orders.product_id = item_master.product_id
+        relationship: many_to_one
+        source: inferred
+      - to: suppliers
+        "on": purchase_orders.supplier_id = suppliers.supplier_id
+        relationship: many_to_one
+        source: inferred
   qcomm_orders:
     table: sahil-devx.dev_dna_silver.qcomm_orders
     columns:
@@ -1594,6 +1800,15 @@ tables:
           db: Canonical product/SKU identifier. Joins to item_master for product name, category and brand.
     descriptions:
       db: "Line-grain orders fulfilled through quick-commerce delivery platforms (dark stores, rapid delivery). One row per line item per order. Channel: QCOMM."
+    joins:
+      - to: dim_date
+        "on": qcomm_orders.order_date_key = dim_date.date_key
+        relationship: many_to_one
+        source: inferred
+      - to: item_master
+        "on": qcomm_orders.product_id = item_master.product_id
+        relationship: many_to_one
+        source: inferred
   returns:
     table: sahil-devx.dev_dna_silver.returns
     columns:
@@ -1667,3 +1882,8 @@ tables:
           db: Calendar date (YYYY-MM-DD) the return was initiated, derived from initiated_at. Use this column to join to dim_date for month/quarter/year reporting on returns.
     descriptions:
       db: Product returns and exchanges across all sales channels. One row per return. Every return carries its own channel_code directly (returns are not D2C-only) — use this column, not the original order's channel, when reporting returns by channel.
+    joins:
+      - to: dim_date
+        "on": returns.return_date_key = dim_date.date_key
+        relationship: many_to_one
+        source: inferred
