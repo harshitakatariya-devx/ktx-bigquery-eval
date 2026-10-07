@@ -6,68 +6,85 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Internal deduplication key generated at ingestion; exclude from all business reporting.
       - name: bill_no
         type: string
         descriptions:
           db: POS bill/receipt number issued at the cafe till. Not globally unique across stores on its own; combine with store_location for a unique transaction reference.
+          ai: POS receipt number; combine with store_location to uniquely identify a transaction.
       - name: txn_datetime
         type: time
         descriptions:
           db: Timestamp the sale was rung up at the till.
+          ai: Exact date and time the sale was rung up at the till.
       - name: store_location
         type: string
         descriptions:
           db: Name or code of the cafe outlet where the sale occurred.
+          ai: Name or code of the cafe outlet where the sale occurred.
       - name: item_name
         type: string
         descriptions:
           db: Menu item name as sold at the till (raw text from the POS system).
+          ai: Raw menu item name as captured directly from the POS system.
       - name: qty
         type: number
         descriptions:
           db: Quantity of this item sold on this bill line.
+          ai: Number of units of this item purchased on this bill line.
       - name: rate
         type: number
         descriptions:
           db: Unit price charged for this item, in INR.
+          ai: Unit selling price charged for this item, in INR.
       - name: amount
         type: number
         descriptions:
           db: Line amount for this item (qty * rate), in INR, before any bill-level discount.
+          ai: Total line revenue in INR (qty × rate), before any bill-level discounts.
       - name: payment_mode
         type: string
         descriptions:
           db: How the customer paid (e.g. cash, card, UPI, wallet).
+          ai: Customer's chosen payment method — cash, card, UPI, or wallet.
       - name: channel_code
         type: string
         descriptions:
           db: Short code identifying the sales channel this record belongs to (e.g. D2C, OFFLINE, QCOMM, PLATFORM, INTL, CAFE). Joins to dim_channels for the channel's full name, group and settlement currency.
+          ai: Short sales-channel code; join dim_channels for full name, group, and settlement currency.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: UTC pipeline load time into the silver layer; not a business event.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: UTC time the ingestion pipeline last updated this row; not a business event.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Originating upstream system or file name; used for data lineage only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Soft-delete flag; always exclude TRUE rows from business reporting.
       - name: order_date_key
         type: time
         descriptions:
           db: Calendar date (YYYY-MM-DD) the order/transaction occurred, derived from the transaction timestamp. Use this column (not the raw timestamp) to join to dim_date for month/quarter/year reporting.
+          ai: Transaction calendar date; use this to join dim_date for period-level reporting.
       - name: product_id
         type: string
         descriptions:
           db: Canonical product/SKU identifier the till's item_name was mapped to during ingestion. Joins to item_master.
+          ai: Canonical SKU mapped from the till item name; joins to item_master.
     descriptions:
       db: "Line-grain point-of-sale transactions from the company's own cafe outlets. One row per line item sold in a single bill. Channel: CAFE."
+      ai: Records each line item sold at a physical cafe outlet, capturing product, quantity, price, payment method, and sales channel per POS transaction.
   customer:
     table: sahil-devx.dev_dna_silver.customer
     columns:
@@ -75,68 +92,85 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Pipeline-generated deduplication key; not a business attribute and should be excluded from reporting.
       - name: invoice_no
         type: string
         descriptions:
           db: Invoice number from the legacy retail system. A single invoice can span multiple rows (one per product line); a prefix of 'C' denotes a cancelled invoice.
+          ai: Retail invoice identifier; 'C' prefix signals cancellation; one invoice spans multiple product lines.
       - name: stock_code
         type: string
         descriptions:
           db: Legacy system's internal product code for the line item.
+          ai: Internal product identifier assigned by the legacy retail system.
       - name: description
         type: string
         descriptions:
           db: Product description text as recorded in the legacy system at time of sale.
+          ai: Free-text product name captured at the point of sale from the legacy system.
       - name: quantity
         type: number
         descriptions:
           db: Units of this product on this invoice line. Negative values indicate a cancellation/credit line.
+          ai: Units sold on this line; negative values represent cancellations or credit adjustments.
       - name: invoice_date
         type: time
         descriptions:
           db: Timestamp the invoice line was recorded.
+          ai: Business timestamp when the invoice line was recorded in the legacy system.
       - name: unit_price
         type: number
         descriptions:
           db: Unit price charged for this line, in the legacy system's transaction currency.
+          ai: Price per unit charged on this line in the legacy transaction currency.
       - name: customer_id
         type: string
         descriptions:
           db: Legacy system's customer identifier for this invoice. May be blank for guest/unidentified checkouts.
+          ai: Legacy customer identifier; blank for guest or otherwise unidentified transactions.
       - name: country
         type: string
         descriptions:
           db: Country the order was shipped to, as recorded by the legacy system.
+          ai: Destination country for the order as recorded at point of sale.
       - name: is_cancelled
         type: boolean
         descriptions:
           db: TRUE when this invoice line is a cancellation/credit (mirrors the 'C'-prefixed invoice_no).
+          ai: TRUE for cancellation or credit lines; mirrors the 'C'-prefixed invoice numbers.
       - name: line_amount
         type: number
         descriptions:
           db: Line amount for this invoice line (quantity * unit_price).
+          ai: "Total value for this line: quantity multiplied by unit price."
       - name: channel_code
         type: string
         descriptions:
           db: Short code identifying the sales channel this record belongs to (e.g. D2C, OFFLINE, QCOMM, PLATFORM, INTL, CAFE). Joins to dim_channels for the channel's full name, group and settlement currency.
+          ai: Sales channel short code (e.g., D2C, OFFLINE); joins to dim_channels for full details.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: UTC pipeline load time into the silver layer; not a business event timestamp.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: UTC timestamp of the last pipeline update; not a business event timestamp.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream source system or file name; used for lineage and troubleshooting only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Soft-delete flag set by the pipeline; exclude TRUE rows from business reporting.
     descriptions:
       db: "Legacy line-grain invoice data from the company's original online retail system (UK-style invoice export: one row per product line per invoice). Represents the earliest e-commerce channel prior to the current D2C storefront, retained for historical continuity."
+      ai: Silver-layer fact table storing retail invoice line items, one row per product sold, across multiple sales channels.
   customers_master:
     table: sahil-devx.dev_dna_silver.customers_master
     columns:
@@ -144,68 +178,85 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Internal pipeline fingerprint for deduplication and change detection; not meaningful for business use.
       - name: customer_master_id
         type: string
         descriptions:
           db: Unique, conformed customer identifier used across every channel and fact table. Joins to dim_customers_master in the gold layer.
+          ai: Cross-channel unique identifier linking this customer to all fact tables and the gold dimension.
       - name: customer_name
         type: string
         descriptions:
           db: Customer's full name as recorded on their most recent order.
+          ai: Full name as captured on the customer's most recent order.
       - name: email
         type: string
         descriptions:
           db: Customer's email address, used as a primary matching key during identity resolution across channels.
+          ai: Primary contact and identity-matching key used to unify the customer across channels.
       - name: phone
         type: string
         descriptions:
           db: Customer's phone number, used as a secondary matching key during identity resolution.
+          ai: Secondary contact and identity-matching key used to resolve the customer across channels.
       - name: city
         type: string
         descriptions:
           db: Customer's city, from their most recent known address.
+          ai: City from the customer's most recently known address.
       - name: state
         type: string
         descriptions:
           db: Customer's state/region, from their most recent known address.
+          ai: State or region from the customer's most recently known address.
       - name: country
         type: string
         descriptions:
           db: Customer's country, from their most recent known address.
+          ai: Country from the customer's most recently known address.
       - name: signup_date
         type: time
         descriptions:
           db: Date the customer's account/profile was first created in any channel.
+          ai: Date the customer's account was first created across any channel.
       - name: acquisition_channel
         type: string
         descriptions:
           db: The sales channel through which this customer was first acquired (their very first order's channel), not necessarily where they buy today.
+          ai: Sales channel where the customer placed their very first order.
       - name: loyalty_tier
         type: string
         descriptions:
           db: Customer's current loyalty/membership tier (e.g. Bronze, Silver, Gold), assigned by the loyalty program.
+          ai: Current membership tier (e.g., Bronze, Silver, Gold) assigned by the loyalty program.
       - name: rn
         type: number
         descriptions:
           db: Row number assigned per natural key by the ingestion pipeline (partitioned by business key, ordered by recency). rn = 1 identifies the current/latest version of a record when historized duplicates exist in this table.
+          ai: Recency rank per customer; value of 1 marks the current, deduplicated record.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: Pipeline load time when the record first entered the silver layer.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: Pipeline processing time of the most recent update to this record.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream system or file this record was ingested from; used for lineage only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: TRUE indicates the source record was removed upstream; exclude from business reporting.
     descriptions:
       db: Golden-record customer master, deduplicated and conformed across all sales channels. One row per unique customer.
+      ai: Silver-layer conformed customer master storing the latest profile, contact details, location, acquisition channel, and loyalty tier for every known customer.
   d2c_orders:
     table: sahil-devx.dev_dna_silver.d2c_orders
     columns:
@@ -213,80 +264,100 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Internal deduplication key generated during ingestion; not meaningful for business reporting.
       - name: order_name
         type: string
         descriptions:
           db: "Shopify order number/name (e.g. #1001), unique per order but repeated across this order's line items."
+          ai: "Shopify-assigned order identifier (e.g. #1001); shared across all line items of the same order."
       - name: created_at
         type: time
         descriptions:
           db: Timestamp the order was placed on the storefront.
+          ai: Exact date and time the customer placed the order on the storefront.
       - name: customer_email
         type: string
         descriptions:
           db: Email address the customer used to place this order; used to match this order to customers_master.
+          ai: Email used at checkout; links this order to the customer master.
       - name: customer_name
         type: string
         descriptions:
           db: Customer's name as entered at checkout.
+          ai: Full name entered by the customer during checkout.
       - name: billing_city
         type: string
         descriptions:
           db: City on the order's billing address.
+          ai: City from the billing address provided at checkout.
       - name: line_item_title
         type: string
         descriptions:
           db: Product title as displayed on the storefront for this order line.
+          ai: Storefront product name for this specific order line.
       - name: line_item_qty
         type: number
         descriptions:
           db: Quantity of this product ordered on this line.
+          ai: Number of units of the product purchased on this line.
       - name: line_item_price
         type: number
         descriptions:
           db: Unit price of this product at time of order, in INR, before discounts.
+          ai: Per-unit selling price in INR at time of order, before discounts.
       - name: discount_code
         type: string
         descriptions:
           db: Discount/coupon code applied at checkout, if any.
+          ai: Promotional or coupon code the customer applied at checkout.
       - name: shipping_amount
         type: number
         descriptions:
           db: Shipping fee charged on this order, in INR (typically repeated per line if the order has multiple lines).
+          ai: Shipping fee in INR charged on the order; may repeat per line.
       - name: line_total
         type: number
         descriptions:
           db: Final line amount after discounts and any shipping allocation, in INR.
+          ai: Revenue collected for this line in INR, after discounts.
       - name: channel_code
         type: string
         descriptions:
           db: Short code identifying the sales channel this record belongs to (e.g. D2C, OFFLINE, QCOMM, PLATFORM, INTL, CAFE). Joins to dim_channels for the channel's full name, group and settlement currency.
+          ai: Identifies the sales channel (e.g. D2C, CAFE); joins to dim_channels.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: Pipeline load time into the silver layer; not a business event.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: Last pipeline update time; reflects ingestion processing, not business activity.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream system or file this record came from; used for lineage only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Marks records removed upstream; exclude TRUE rows from business reporting.
       - name: order_date_key
         type: time
         descriptions:
           db: Calendar date (YYYY-MM-DD) the order/transaction occurred, derived from the transaction timestamp. Use this column (not the raw timestamp) to join to dim_date for month/quarter/year reporting.
+          ai: Transaction date in YYYY-MM-DD; use to join dim_date for period reporting.
       - name: product_id
         type: string
         descriptions:
           db: Canonical product/SKU identifier. Joins to item_master for product name, category and brand.
+          ai: SKU identifier linking to item_master for product name, category, and brand.
     descriptions:
       db: "Line-grain orders placed on the company's own D2C storefront (Shopify). One row per line item per order. Channel: D2C."
+      ai: Line-item-level direct-to-consumer Shopify orders capturing product, pricing, discounts, shipping, and customer details for revenue analysis.
   dim_customer:
     table: sahil-devx.dev_dna_silver.dim_customer
     columns:
@@ -294,68 +365,85 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Internal pipeline identifier for deduplication and change-detection; exclude from business reporting.
       - name: customer_master_id
         type: string
         descriptions:
           db: Unique, conformed customer identifier; matches customers_master.customer_master_id.
+          ai: Unique enterprise-wide identifier linking this customer across all source systems.
       - name: customer_name
         type: string
         descriptions:
           db: Customer's full name as recorded on their most recent order.
+          ai: Full name as recorded on the customer's most recent order.
       - name: email
         type: string
         descriptions:
           db: Customer's email address, used as a primary matching key during identity resolution.
+          ai: Primary contact address and identity-matching key used during customer resolution.
       - name: phone
         type: string
         descriptions:
           db: Customer's phone number, used as a secondary matching key during identity resolution.
+          ai: Secondary contact number and identity-matching key used during customer resolution.
       - name: city
         type: string
         descriptions:
           db: Customer's city, from their most recent known address.
+          ai: City from the customer's most recently known address.
       - name: state
         type: string
         descriptions:
           db: Customer's state/region, from their most recent known address.
+          ai: State or region from the customer's most recently known address.
       - name: country
         type: string
         descriptions:
           db: Customer's country, from their most recent known address.
+          ai: Country from the customer's most recently known address.
       - name: signup_date
         type: time
         descriptions:
           db: Date the customer's account/profile was first created in any channel.
+          ai: Date the customer first created an account in any channel.
       - name: acquisition_channel
         type: string
         descriptions:
           db: The sales channel through which this customer was first acquired.
+          ai: Sales or marketing channel through which the customer was originally acquired.
       - name: loyalty_tier
         type: string
         descriptions:
           db: Customer's current loyalty/membership tier.
+          ai: Current membership tier level assigned to the customer (e.g., Bronze, Platinum).
       - name: rn
         type: number
         descriptions:
           db: Row number assigned per natural key by the ingestion pipeline (partitioned by business key, ordered by recency). rn = 1 identifies the current/latest version of a record when historized duplicates exist in this table.
+          ai: Pipeline row number; value of 1 identifies the current, latest record version.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: UTC pipeline load time when the record first entered the silver layer; not a business event.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: UTC pipeline processing time of the most recent update; not a business event.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream system or file name; supports data lineage and troubleshooting only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Soft-delete flag; rows marked TRUE were removed upstream and must be excluded from reporting.
     descriptions:
       db: Silver-layer mirror of customers_master used as a stable join target during transformation; carries the same conformed customer attributes.
+      ai: Conformed customer dimension with one current record per customer, covering identity, location, acquisition channel, and loyalty tier.
   dim_d2c_order:
     table: sahil-devx.dev_dna_silver.dim_d2c_order
     columns:
@@ -363,16 +451,20 @@ tables:
         type: string
         descriptions:
           db: Shopify order number/name; unique per order.
+          ai: Shopify-generated order identifier; serves as the unique key for each D2C transaction.
       - name: order_date_key
         type: time
         descriptions:
           db: Calendar date the order was placed.
+          ai: Calendar date the order was placed; primary key for time-based reporting joins.
       - name: customer_email
         type: string
         descriptions:
           db: Email address the customer used to place this order.
+          ai: Email address provided by the customer at purchase; used for customer identification.
     descriptions:
       db: Lightweight order-header lookup for D2C orders (one row per order, not per line item) — use this to count distinct orders or find which customer/date an order_name belongs to without double-counting across line items.
+      ai: Dimension table storing direct-to-consumer Shopify orders, capturing order identity, placement date, and customer contact details.
   dim_date:
     table: sahil-devx.dev_dna_silver.dim_date
     columns:
@@ -380,36 +472,45 @@ tables:
         type: time
         descriptions:
           db: Calendar date (YYYY-MM-DD); the grain of this table and the join key used by every order_date_key/return_date_key column.
+          ai: Primary grain and join key linking all fact table date foreign keys.
       - name: cal_year
         type: number
         descriptions:
           db: Calendar year of this date.
+          ai: Four-digit calendar year for annual reporting and filtering.
       - name: cal_month
         type: number
         descriptions:
           db: Calendar month number (1-12) of this date.
+          ai: Numeric month (1–12) for monthly filtering and aggregation.
       - name: year_month
         type: string
         descriptions:
           db: Year and month as a sortable string (e.g. 2026-08), useful for month-over-month grouping.
+          ai: Sortable YYYY-MM string enabling consistent month-over-month trend grouping.
       - name: month_name
         type: string
         descriptions:
           db: Full calendar month name (e.g. August).
+          ai: Human-readable month label for display in reports and dashboards.
       - name: cal_quarter
         type: number
         descriptions:
           db: Calendar quarter number (1-4) of this date.
+          ai: Quarter number (1–4) supporting quarterly performance rollups and comparisons.
       - name: day_of_week
         type: number
         descriptions:
           db: Day of week number for this date.
+          ai: Numeric day-of-week identifier for weekly pattern and cycle analysis.
       - name: is_weekend
         type: boolean
         descriptions:
           db: TRUE when this date falls on a Saturday or Sunday.
+          ai: Flags Saturday and Sunday dates for weekday versus weekend segmentation.
     descriptions:
       db: Silver-layer calendar/date dimension. One row per calendar date, used to derive time-based fields during transformation.
+      ai: Date dimension providing calendar attributes for every date, enabling time-based filtering, grouping, and joining across all fact tables.
   employees:
     table: sahil-devx.dev_dna_silver.employees
     columns:
@@ -417,56 +518,70 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Internal deduplication key; not meaningful for business reporting.
       - name: employee_id
         type: string
         descriptions:
           db: Unique employee identifier.
+          ai: Unique identifier for each employee across the organization.
       - name: employee_name
         type: string
         descriptions:
           db: Employee's full name.
+          ai: Full legal or display name of the employee.
       - name: role
         type: string
         descriptions:
           db: Employee's job role/title (e.g. Store Manager, Cashier, Barista).
+          ai: Job title or function held by the employee (e.g., Barista, Store Manager).
       - name: channel_code
         type: string
         descriptions:
           db: Sales channel this employee is staffed under (e.g. OFFLINE, CAFE).
+          ai: Sales or operational channel the employee is staffed under.
       - name: store_id
         type: string
         descriptions:
           db: Store or outlet code the employee is assigned to.
+          ai: Physical store or outlet where the employee is assigned.
       - name: hire_date
         type: time
         descriptions:
           db: Date the employee joined the company.
+          ai: Date the employee officially joined the company.
       - name: employment_status
         type: string
         descriptions:
           db: Employee's current status (e.g. Active, On Leave, Terminated).
+          ai: "Current workforce standing: Active, On Leave, Resigned, or Terminated."
       - name: rn
         type: number
         descriptions:
           db: Row number assigned per natural key by the ingestion pipeline (partitioned by business key, ordered by recency). rn = 1 identifies the current/latest version of a record when historized duplicates exist in this table.
+          ai: Ingestion pipeline row number; value of 1 indicates the latest record version.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: Pipeline load time when the record first entered the silver layer.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: Pipeline time of the most recent record update; not a business event.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream source system or file; used for lineage, not business analysis.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Soft-delete flag; TRUE means the record was removed upstream and should be excluded.
     descriptions:
       db: Employee master across all channels that have staff (retail stores, cafes, warehouses).
+      ai: Stores employee records including identity, job role, store assignment, sales channel, hire date, and employment status.
   international_orders:
     table: sahil-devx.dev_dna_silver.international_orders
     columns:
@@ -474,80 +589,100 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Internal deduplication key generated at ingestion; not a business attribute, exclude from reporting.
       - name: order_ref
         type: string
         descriptions:
           db: Unique reference number for this international order.
+          ai: Unique business reference number assigned to each international export order.
       - name: order_date
         type: time
         descriptions:
           db: Timestamp/date the order was placed.
+          ai: Date the customer placed the order.
       - name: dest_country
         type: string
         descriptions:
           db: Destination country the order was shipped to.
+          ai: Country to which the order was shipped.
       - name: customer_name
         type: string
         descriptions:
           db: Customer's name as provided at checkout.
+          ai: Full name of the purchasing customer as entered at checkout.
       - name: product_desc
         type: string
         descriptions:
           db: Product description text as recorded by the international order source.
+          ai: Free-text product description captured from the international order source system.
       - name: product_ref_code
         type: string
         descriptions:
           db: Source system's own product reference code for this line item, prior to mapping onto the canonical product_id.
+          ai: Source system's product code before mapping to the canonical product identifier.
       - name: qty
         type: number
         descriptions:
           db: Quantity of this product ordered on this line.
+          ai: Number of product units included in this order line.
       - name: unit_price_usd
         type: number
         descriptions:
           db: Unit price charged for this line, in USD.
+          ai: Price charged per unit on this line, denominated in USD.
       - name: shipping_cost_usd
         type: number
         descriptions:
           db: Shipping cost charged on this order, in USD.
+          ai: Total shipping fee charged on this order, in USD.
       - name: customs_duty_usd
         type: number
         descriptions:
           db: Customs/import duty charged on this order, in USD.
+          ai: Import/customs duty levied on this order, in USD.
       - name: shipment_status
         type: string
         descriptions:
           db: Current shipping status of this order (e.g. Pending, Shipped, Delivered, Returned).
+          ai: Current fulfillment stage of the order (e.g., Delivered, In Transit, Customs Hold).
       - name: channel_code
         type: string
         descriptions:
           db: Short code identifying the sales channel this record belongs to (e.g. D2C, OFFLINE, QCOMM, PLATFORM, INTL, CAFE). Joins to dim_channels for the channel's full name, group and settlement currency.
+          ai: Sales channel identifier; join to dim_channels for full name and settlement currency.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: Pipeline load time when the record entered the silver layer; not a business event.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: Pipeline processing time of the last ingestion update; not a business event.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream system or file the record was ingested from; used for lineage only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Soft-delete flag; exclude rows marked TRUE from all business reporting.
       - name: order_date_key
         type: time
         descriptions:
           db: Calendar date (YYYY-MM-DD) the order/transaction occurred, derived from the transaction timestamp. Use this column (not the raw timestamp) to join to dim_date for month/quarter/year reporting.
+          ai: Canonical order date for joining to dim_date for period-based reporting.
       - name: product_id
         type: string
         descriptions:
           db: Canonical product/SKU identifier. Joins to item_master for product name, category and brand.
+          ai: Canonical SKU; join to item_master for product name, category, and brand.
     descriptions:
       db: "Line-grain cross-border orders shipped to customers outside the home market. Channel: INTL."
+      ai: Records cross-border export orders including product, pricing, shipping costs, customs duties, destination country, and current shipment status per line item.
   inventory_snapshot_expanded:
     table: sahil-devx.dev_dna_silver.inventory_snapshot_expanded
     columns:
@@ -555,40 +690,50 @@ tables:
         type: string
         descriptions:
           db: Deterministic hash of this record's natural/business key, generated during ingestion. Used internally for deduplication and change-detection; not a business attribute and should not be used for reporting.
+          ai: Internal deduplication key; not for business reporting or analysis.
       - name: product_id
         type: string
         descriptions:
           db: Canonical product/SKU identifier. Joins to item_master.
+          ai: Unique product/SKU identifier linking to the item master catalog.
       - name: snapshot_date
         type: time
         descriptions:
           db: Date this stock level was captured.
+          ai: The calendar date when stock levels were recorded.
       - name: units_on_hand
         type: number
         descriptions:
           db: Total units of this product in stock across all locations as of snapshot_date.
+          ai: Total stock units available across all locations on the snapshot date.
       - name: rn
         type: number
         descriptions:
           db: Row number assigned per natural key by the ingestion pipeline (partitioned by business key, ordered by recency). rn = 1 identifies the current/latest version of a record when historized duplicates exist in this table.
+          ai: Row number where 1 = most recent record; filters out historical duplicates.
       - name: insert_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was first loaded into the silver layer. Reflects pipeline load time, not a business event time.
+          ai: Pipeline load time when the record entered the silver layer; not a business event.
       - name: modified_timestamp
         type: time
         descriptions:
           db: UTC timestamp when this record was last updated by the ingestion pipeline. Reflects pipeline processing time, not a business event time.
+          ai: Pipeline processing time of the last record update; not a business event.
       - name: source_name
         type: string
         descriptions:
           db: Name of the upstream source system or source file this record was ingested from. Used for data lineage and troubleshooting, not for business analysis.
+          ai: Upstream system or file that provided this record; used for lineage only.
       - name: is_deleted
         type: boolean
         descriptions:
           db: Soft-delete flag set by the ingestion pipeline when the source record was removed or tombstoned upstream. Rows where this is TRUE should normally be excluded from business reporting.
+          ai: Marks records removed upstream; TRUE rows should be excluded from reporting.
     descriptions:
       db: Periodic (daily) stock-on-hand snapshot per product. One row per product per snapshot_date.
+      ai: Daily point-in-time stock level snapshots per product, tracking units on hand across all locations for inventory visibility.
   item_master:
     table: sahil-devx.dev_dna_silver.item_master
     columns:
