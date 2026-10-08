@@ -30,6 +30,7 @@ connections:
       - sahil-devx.dev_dna_silver.suppliers
     credentials_json: file:~/.config/gcloud/ktx-reader.json
     location: asia-south1
+    max_bytes_billed: 10000000000
     context:
       queryHistory:
         enabled: false
