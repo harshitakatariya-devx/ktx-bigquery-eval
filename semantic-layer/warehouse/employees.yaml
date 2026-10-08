@@ -1,0 +1,13 @@
+name: employees
+descriptions:
+  user: Employee records from dev_dna_silver. One logical employee may appear across multiple rows (SCD-style); filter rn = 1 AND is_deleted = false to get the current active snapshot. There is NO manager_id / reports_to column — org-chart / reporting-hierarchy questions cannot be answered from this source.
+measures:
+  - name: active_employee_count
+    expr: count(distinct employee_id)
+    segments:
+      - active_current
+    description: Headcount of active employees (rn=1, is_deleted=false)
+segments:
+  - name: active_current
+    expr: rn = 1 AND is_deleted = false
+    description: Current, non-deleted employee record (deduplicated SCD snapshot)
