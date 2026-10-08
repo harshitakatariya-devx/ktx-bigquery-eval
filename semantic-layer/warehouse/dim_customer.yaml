@@ -1,0 +1,13 @@
+name: dim_customer
+descriptions:
+  user: Customer dimension. loyalty_tier reflects the customer's CURRENT tier, not the tier held at the time of any given order.
+column_overrides:
+  - name: loyalty_tier
+    descriptions:
+      user: "Customer loyalty tier at query time (current, not historical). Values: BRONZE, SILVER, GOLD, PLATINUM (always uppercase). Join d2c_orders on customer_email = dim_customer.email to segment D2C revenue by tier."
+    enum_values:
+      dbt:
+        - BRONZE
+        - SILVER
+        - GOLD
+        - PLATINUM
