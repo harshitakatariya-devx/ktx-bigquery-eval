@@ -1,0 +1,13 @@
+select 'returns.channel_code' k, string_agg(distinct channel_code) v from `sahil-devx.dev_dna_silver.returns`
+-- Source: q00_profile.sql  | run 2026-10-08 06:46 on sahil-devx.dev_dna_silver
+┌─────────┬────────────────────────────────┬─────────────────────────────────────┐
+│ (index) │ k                              │ v                                   │
+├─────────┼────────────────────────────────┼─────────────────────────────────────┤
+│ 0       │ 'returns.channel_code'         │ 'D2C,EXPORT,PLATFORM,QCOMM,OFFLINE' │
+│ 1       │ 'returns.rn values'            │ '1,2'                               │
+│ 2       │ 'orders date range'            │ '2025-06-11 .. 2026-08-31'          │
+│ 3       │ 'dim_customer rn/deleted'      │ '1496 rn1 / 0 del / 1496 emails'    │
+│ 4       │ 'customers_master rn/deleted'  │ '1600 rn1 / 0 del / 1496 emails'    │
+│ 5       │ 'loyalty tiers (dim_customer)' │ 'SILVER,BRONZE,GOLD,PLATINUM'       │
+│ 6       │ 'employees cols'               │ 'no manager_id column'              │
+└─────────┴────────────────────────────────┴─────────────────────────────────────┘

@@ -1,0 +1,19 @@
+-- Period: n/a (schema check)
+-- Source: q12_employees_columns.sql  | run 2026-10-08 06:46 on sahil-devx.dev_dna_silver
+┌─────────┬──────────────────────┬─────────────┐
+│ (index) │ column_name          │ data_type   │
+├─────────┼──────────────────────┼─────────────┤
+│ 0       │ 'hash_key'           │ 'STRING'    │
+│ 1       │ 'employee_id'        │ 'STRING'    │
+│ 2       │ 'employee_name'      │ 'STRING'    │
+│ 3       │ 'role'               │ 'STRING'    │
+│ 4       │ 'channel_code'       │ 'STRING'    │
+│ 5       │ 'store_id'           │ 'STRING'    │
+│ 6       │ 'hire_date'          │ 'DATE'      │
+│ 7       │ 'employment_status'  │ 'STRING'    │
+│ 8       │ 'rn'                 │ 'INT64'     │
+│ 9       │ 'insert_timestamp'   │ 'TIMESTAMP' │
+│ 10      │ 'modified_timestamp' │ 'TIMESTAMP' │
+│ 11      │ 'source_name'        │ 'STRING'    │
+│ 12      │ 'is_deleted'         │ 'BOOL'      │
+└─────────┴──────────────────────┴─────────────┘

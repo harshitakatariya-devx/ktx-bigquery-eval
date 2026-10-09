@@ -1,0 +1,7 @@
+{"tool": "discover_data", "params": {"query": "offline vs online revenue sales channel", "limit": 15}}
+{"tool": "connection_list", "params": {}}
+{"tool": "sl_read_source", "params": {"connectionId": "warehouse", "sourceName": "sales"}}
+{"tool": "discover_data", "params": {"query": "dim_channels channel group online offline", "limit": 8}}
+{"tool": "sql_execution", "params": {"connectionId": "warehouse", "sql": "select table_name from `sahil-devx.dev_dna_silver.INFORMATION_SCHEMA.TABLES` where lower(table_name) like '%channel%'", "maxRows": 1000}}
+{"tool": "sl_query", "params": {"connectionId": "warehouse", "measures": ["sales.revenue_inr", "sales.sales_lines"], "dimensions": [{"field": "sales.channel_code"}], "filters": [], "segments": [], "order_by": [{"field": "sales.revenue_inr", "direction": "desc"}], "limit": 1000, "include_empty": true, "include": []}}
+{"tool": "sl_query", "params": {"connectionId": "warehouse", "measures": [{"expr": "sum(case when sales.channel_code in ('OFFLINE','CAFE') then sales.revenue_inr else 0 end)", "name": "offline_rev"}, {"expr": "sum(case when sales.channel_code not in ('OFFLINE','CAFE') then sales.revenue_inr else 0 end)", "name": "online_rev"}, "sales.revenue_inr"], "dimensions": [], "filters": [], "segments": [], "order_by": [], "limit": 1000, "include_empty": true, "include": []}}

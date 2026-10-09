@@ -1,0 +1,3 @@
+{"tool": "discover_data", "params": {"query": "returns refund return id status", "kinds": ["sl_source", "table", "column"], "limit": 10}}
+{"tool": "sql_execution", "params": {"connectionId": "warehouse", "sql": "select * from `sahil-devx.dev_dna_silver.returns` where return_id = 'R-8842'", "maxRows": 10}}
+{"tool": "sql_execution", "params": {"connectionId": "warehouse", "sql": "select return_id from `sahil-devx.dev_dna_silver.returns` where lower(return_id) like '%8842%' limit 10", "maxRows": 10}}

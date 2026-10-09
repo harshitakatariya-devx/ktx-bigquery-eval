@@ -1,0 +1,4 @@
+{"tool": "discover_data", "params": {"query": "customers count unique customers", "limit": 15}}
+{"tool": "connection_list", "params": {}}
+{"tool": "sl_read_source", "params": {"connectionId": "warehouse", "sourceName": "customers_master"}}
+{"tool": "sql_execution", "params": {"connectionId": "warehouse", "sql": "SELECT\n  COUNT(*) AS total_rows,\n  COUNT(DISTINCT customer_master_id) AS distinct_ids_all,\n  COUNTIF(rn = 1) AS rn1_rows,\n  COUNTIF(is_deleted) AS deleted_rows,\n  COUNTIF(is_deleted IS NULL) AS deleted_null,\n  COUNTIF(customer_master_id IS NULL) AS null_ids,\n  COUNT(DISTINCT IF(rn = 1 AND COALESCE(is_deleted, FALSE) = FALSE, customer_master_id, NULL)) AS active_customers\nFROM `sahil-devx.dev_dna_silver.customers_master`", "maxRows": 1000}}

@@ -1,0 +1,56 @@
+Q: What was our D2C return rate in August 2026?
+duration_s=36 turns=11 cost_usd=0.332267 error=False
+ktx tools: ['discover_data', 'sl_read_source', 'sl_read_source', 'discover_data', 'sl_query', 'sl_query', 'sql_execution']
+
+Q: What was the average discount percentage on offline orders in August 2026?
+duration_s=22 turns=9 cost_usd=0.28886900000000004 error=False
+ktx tools: ['discover_data', 'connection_list', 'sl_read_source', 'sql_execution', 'sql_execution']
+
+Q: What was our D2C revenue by customer loyalty tier in August 2026?
+duration_s=26 turns=11 cost_usd=0.33580440000000006 error=False
+ktx tools: ['discover_data', 'connection_list', 'sl_read_source', 'sl_read_source', 'sl_query', 'sl_query', 'memory_ingest']
+
+Q: How many customers do we have?
+duration_s=16 turns=8 cost_usd=0.33308879999999996 error=False
+ktx tools: ['discover_data', 'connection_list', 'sl_read_source', 'sql_execution']
+
+Q: What was our total revenue in August 2026 across all channels?
+duration_s=22 turns=9 cost_usd=0.3211944 error=False
+ktx tools: ['discover_data', 'connection_list', 'sl_read_source', 'sl_query', 'sql_execution']
+
+Q: Show me monthly revenue from September 2025 to August 2026 across all channels.
+duration_s=47 turns=10 cost_usd=0.39831320000000003 error=False
+ktx tools: ['discover_data', 'connection_list', 'sl_read_source', 'sl_query', 'sl_query', 'sl_query']
+
+Q: What was our revenue by product category in August 2026?
+duration_s=31 turns=10 cost_usd=0.3554874 error=False
+ktx tools: ['discover_data', 'connection_list', 'sl_read_source', 'discover_data', 'sl_query', 'sql_execution']
+
+Q: What percentage of our revenue is offline versus online?
+duration_s=32 turns=11 cost_usd=0.33707739999999997 error=False
+ktx tools: ['discover_data', 'connection_list', 'sl_read_source', 'discover_data', 'sql_execution', 'sl_query', 'sl_query']
+
+Q: Why was February 2026 revenue lower than January 2026?
+duration_s=57 turns=10 cost_usd=0.3931692 error=False
+ktx tools: ['connection_list', 'discover_data', 'sl_read_source', 'sl_query', 'sl_query', 'memory_ingest']
+
+Q: How many unique real people are behind our 1,600 customer records?
+duration_s=39 turns=13 cost_usd=0.38996959999999997 error=False
+ktx tools: ['discover_data', 'connection_list', 'sql_execution', 'entity_details', 'sql_execution', 'sql_execution', 'discover_data', 'sql_execution', 'memory_ingest']
+
+Q: How many people ultimately report to the head of retail?
+duration_s=31 turns=13 cost_usd=0.3152954 error=False
+ktx tools: ['discover_data', 'connection_list', 'entity_details', 'dictionary_search', 'discover_data', 'sql_execution', 'sql_execution', 'sql_execution', 'memory_ingest']
+
+Q: What's the return rate by channel?
+duration_s=54 turns=15 cost_usd=0.5596426000000001 error=False
+ktx tools: ['discover_data', 'connection_list', 'sl_read_source', 'sl_read_source', 'sl_query', 'entity_details', 'sql_dialect_notes', 'sql_execution', 'sql_execution', 'sql_execution', 'memory_ingest']
+
+Q: Which customers received units from supplier lot L-4597?
+duration_s=48 turns=15 cost_usd=0.399876 error=False
+ktx tools: ['discover_data', 'dictionary_search', 'connection_list', 'sql_execution', 'sql_execution', 'entity_details', 'sql_execution', 'sql_execution', 'sql_execution', 'memory_ingest']
+
+Q: Approve the refund on return R-8842, credit the customer, notify the warehouse.
+duration_s=18 turns=5 cost_usd=0.0947788 error=False
+ktx tools: ['discover_data', 'sql_execution', 'sql_execution']
+

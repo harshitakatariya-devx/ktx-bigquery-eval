@@ -1,0 +1,128 @@
+{
+ "d2c_orders": {
+  "sql": "SELECT sum(CASE WHEN coalesce(d2c_orders.is_deleted, FALSE) = FALSE THEN d2c_orders.line_item_qty END) AS units_sold, sum(CASE WHEN coalesce(d2c_orders.is_deleted, FALSE) = FALSE THEN d2c_orders.line_item_qty * d2c_orders.line_item_price END) AS gross_revenue_inr, sum(CASE WHEN coalesce(d2c_orders.is_deleted, FALSE) = FALSE THEN d2c_orders.shipping_amount END) AS shipping_inr, sum(CASE WHEN coalesce(d2c_orders.is_deleted, FALSE) = FALSE THEN d2c_orders.line_item_qty * d2c_orders.line_item_price + d2c_orders.shipping_amount END) AS net_after_fees_inr, sum(CASE WHEN coalesce(d2c_orders.is_deleted, FALSE) = FALSE THEN d2c_orders.line_total END) AS revenue_inr FROM sahil-devx.dev_dna_silver.d2c_orders AS d2c_orders LIMIT 1000",
+  "values": {
+   "units_sold": 4025992,
+   "gross_revenue_inr": 2385829097.35,
+   "shipping_inr": 100746632.95,
+   "net_after_fees_inr": 2486575730.3,
+   "revenue_inr": 2385828966.52
+  }
+ },
+ "platform_orders": {
+  "sql": "SELECT sum(CASE WHEN coalesce(platform_orders.is_deleted, FALSE) = FALSE THEN platform_orders.units END) AS units_sold, sum(CASE WHEN coalesce(platform_orders.is_deleted, FALSE) = FALSE THEN platform_orders.units * platform_orders.unit_price END) AS gross_revenue_inr, sum(CASE WHEN coalesce(platform_orders.is_deleted, FALSE) = FALSE THEN platform_orders.promo_discount END) AS discount_inr, sum(CASE WHEN coalesce(platform_orders.is_deleted, FALSE) = FALSE THEN platform_orders.marketplace_fee END) AS marketplace_fee_inr, sum(CASE WHEN coalesce(platform_orders.is_deleted, FALSE) = FALSE THEN platform_orders.units * platform_orders.unit_price - platform_orders.promo_discount - platform_orders.marketplace_fee END) AS net_after_fees_inr, sum(CASE WHEN coalesce(platform_orders.is_deleted, FALSE) = FALSE THEN platform_orders.units * platform_orders.unit_price - platform_orders.promo_discount END) AS revenue_inr FROM sahil-devx.dev_dna_silver.platform_orders AS platform_orders LIMIT 1000",
+  "values": {
+   "units_sold": 5049814,
+   "gross_revenue_inr": 3292690631.31,
+   "discount_inr": 201597996.83,
+   "marketplace_fee_inr": 493903581.41,
+   "net_after_fees_inr": 2597189053.07,
+   "revenue_inr": 3091092634.48
+  }
+ },
+ "qcomm_orders": {
+  "sql": "SELECT sum(CASE WHEN coalesce(qcomm_orders.is_deleted, FALSE) = FALSE THEN qcomm_orders.qty END) AS units_sold, sum(CASE WHEN coalesce(qcomm_orders.is_deleted, FALSE) = FALSE THEN qcomm_orders.qty * qcomm_orders.mrp END) AS gross_revenue_inr, sum(CASE WHEN coalesce(qcomm_orders.is_deleted, FALSE) = FALSE THEN qcomm_orders.total_discount END) AS discount_inr, sum(CASE WHEN coalesce(qcomm_orders.is_deleted, FALSE) = FALSE THEN qcomm_orders.delivery_fee END) AS delivery_fee_inr, sum(CASE WHEN coalesce(qcomm_orders.is_deleted, FALSE) = FALSE THEN qcomm_orders.qty * qcomm_orders.mrp - qcomm_orders.total_discount - qcomm_orders.delivery_fee END) AS net_after_fees_inr, sum(CASE WHEN coalesce(qcomm_orders.is_deleted, FALSE) = FALSE THEN qcomm_orders.qty * qcomm_orders.selling_price END) AS revenue_inr FROM sahil-devx.dev_dna_silver.qcomm_orders AS qcomm_orders LIMIT 1000",
+  "values": {
+   "units_sold": 3769376,
+   "gross_revenue_inr": 2166659174.87,
+   "discount_inr": 165038801.7,
+   "delivery_fee_inr": 33814691.9,
+   "net_after_fees_inr": 1967805681.27,
+   "revenue_inr": 2001620559.3
+  }
+ },
+ "offline_orders": {
+  "sql": "SELECT sum(CASE WHEN coalesce(offline_orders.is_deleted, FALSE) = FALSE THEN offline_orders.qty END) AS units_sold, sum(CASE WHEN coalesce(offline_orders.is_deleted, FALSE) = FALSE THEN offline_orders.qty * offline_orders.mrp END) AS gross_revenue_inr, sum(CASE WHEN coalesce(offline_orders.is_deleted, FALSE) = FALSE THEN offline_orders.qty * offline_orders.mrp - offline_orders.net_amount END) AS discount_inr, sum(CASE WHEN coalesce(offline_orders.is_deleted, FALSE) = FALSE THEN offline_orders.net_amount END) AS net_after_fees_inr, sum(CASE WHEN coalesce(offline_orders.is_deleted, FALSE) = FALSE THEN offline_orders.net_amount END) AS revenue_inr FROM sahil-devx.dev_dna_silver.offline_orders AS offline_orders LIMIT 1000",
+  "values": {
+   "units_sold": 2532559,
+   "gross_revenue_inr": 1375562127.94,
+   "discount_inr": 135101447.93,
+   "net_after_fees_inr": 1240460680.01,
+   "revenue_inr": 1240460680.01
+  }
+ },
+ "international_orders": {
+  "sql": "SELECT sum(CASE WHEN coalesce(international_orders.is_deleted, FALSE) = FALSE THEN international_orders.qty END) AS units_sold, sum(CASE WHEN coalesce(international_orders.is_deleted, FALSE) = FALSE THEN international_orders.qty * international_orders.unit_price_usd * 83 END) AS gross_revenue_inr, sum(CASE WHEN coalesce(international_orders.is_deleted, FALSE) = FALSE THEN international_orders.qty * international_orders.unit_price_usd END) AS gross_revenue_usd, sum(CASE WHEN coalesce(international_orders.is_deleted, FALSE) = FALSE THEN (international_orders.qty * international_orders.unit_price_usd - international_orders.customs_duty_usd) * 83 END) AS net_after_fees_inr, sum(CASE WHEN coalesce(international_orders.is_deleted, FALSE) = FALSE THEN international_orders.qty * international_orders.unit_price_usd * 83 END) AS revenue_inr FROM sahil-devx.dev_dna_silver.international_orders AS international_orders LIMIT 1000",
+  "values": {
+   "units_sold": 1348503,
+   "gross_revenue_inr": 1180792939.68,
+   "gross_revenue_usd": 14226420.96,
+   "net_after_fees_inr": 1078139870.17,
+   "revenue_inr": 1180792939.68
+  }
+ },
+ "cafe_sales": {
+  "sql": "SELECT sum(CASE WHEN coalesce(cafe_sales.is_deleted, FALSE) = FALSE THEN cafe_sales.qty END) AS units_sold, sum(CASE WHEN coalesce(cafe_sales.is_deleted, FALSE) = FALSE THEN cafe_sales.amount END) AS net_after_fees_inr, sum(CASE WHEN coalesce(cafe_sales.is_deleted, FALSE) = FALSE THEN cafe_sales.amount END) AS revenue_inr FROM sahil-devx.dev_dna_silver.cafe_sales AS cafe_sales LIMIT 1000",
+  "values": {
+   "units_sold": 1396499,
+   "net_after_fees_inr": 708215911.3,
+   "revenue_inr": 708215911.3
+  }
+ },
+ "returns": {
+  "sql": "SELECT count(DISTINCT CASE WHEN returns.rn = 1 AND coalesce(returns.is_deleted, FALSE) = FALSE THEN returns.return_id END) AS return_count, sum(CASE WHEN returns.rn = 1 AND coalesce(returns.is_deleted, FALSE) = FALSE THEN returns.refund_amount END) AS refund_amount_inr FROM sahil-devx.dev_dna_silver.returns AS returns LIMIT 1000",
+  "values": {
+   "return_count": 577716,
+   "refund_amount_inr": 687841371.33
+  }
+ },
+ "sales_by_channel": {
+  "sql": "WITH sales AS (\nselect hash_key as sales_line_key, 'D2C' as channel_code, order_date_key, product_id,\n       cast(null as string) as order_status, line_item_qty as quantity,\n       line_item_qty * line_item_price as gross_amount_inr,\n       cast(0 as numeric) as discount_amount_inr,\n       shipping_amount as shipping_amount_inr,\n       line_item_qty * line_item_price + shipping_amount as net_amount_inr,\n       line_total as revenue_inr\nfrom `sahil-devx.dev_dna_silver.d2c_orders` where coalesce(is_deleted, false) = false\nunion all\nselect hash_key, 'PLATFORM', order_date_key, product_id, fulfillment_status, units,\n       units * unit_price, promo_discount, cast(0 as numeric),\n       units * unit_price - promo_discount - marketplace_fee,\n       units * unit_price - promo_discount\nfrom `sahil-devx.dev_dna_silver.platform_orders` where coalesce(is_deleted, false) = false\nunion all\nselect hash_key, 'QCOMM', order_date_key, product_id, order_status, qty,\n       qty * mrp, total_discount, delivery_fee,\n       qty * mrp - total_discount - delivery_fee,\n       qty * selling_price\nfrom `sahil-devx.dev_dna_silver.qcomm_orders` where coalesce(is_deleted, false) = false\nunion all\nselect hash_key, 'OFFLINE', order_date_key, product_id, cast(null as string), qty,\n       qty * mrp, qty * mrp - net_amount, cast(0 as numeric), net_amount, net_amount\nfrom `sahil-devx.dev_dna_silver.offline_orders` where coalesce(is_deleted, false) = false\nunion all\nselect hash_key, 'INTERNATIONAL', order_date_key, product_id, shipment_status, qty,\n       qty * unit_price_usd * 83, cast(0 as numeric), shipping_cost_usd * 83,\n       (qty * unit_price_usd - customs_duty_usd) * 83,\n       qty * unit_price_usd * 83\nfrom `sahil-devx.dev_dna_silver.international_orders` where coalesce(is_deleted, false) = false\nunion all\nselect hash_key, 'CAFE', order_date_key, product_id, cast(null as string), qty,\n       amount, cast(0 as numeric), cast(0 as numeric), amount, amount\nfrom `sahil-devx.dev_dna_silver.cafe_sales` where coalesce(is_deleted, false) = false\n)\nSELECT sales.channel_code AS channel_code, sum(sales.revenue_inr) AS revenue_inr, sum(sales.net_amount_inr) AS net_after_fees_inr, sum(sales.gross_amount_inr) AS gross_revenue_inr, sum(sales.discount_amount_inr) AS discount_inr, sum(sales.quantity) AS units_sold, count(sales.sales_line_key) AS sales_lines FROM sales GROUP BY channel_code ORDER BY 1 LIMIT 1000",
+  "rows": [
+   {
+    "channel_code": "CAFE",
+    "revenue_inr": 708215911.3,
+    "net_after_fees_inr": 708215911.3,
+    "gross_revenue_inr": 708215911.3,
+    "discount_inr": 0,
+    "units_sold": 1396499,
+    "sales_lines": 923000
+   },
+   {
+    "channel_code": "D2C",
+    "revenue_inr": 2385828966.52,
+    "net_after_fees_inr": 2486575730.3,
+    "gross_revenue_inr": 2385829097.35,
+    "discount_inr": 0,
+    "units_sold": 4025992,
+    "sales_lines": 2675606
+   },
+   {
+    "channel_code": "INTERNATIONAL",
+    "revenue_inr": 1180792939.68,
+    "net_after_fees_inr": 1078139870.17,
+    "gross_revenue_inr": 1180792939.68,
+    "discount_inr": 0,
+    "units_sold": 1348503,
+    "sales_lines": 461500
+   },
+   {
+    "channel_code": "OFFLINE",
+    "revenue_inr": 1240460680.01,
+    "net_after_fees_inr": 1240460680.01,
+    "gross_revenue_inr": 1375562127.94,
+    "discount_inr": 135101447.93,
+    "units_sold": 2532559,
+    "sales_lines": 1266229
+   },
+   {
+    "channel_code": "PLATFORM",
+    "revenue_inr": 3091092634.48,
+    "net_after_fees_inr": 2597189053.07,
+    "gross_revenue_inr": 3292690631.31,
+    "discount_inr": 201597996.83,
+    "units_sold": 5049814,
+    "sales_lines": 2035493
+   },
+   {
+    "channel_code": "QCOMM",
+    "revenue_inr": 2001620559.3,
+    "net_after_fees_inr": 1967805681.27,
+    "gross_revenue_inr": 2166659174.87,
+    "discount_inr": 165038801.7,
+    "units_sold": 3769376,
+    "sales_lines": 1899588
+   }
+  ]
+ }
+}

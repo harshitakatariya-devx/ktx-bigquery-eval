@@ -1,0 +1,5 @@
+{"tool": "discover_data", "params": {"query": "total revenue all channels sales", "limit": 20}}
+{"tool": "connection_list", "params": {}}
+{"tool": "sl_read_source", "params": {"connectionId": "warehouse", "sourceName": "sales"}}
+{"tool": "sl_query", "params": {"connectionId": "warehouse", "measures": ["sales.revenue_inr", "sales.sales_lines"], "dimensions": [{"field": "sales.channel_code"}], "filters": ["sales.order_date_key >= '2026-08-01'", "sales.order_date_key < '2026-09-01'"], "segments": [], "order_by": [], "limit": 1000, "include_empty": true, "include": ["sql"]}}
+{"tool": "sql_execution", "params": {"connectionId": "warehouse", "sql": "select min(order_date_key) mn, max(order_date_key) mx, count(*) n from `sahil-devx.dev_dna_silver.d2c_orders` where order_date_key >= '2026-08-01' and order_date_key < '2026-09-01'", "maxRows": 1000}}

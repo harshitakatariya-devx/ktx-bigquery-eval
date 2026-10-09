@@ -1,0 +1,7 @@
+-- Period: n/a (schema check)
+-- Source: q14_lot_columns.sql  | run 2026-10-08 06:46 on sahil-devx.dev_dna_silver
+┌─────────┬────────────────┬─────────────┐
+│ (index) │ table_name     │ column_name │
+├─────────┼────────────────┼─────────────┤
+│ 0       │ '(none found)' │ ''          │
+└─────────┴────────────────┴─────────────┘
