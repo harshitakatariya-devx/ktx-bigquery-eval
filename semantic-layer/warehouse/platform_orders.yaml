@@ -1,0 +1,26 @@
+name: platform_orders
+measures:
+  - name: units_sold
+    expr: sum(units)
+    filter: coalesce(is_deleted, false) = false
+    description: Units sold. Excludes soft-deleted rows.
+  - name: gross_revenue_inr
+    expr: sum(units * unit_price)
+    filter: coalesce(is_deleted, false) = false
+    description: Gross sales before promo discount and marketplace fee, in INR. Matches gold fact_sales.gross_amount_inr.
+  - name: discount_inr
+    expr: sum(promo_discount)
+    filter: coalesce(is_deleted, false) = false
+    description: Marketplace promotion discount, in INR.
+  - name: marketplace_fee_inr
+    expr: sum(marketplace_fee)
+    filter: coalesce(is_deleted, false) = false
+    description: Commission/fee charged by the marketplace, in INR.
+  - name: net_after_fees_inr
+    expr: sum(units * unit_price - promo_discount - marketplace_fee)
+    filter: coalesce(is_deleted, false) = false
+    description: Net after fees (gold fact_sales.net_amount_inr rule) for PLATFORM = gross - promo discount - marketplace fee, in INR. Matches gold fact_sales.net_amount_inr. Includes all fulfillment statuses, as gold does.
+  - name: revenue_inr
+    expr: sum(units * unit_price - promo_discount)
+    filter: coalesce(is_deleted, false) = false
+    description: Standard company revenue in INR = units * unit_price - promo_discount. Use this for "revenue" or "sales". All order statuses included.

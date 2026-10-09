@@ -1,13 +1,17 @@
 name: employees
 descriptions:
-  user: Employee records from dev_dna_silver. One logical employee may appear across multiple rows (SCD-style); filter rn = 1 AND is_deleted = false to get the current active snapshot. There is NO manager_id / reports_to column — org-chart / reporting-hierarchy questions cannot be answered from this source.
+  user: Employee records from dev_dna_silver, one row per employee (verified 2026-10-09; rn is always 1). employment_status is ACTIVE, ON LEAVE or RESIGNED. There is NO manager_id / reports_to column — org-chart / reporting-hierarchy questions cannot be answered from this source.
 measures:
   - name: active_employee_count
     expr: count(distinct employee_id)
     segments:
       - active_current
-    description: Headcount of active employees (rn=1, is_deleted=false)
+    description: Headcount of employees whose employment_status is ACTIVE (excludes ON LEAVE and RESIGNED)
+  - name: employee_count
+    expr: count(distinct employee_id)
+    filter: coalesce(is_deleted, false) = false
+    description: All employee records, any employment_status (ACTIVE, ON LEAVE, RESIGNED)
 segments:
   - name: active_current
-    expr: rn = 1 AND is_deleted = false
-    description: Current, non-deleted employee record (deduplicated SCD snapshot)
+    expr: employment_status = 'ACTIVE' AND coalesce(is_deleted, false) = false
+    description: Employees currently ACTIVE (not ON LEAVE or RESIGNED), non-deleted

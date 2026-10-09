@@ -1,0 +1,22 @@
+name: offline_orders
+measures:
+  - name: units_sold
+    expr: sum(qty)
+    filter: coalesce(is_deleted, false) = false
+    description: Units sold. Excludes soft-deleted rows.
+  - name: gross_revenue_inr
+    expr: sum(qty * mrp)
+    filter: coalesce(is_deleted, false) = false
+    description: Gross sales at MRP, in INR. Matches gold fact_sales.gross_amount_inr.
+  - name: discount_inr
+    expr: sum(qty * mrp - net_amount)
+    filter: coalesce(is_deleted, false) = false
+    description: Discount = gross at MRP - net amount, in INR.
+  - name: net_after_fees_inr
+    expr: sum(net_amount)
+    filter: coalesce(is_deleted, false) = false
+    description: Net after fees (gold fact_sales.net_amount_inr rule) for OFFLINE = net_amount after discount, in INR. Matches gold fact_sales.net_amount_inr.
+  - name: revenue_inr
+    expr: sum(net_amount)
+    filter: coalesce(is_deleted, false) = false
+    description: Standard company revenue in INR = net_amount. Use this for "revenue" or "sales". All order statuses included.

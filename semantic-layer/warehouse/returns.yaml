@@ -1,0 +1,10 @@
+name: returns
+measures:
+  - name: return_count
+    expr: count(distinct return_id)
+    filter: rn = 1 and coalesce(is_deleted, false) = false
+    description: Number of returns, counting only the latest version of each return (rn = 1) and excluding soft-deleted rows.
+  - name: refund_amount_inr
+    expr: sum(refund_amount)
+    filter: rn = 1 and coalesce(is_deleted, false) = false
+    description: Amount refunded to customers, in INR, latest version of each return only.

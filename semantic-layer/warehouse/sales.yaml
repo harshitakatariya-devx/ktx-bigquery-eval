@@ -1,0 +1,108 @@
+name: sales
+descriptions:
+  user: >-
+    Conformed sales lines across every channel (D2C, PLATFORM, QCOMM, OFFLINE,
+    INTERNATIONAL, CAFE), built from the six silver channel order tables with the
+    standard company revenue definition (revenue_inr) plus the gold net-after-fees rule (net_after_fees_inr). One row per sales line; soft-deleted
+    rows are excluded. Use this source for revenue, units and channel comparisons.
+sql: |
+  select hash_key as sales_line_key, 'D2C' as channel_code, order_date_key, product_id,
+         cast(null as string) as order_status, line_item_qty as quantity,
+         line_item_qty * line_item_price as gross_amount_inr,
+         cast(0 as numeric) as discount_amount_inr,
+         shipping_amount as shipping_amount_inr,
+         line_item_qty * line_item_price + shipping_amount as net_amount_inr,
+         line_total as revenue_inr
+  from `sahil-devx.dev_dna_silver.d2c_orders` where coalesce(is_deleted, false) = false
+  union all
+  select hash_key, 'PLATFORM', order_date_key, product_id, fulfillment_status, units,
+         units * unit_price, promo_discount, cast(0 as numeric),
+         units * unit_price - promo_discount - marketplace_fee,
+         units * unit_price - promo_discount
+  from `sahil-devx.dev_dna_silver.platform_orders` where coalesce(is_deleted, false) = false
+  union all
+  select hash_key, 'QCOMM', order_date_key, product_id, order_status, qty,
+         qty * mrp, total_discount, delivery_fee,
+         qty * mrp - total_discount - delivery_fee,
+         qty * selling_price
+  from `sahil-devx.dev_dna_silver.qcomm_orders` where coalesce(is_deleted, false) = false
+  union all
+  select hash_key, 'OFFLINE', order_date_key, product_id, cast(null as string), qty,
+         qty * mrp, qty * mrp - net_amount, cast(0 as numeric), net_amount, net_amount
+  from `sahil-devx.dev_dna_silver.offline_orders` where coalesce(is_deleted, false) = false
+  union all
+  select hash_key, 'INTERNATIONAL', order_date_key, product_id, shipment_status, qty,
+         qty * unit_price_usd * 83, cast(0 as numeric), shipping_cost_usd * 83,
+         (qty * unit_price_usd - customs_duty_usd) * 83,
+         qty * unit_price_usd * 83
+  from `sahil-devx.dev_dna_silver.international_orders` where coalesce(is_deleted, false) = false
+  union all
+  select hash_key, 'CAFE', order_date_key, product_id, cast(null as string), qty,
+         amount, cast(0 as numeric), cast(0 as numeric), amount, amount
+  from `sahil-devx.dev_dna_silver.cafe_sales` where coalesce(is_deleted, false) = false
+grain:
+  - sales_line_key
+columns:
+  - name: sales_line_key
+    type: string
+    descriptions:
+      user: Unique key of the sales line (the source row's hash_key).
+  - name: channel_code
+    type: string
+    descriptions:
+      user: "Sales channel - D2C, PLATFORM, QCOMM, OFFLINE, INTERNATIONAL or CAFE."
+  - name: order_date_key
+    type: time
+    role: time
+    descriptions:
+      user: Calendar date of the sale. Use for month/quarter/"last month" reporting.
+  - name: product_id
+    type: string
+    descriptions:
+      user: Canonical product id; joins to item_master.
+  - name: order_status
+    type: string
+    descriptions:
+      user: Channel order/fulfillment status where the channel has one (PLATFORM, QCOMM, INTERNATIONAL); NULL for D2C, OFFLINE and CAFE.
+  - name: quantity
+    type: number
+  - name: gross_amount_inr
+    type: number
+  - name: discount_amount_inr
+    type: number
+  - name: shipping_amount_inr
+    type: number
+  - name: net_amount_inr
+    type: number
+    descriptions:
+      user: Net after fees, per the gold fact_sales.net_amount_inr rule (D2C adds shipping; PLATFORM minus marketplace fee; QCOMM at MRP minus discount and delivery fee; INTERNATIONAL minus customs).
+  - name: revenue_inr
+    type: number
+    descriptions:
+      user: Standard company revenue for the line in INR (D2C line_total; PLATFORM units x unit_price - promo_discount; QCOMM qty x selling_price; OFFLINE net_amount; CAFE amount; INTERNATIONAL qty x unit_price_usd x 83).
+joins:
+  - to: item_master
+    "on": sales.product_id = item_master.product_id
+    relationship: many_to_one
+  - to: dim_date
+    "on": sales.order_date_key = dim_date.date_key
+    relationship: many_to_one
+measures:
+  - name: revenue_inr
+    expr: sum(revenue_inr)
+    description: Standard company revenue in INR. Use this for "revenue" or "sales". International converted at 83 INR/USD; all order statuses included.
+  - name: net_after_fees_inr
+    expr: sum(net_amount_inr)
+    description: Net after fees, discounts and customs (gold fact_sales.net_amount_inr rule). Use only when net-after-fees is asked for.
+  - name: gross_revenue_inr
+    expr: sum(gross_amount_inr)
+    description: Gross sales before discounts, fees and shipping, in INR.
+  - name: discount_inr
+    expr: sum(discount_amount_inr)
+    description: Discounts in INR.
+  - name: units_sold
+    expr: sum(quantity)
+    description: Units sold.
+  - name: sales_lines
+    expr: count(sales_line_key)
+    description: Number of sales lines.

@@ -1,0 +1,22 @@
+name: international_orders
+measures:
+  - name: units_sold
+    expr: sum(qty)
+    filter: coalesce(is_deleted, false) = false
+    description: Units sold. Excludes soft-deleted rows.
+  - name: gross_revenue_inr
+    expr: sum(qty * unit_price_usd * 83)
+    filter: coalesce(is_deleted, false) = false
+    description: Gross sales converted from USD at the fixed rate gold uses (83 INR per USD).
+  - name: gross_revenue_usd
+    expr: sum(qty * unit_price_usd)
+    filter: coalesce(is_deleted, false) = false
+    description: Gross sales in USD.
+  - name: net_after_fees_inr
+    expr: sum((qty * unit_price_usd - customs_duty_usd) * 83)
+    filter: coalesce(is_deleted, false) = false
+    description: Net after fees (gold fact_sales.net_amount_inr rule) for INTERNATIONAL = (gross - customs duty) in USD x 83, in INR. Shipping is not included. Matches gold fact_sales.net_amount_inr.
+  - name: revenue_inr
+    expr: sum(qty * unit_price_usd * 83)
+    filter: coalesce(is_deleted, false) = false
+    description: Standard company revenue in INR = qty * unit_price_usd * 83. Use this for "revenue" or "sales". All order statuses included.

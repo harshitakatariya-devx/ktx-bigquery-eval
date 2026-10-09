@@ -1,0 +1,14 @@
+name: cafe_sales
+measures:
+  - name: units_sold
+    expr: sum(qty)
+    filter: coalesce(is_deleted, false) = false
+    description: Units sold. Excludes soft-deleted rows.
+  - name: net_after_fees_inr
+    expr: sum(amount)
+    filter: coalesce(is_deleted, false) = false
+    description: Net after fees (gold fact_sales.net_amount_inr rule) for CAFE = line amount, in INR (no discount or shipping). Matches gold fact_sales.net_amount_inr.
+  - name: revenue_inr
+    expr: sum(amount)
+    filter: coalesce(is_deleted, false) = false
+    description: Standard company revenue in INR = amount. Use this for "revenue" or "sales". All order statuses included.

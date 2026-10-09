@@ -1,0 +1,22 @@
+name: d2c_orders
+measures:
+  - name: units_sold
+    expr: sum(line_item_qty)
+    filter: coalesce(is_deleted, false) = false
+    description: Units sold. Excludes soft-deleted rows.
+  - name: gross_revenue_inr
+    expr: sum(line_item_qty * line_item_price)
+    filter: coalesce(is_deleted, false) = false
+    description: Gross sales before discount or shipping, in INR (qty x unit price). Matches gold fact_sales.gross_amount_inr.
+  - name: shipping_inr
+    expr: sum(shipping_amount)
+    filter: coalesce(is_deleted, false) = false
+    description: Shipping charged, in INR, summed per line as in gold.
+  - name: net_after_fees_inr
+    expr: sum(line_item_qty * line_item_price + shipping_amount)
+    filter: coalesce(is_deleted, false) = false
+    description: Net after fees (gold fact_sales.net_amount_inr rule) for D2C = gross + shipping, in INR. Matches gold fact_sales.net_amount_inr. Use only when net-after-fees is asked for; "revenue" means revenue_inr.
+  - name: revenue_inr
+    expr: sum(line_total)
+    filter: coalesce(is_deleted, false) = false
+    description: Standard company revenue in INR = line_total. Use this for "revenue" or "sales". All order statuses included.

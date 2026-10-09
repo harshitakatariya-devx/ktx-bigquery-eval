@@ -1,0 +1,26 @@
+name: qcomm_orders
+measures:
+  - name: units_sold
+    expr: sum(qty)
+    filter: coalesce(is_deleted, false) = false
+    description: Units sold. Excludes soft-deleted rows.
+  - name: gross_revenue_inr
+    expr: sum(qty * mrp)
+    filter: coalesce(is_deleted, false) = false
+    description: Gross sales at MRP (list price), in INR. Matches gold fact_sales.gross_amount_inr.
+  - name: discount_inr
+    expr: sum(total_discount)
+    filter: coalesce(is_deleted, false) = false
+    description: Total discount applied, in INR.
+  - name: delivery_fee_inr
+    expr: sum(delivery_fee)
+    filter: coalesce(is_deleted, false) = false
+    description: Delivery fee, in INR.
+  - name: net_after_fees_inr
+    expr: sum(qty * mrp - total_discount - delivery_fee)
+    filter: coalesce(is_deleted, false) = false
+    description: Net after fees (gold fact_sales.net_amount_inr rule) for QCOMM = gross at MRP - discount - delivery fee, in INR. Matches gold fact_sales.net_amount_inr. Includes all order statuses, as gold does.
+  - name: revenue_inr
+    expr: sum(qty * selling_price)
+    filter: coalesce(is_deleted, false) = false
+    description: Standard company revenue in INR = qty * selling_price. Use this for "revenue" or "sales". All order statuses included.
