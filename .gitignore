@@ -1,0 +1,10 @@
+# ktx local runtime state (.ktx/.gitignore already covers db, cache, logs, secrets, setup, agents)
+.ktx/runtime/
+.ktx/worktrees/
+.ktx/mcp.json
+
+# Claude Code per-user settings
+.claude/settings.local.json
+
+# OS / editor
+.DS_Store
